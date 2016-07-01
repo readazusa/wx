@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="club.lovety.user.entity.UserInfo">
+
+    <insert id="save" parameterType="UserInfo">
+        insert into t_wx_user(uid,openid,nick,realname,phonenum,mobile,sex,birthday,province,city,area,address,idcard,email,password,createtime,updatetime)
+        values(#{uid},#{openId},#{nick},#{realName},#{phoneNum},#{mobile},#{sex},#{birthday},#{province},#{city},#{area},#{address},#{idCard},#{email},#{password},#{createTime},#{updateTime})
+    </insert>
+
+    <update id="update" parameterType="UserInfo">
+        update t_wx_user set nick = #{nick},mobile = #{mobile},phonenum = #{phoneNum},sex= #{sex},birthday= #{birthday},
+        province= #{province},city=#{city},area=#{area},address= #{address},idcard= #{idCard},email= #{email},password = #{password},updatetime = #{updateTime}
+    </update>
+
+    <select id="queryObj" parameterType="java.lang.String" resultType="UserInfo">
+        select * from t_wx_user where openid = #{openid}
+    </select>
+
+    <select id="queryUserInfoByOpenId" parameterType="java.lang.String" resultType="UserInfo">
+        select * from t_wx_user where openid = #{openId}
+    </select>
+
+    <update id="updateSubDate" parameterType="UserInfo">
+        update t_wx_user set updatetime = #(createTime) where openId = #{openId}
+    </update>
+</mapper>

@@ -1,0 +1,146 @@
+.wx_top_bar_search{
+    padding-left: 1.5rem !important;
+}
+
+li, ul {
+    list-style: none;
+    margin: 0;
+}
+
+ .goods-list.style-small>li {
+    width: 50%;
+    float: left;
+    padding: 0 0 .25rem .25rem!important;
+    background: 0 0;
+}
+.goods-list.style-small {
+    padding: .15rem .15rem 0 0;
+}
+ul .card{
+    margin: 0 0 0.1rem 0.1rem;
+}
+.dh{
+    background: #FFFFFF;
+    display: block;
+}
+.dh a{
+    padding: 0 1rem 0 1rem;
+    list-style: none;
+    cursor: pointer;
+    color: #586c94;
+}
+
+
+.popup-sku .goods-summary {
+    position: relative;
+    padding: .3rem 0;
+    min-height: 5.5rem;
+    border-width: 0 0 1px;
+}
+.popup-sku .goods-summary, .popup-sku .sku-control li {
+    border-style: solid;
+     border-color: #ddd;
+}
+.popup-sku .goods-summary .thumb {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    left: .35rem;
+
+    background: #fff;
+    border-radius: .25rem;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
+    box-shadow: 0 0 1px 1px rgba(0,0,0,.2);
+    padding: .1rem;
+}
+
+.popup-sku .goods-summary .detail {
+    padding-left: 2rem;
+}
+.popup-sku .goods-summary .detail .title {
+    margin: 0;
+    padding-right: 5rem;
+    overflow: hidden;
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.popup-sku .goods-summary .close-popup {
+    position: absolute;
+    top: .1rem;
+    right: .15rem;
+    font-size: 2rem;
+    line-height: 1;
+    color: #999;
+}
+
+.if-close:before {
+    content:'X';
+}
+
+.popup-sku .quantity-control {
+    padding: .5rem .5rem;
+    line-height: 2.8rem;
+}
+
+.popup-sku .quantity-control .quantity input {
+    float: left;
+    width: 2rem;
+    height: 1.5rem;
+    border-style: solid;
+    border-color: #999;
+    border-width: 1px 0;
+    border-radius: 0;
+    text-align: center;
+}
+
+.popup-sku .quantity-control .stock {
+    float: right;
+    margin-right: 1.5rem;
+}
+
+.popup .popup-options {
+    border-width: 1px 0 0;
+    padding: .85rem;
+}
+.popup .popup-options, .popup .popup-title, .popup-sku .goods-summary, .popup-sku .sku-control li {
+    border-style: solid;
+    border-color: #ddd;
+}
+
+.btn-sm {
+    display: inline-block;
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid #f0f0f0;
+    white-space: nowrap;
+    user-select: none;
+    padding: .6rem 1.2rem;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    border-radius: .4rem;
+    color: #333;
+    background-color: #f5f5f5;
+}
+.my-btn{
+    height: 2rem;
+    font-size: 1.2rem;
+}
+
+.popup-sku .quantity-control .quantity .minus.minus, .popup-sku .quantity-control .quantity .plus.minus {
+    border-radius: 2px 0 0 2px;
+}
+.popup-sku .quantity-control .quantity .minus.disabled, .popup-sku .quantity-control .quantity .plus.disabled, .popup-sku .sku-control li .items label.disabled {
+    color: #eee;
+}
+.popup-sku .quantity-control .quantity .minus, .popup-sku .quantity-control .quantity .plus {
+    float: left;
+    height: 1.5rem;
+    line-height: 1.6rem;
+    background-color: #fff;
+    border: 1px solid #999;
+    padding: 0 .6rem;
+}

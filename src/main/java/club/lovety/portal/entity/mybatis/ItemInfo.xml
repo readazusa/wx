@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="club.lovety.portal.entity.ItemInfo">
+
+    <select id="queryObjectByUid" parameterType="java.lang.String" resultType="ItemInfo">
+            select * from t_wx_item where uid = #{id}
+    </select>
+
+    <select id="queryPage" parameterType="BaseSearchPO" resultType="ItemInfo">
+        select * from t_wx_item where 1=1
+        <if test="obj.title != null and obj.title != ''">
+            and title like '${obj.title}%'
+        </if>
+        <if test="obj.cid != null and obj.cid != '' ">
+            and cid = #{obj.cid}
+        </if>
+        <if test="obj.tj != null and obj.tj != ''">
+            and tj = #{obj.tj}
+        </if>
+        limit #{pageIndex},#{pageSize}
+    </select>
+
+    <select id="queryPageCount" parameterType="ItemInfo" resultType="java.lang.Integer">
+        select count(1) from t_wx_item where 1=1
+        <if test="title != null and title != ''">
+            and title like '${title}%'
+        </if>
+        <if test="cid != null and cid != '' ">
+            and cid = #{cid}
+        </if>
+        <if test="tj != null and tj != ''">
+            and tj = #{tj}
+        </if>
+    </select>
+
+</mapper>

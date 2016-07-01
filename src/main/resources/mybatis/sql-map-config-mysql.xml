@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+        <setting name="lazyLoadingEnabled" value="true"/>  
+        <setting name="aggressiveLazyLoading" value="false"/>
+	</settings>
+    <typeAliases>
+        <typeAlias type="club.lovety.user.entity.UserInfo" alias="UserInfo"></typeAlias>
+        <typeAlias type="club.lovety.user.entity.AddressInfo" alias="AddressInfo"></typeAlias>
+        <typeAlias type="club.lovety.user.entity.UserParticle" alias="UserParticle"></typeAlias>
+        <typeAlias type="club.lovety.portal.entity.ItemInfo" alias="ItemInfo"></typeAlias>
+        <typeAlias type="club.lovety.portal.entity.ImageInfo" alias="ImageInfo"></typeAlias>
+        <typeAlias type="club.lovety.portal.entity.OrderInfo" alias="OrderInfo"></typeAlias>
+        <typeAlias type="club.lovety.portal.entity.ShopCart" alias="ShopCart"></typeAlias>
+        <typeAlias type="club.lovety.portal.entity.TradeInfo" alias="TradeInfo"></typeAlias>
+        <typeAlias type="club.lovety.portal.entity.CommentInfo" alias="CommentInfo"></typeAlias>
+        <typeAlias type="club.lovety.portal.entity.ItemType" alias="ItemType"></typeAlias>
+        <typeAlias type="club.lovety.base.entity.BaseSearchPO" alias="BaseSearchPO"></typeAlias>
+    </typeAliases>
+    <mappers>
+        <mapper resource="club/lovety/user/entity/mybatis/AddressInfo.xml"></mapper>
+        <mapper resource="club/lovety/user/entity/mybatis/UserInfo.xml"></mapper>
+        <mapper resource="club/lovety/user/entity/mybatis/UserParticle.xml"></mapper>
+
+        <mapper resource="club/lovety/portal/entity/mybatis/CommentInfo.xml"></mapper>
+        <mapper resource="club/lovety/portal/entity/mybatis/ImageInfo.xml"></mapper>
+        <mapper resource="club/lovety/portal/entity/mybatis/ItemInfo.xml"></mapper>
+        <mapper resource="club/lovety/portal/entity/mybatis/ItemType.xml"></mapper>
+        <mapper resource="club/lovety/portal/entity/mybatis/OrderInfo.xml"></mapper>
+        <mapper resource="club/lovety/portal/entity/mybatis/ShopCart.xml"></mapper>
+        <mapper resource="club/lovety/portal/entity/mybatis/TradeInfo.xml"></mapper>
+    </mappers>
+
+</configuration>
+ 
