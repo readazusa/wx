@@ -1,7 +1,5 @@
 package club.lovety.portal.controller;
 
-import club.lovety.base.entity.BasePagePO;
-import club.lovety.portal.entity.ItemInfo;
 import club.lovety.portal.service.IItemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

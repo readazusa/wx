@@ -72,3 +72,15 @@
     <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js" type="application/javascript"></script>
 </#macro>
 
+<#macro vueJS>
+    <script src="${base}/resources/vue/vue.js" type="application/javascript"></script>
+</#macro>
+
+<#macro vuxCSS>
+<link href="${base}/resources/vux/vux.css" type="text/css" rel="stylesheet">
+</#macro>
+
+<#macro vuxJS>
+    <script src="${base}/resources/vux/vux.js" type="application/javascript"></script>
+</#macro>
+
