@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../resources/vue/vue.js" type="application/javascript"></script>
+   <script src="../resources/jquery/jquery-3.0.0.js"></script>
+    <div id="vue">
+        <select onchange="" v-on:change="doChange" v-model="name">
+            <option value="1">你好啊啊</option>
+            <option value="2">不好啊</option>
+        </select>
+        <span>{{name}}</span>
+
+    </div>
+</head>
+<body>
+    <script type="application/javascript">
+          new Vue({
+                el:"#vue",
+                data:{
+                    name:"2"
+                },
+                methods:{
+                    doChange:function(obj){
+                        alert(this.name);
+                    }
+                }
+            });
+
+
+    </script>
+</body>
+</html>
