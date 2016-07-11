@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript">
+        var smc = {};
+    </script>
+    <script src="../resources/my/common.js" type="application/javascript"></script>
+</head>
+<body>
+    <button onclick="add();">相加</button>
+<script  type="application/javascript">
+    function add(){
+        alert(smc.add(32,4));
+
+        smc.test({
+            name:"你好是",
+            success:function(resp){
+                alert(resp);
+            }
+        });
+    }
+
+
+
+</script>
+</body>
+</html>
