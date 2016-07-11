@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button onclick="callTest();">click</button>
+    <script type="application/javascript">
+        function callTest(n){
+            var result = callee(8);
+            console.info("Result:  "+ result);
+        }
+
+        function callee(n){
+            if(n===1){
+                return 1;
+            }else{
+                return n*arguments.callee(n-1);
+            }
+        }
+
+
+        function outer(){
+            inner();
+        }
+
+        function inner(){
+            alert(inner.caller)
+        }
+        outer();
+
+    </script>
+
+</body>
+</html>

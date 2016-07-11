@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script type="application/javascript" src="../resources/vue/vue.js"></script>
+    <title></title>
+</head>
+<body id="app">
+    <div >
+
+       <child msg="hello" ss="你好啊啊啊"></child>
+
+        <input v-model="hello">
+
+        <chind v-bind:my-message="hello"></chind>
+        <br>
+        你的输入:{{hello}}
+
+
+    </div>
+    <script type="application/javascript">
+        Vue.component('child', {
+            // 声明 props
+            props: ['msg','ss'],
+            // prop 可以用在模板内
+            // 可以用 `this.msg` 设置
+            template: '<span style="color: red">{{ msg }}，{{ss}}</span>'
+        });
+
+        Vue.component('chind', {
+            // 声明 props
+            props: ['myMessage'],
+            // prop 可以用在模板内
+            // 可以用 `this.msg` 设置
+            template: '<span style="color: blue">{{ myMessage }}</span>'
+        });
+
+        new Vue({
+           el:"#app"
+        });
+    </script>
+
+</body>
+</html>
