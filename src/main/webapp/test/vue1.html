@@ -4,31 +4,53 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="../resources/vue/vue.js" type="application/javascript"></script>
-   <script src="../resources/jquery/jquery-3.0.0.js"></script>
+    <script src="../resources/jquery/jquery-3.0.0.js"></script>
     <div id="vue">
         <select onchange="" v-on:change="doChange" v-model="name">
             <option value="1">你好啊啊</option>
             <option value="2">不好啊</option>
         </select>
-        <span>{{name}}</span>
+        <span>{{name+1}}</span>
 
+        <button onclick="getData()">click</button>
+        newName: {{newName}}
+        <br>
+        <a v-bind:href="url">跳转</a>
+
+        <input v-model="oldValue">
+        newValue: {{oldValue+1}}
+        a:{{a}},b:{{1+a}}
     </div>
 </head>
 <body>
-    <script type="application/javascript">
-          new Vue({
-                el:"#vue",
-                data:{
-                    name:"2"
-                },
-                methods:{
-                    doChange:function(obj){
-                        alert(this.name);
-                    }
-                }
-            });
+<script type="application/javascript">
+    var vm = new Vue({
+        el: "#vue",
+        data: {
+            name: 1,
+            url: "http://www.baidu.com",
+            a:1
+        },
+        methods: {
+            doChange: function (obj) {
+//                alert(this.name);
+            }
+        },
+        computed: {
+            newName: function () {
+                return this.name + 1;
+            },
+            b:function(){
+                return this.a+1;
+            }
+        }
+    });
 
+    function getData() {
+        var v = "1 2 3 1 2 3 r e t e r t r e t";
+        alert(v.split(" ").reverse().join(","));
+    }
 
-    </script>
+</script>
 </body>
 </html>

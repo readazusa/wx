@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../resources/vue/vue.js" type="application/javascript"></script>
+    <script src="../resources/jquery/jquery-3.0.0.js"></script>
+    <div id="vue">
+         <select  v-text="text">
+             <option value="">请选择</option>
+             <option value="21">21</option>
+             <option value="213">213</option>
+             <option value="13">13</option>
+         </select>
+        value:{{sel}} __________     text:{{text}}<br>
+        <button onclick="doSet();">click</button>
+    </div>
+
+</head>
+<body>
+<script type="application/javascript">
+    var vm = new Vue({
+        el: "#vue"
+
+    });
+    vm.$watch("sel",function(newValue,oldValue){
+            console.info("old:  "+ oldValue+" ,new:  "+ newValue);
+    });
+
+
+    function  doSet(){
+//        vm.$set("sel","13");
+        Vue.set(data,"sel","21");
+    }
+
+
+</script>
+</body>
+</html>

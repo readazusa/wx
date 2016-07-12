@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../resources/vue/vue.js" type="application/javascript"></script>
+    <script src="../resources/jquery/jquery-3.0.0.js"></script>
+    <style>
+        /* 必需 */
+        .expand-transition {
+            transition: all .3s ease;
+            height: 30px;
+            padding: 10px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        .expand-enter, .expand-leave {
+            height: 0;
+            padding: 0 10px;
+            opacity: 0;
+        }
+    </style>
+    <div id="vue">
+       <div v-if="show" transition="expand">渐变效果</div>
+    </div>
+
+    <button onchange="change();">click</button>
+</head>
+<body>
+<script type="application/javascript">
+    var vm = new Vue({
+        el: "#vue",
+        data:{
+            show:true
+        }
+    });
+function change(){
+    vm.transition('expand', {
+        beforeEnter: function (el) {
+            el.textContent = 'beforeEnter'
+        },
+        enter: function (el) {
+            el.textContent = 'enter'
+        },
+        afterEnter: function (el) {
+            el.textContent = 'afterEnter'
+        },
+        enterCancelled: function (el) {
+            // handle cancellation
+        },
+
+        beforeLeave: function (el) {
+            el.textContent = 'beforeLeave'
+        },
+        leave: function (el) {
+            el.textContent = 'leave'
+        },
+        afterLeave: function (el) {
+            el.textContent = 'afterLeave'
+        },
+        leaveCancelled: function (el) {
+            // handle cancellation
+        }
+    })
+
+}
+
+</script>
+</body>
+</html>

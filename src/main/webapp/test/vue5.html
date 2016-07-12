@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../resources/vue/vue.js" type="application/javascript"></script>
+    <script src="../resources/jquery/jquery-3.0.0.js"></script>
+    <div id="vue">
+        <input type="checkbox" id="lz"  value="lz" v-model="checkNames">
+        <label for="lz">年梓</label>
+        <input type="checkbox" id="mm"  value="mm" v-model="checkNames">
+        <label for="mm">妈妈</label>
+        <input type="checkbox"  id="bb"  value="bb" v-model="checkNames">
+        <label for="bb">爸爸</label>
+        checkNames:[{{checkNames}}]
+    </div>
+</head>
+<body>
+<script type="application/javascript">
+    var vm = new Vue({
+        el: "#vue",
+        data:{
+            checkNames:[]
+        }
+    });
+
+</script>
+</body>
+</html>

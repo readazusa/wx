@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../resources/vue/vue.js" type="application/javascript"></script>
+    <script src="../resources/jquery/jquery-3.0.0.js"></script>
+    <div id="vue">
+        <div :class="{'classa':cla,'classb':clb}">sadasdsad</div>
+
+        <div :style="[css1,css2]">asdadsd</div>
+    </div>
+</head>
+<body>
+<script type="application/javascript">
+    var vm = new Vue({
+        el: "#vue",
+        data: {
+            cla:false,
+            clb:true,
+            css1:{
+                color:"red"
+            },
+            css2:{
+                width:"100px"
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

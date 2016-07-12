@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../resources/vue/vue.js" type="application/javascript"></script>
+    <script src="../resources/jquery/jquery-3.0.0.js"></script>
+    <div id="vue">
+         <button @click="click" @keyup="keyup">click</button>
+         <br>
+        <button @click="clickValue($this)">clickValue</button>
+    </div>
+</head>
+<body>
+<script type="application/javascript">
+    var vm = new Vue({
+        el: "#vue",
+        methods:{
+            click:function(event){
+                alert(event.button);
+            },
+            keyup:function(e){
+                alert(e.keyCode);
+            },
+            clickValue:function(obj){
+                alert($(obj).html());
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

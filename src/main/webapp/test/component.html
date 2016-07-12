@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../resources/vue/vue.js" type="application/javascript"></script>
+    <script src="../resources/jquery/jquery-3.0.0.js"></script>
+    <div id="vue">
+        <my-template></my-template>
+
+    </div>
+</head>
+<body>
+<script type="application/javascript">
+
+    Vue.component("my-template",{
+        template:"<div>这是一个模板</div>"
+    });
+
+    var vm = new Vue({
+        el: "#vue"
+    });
+
+</script>
+</body>
+</html>
