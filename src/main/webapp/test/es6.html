@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+     <script type="module" src="../resources/my/es6.js"></script>
 </head>
 <body>
   <button onclick="doTest();">click</button>
 
   <script type="application/javascript">
+        import firstName from "../resources/my/es6.js";
         function  doTest(){
-            alert(Math.sinh(1));
+            alet("firstName: "+ firstName);
         }
   </script>
 

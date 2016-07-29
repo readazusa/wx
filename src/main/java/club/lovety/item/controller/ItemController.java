@@ -1,4 +1,4 @@
-package club.lovety.portal.controller;
+package club.lovety.item.controller;
 
 import club.lovety.base.entity.BasePagePO;
 import club.lovety.base.entity.WxConfig;
@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -90,8 +91,15 @@ public class ItemController {
         return "portal/item/tj";
     }
 
-
-
-
+    /**
+     * 跳转天天特价
+     * @return
+     */
+    @RequestMapping("goto/tttj")
+    public String gotoTttj(HttpServletRequest request,Model model){
+        String pageSizeStr = request.getParameter("pageSize");
+        String pageIndexStr = request.getParameter("pageIndex");
+        return "portal/item/tttj";
+    }
 
 }

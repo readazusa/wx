@@ -1,0 +1,1 @@
+<my-template></my-template>

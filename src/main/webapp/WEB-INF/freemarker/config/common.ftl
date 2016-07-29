@@ -84,3 +84,18 @@
     <script src="${base}/resources/vux/vux.js" type="application/javascript"></script>
 </#macro>
 
+<#macro muiJS>
+    <script src="${base}/resources/mui/js/mui.js" type="application/javascript"></script>
+</#macro>
+
+<#macro muiCSS>
+    <link href="${base}/resources/mui/css/mui.css" rel="stylesheet" type="text/css">
+</#macro>
+
+<#macro commonCSS>
+<link href="${base}/resources/my/css/common.css" rel="stylesheet" type="text/css">
+</#macro>
+
+<#macro iconfontCSS>
+<link href="${base}/resources/mui/css/iconfont.css" rel="stylesheet" type="text/css">
+</#macro>

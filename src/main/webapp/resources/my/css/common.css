@@ -1,0 +1,33 @@
+.my-index-card li{
+    width: 50%;
+}
+
+.goods-list.style-small>li {
+    width: 50%;
+    float: left;
+    padding: 0 5px 0 0!important;
+    background: 0 0;
+}
+header{
+    position: fixed !important;
+}
+
+.my-trans-duration{
+    transition-duration: 500ms !important;
+}
+
+.my-index-icon{
+    font-size: 34px;
+}
+.my-index-icon-font{
+    font-size: 5px !important;
+}
+
+.my-mui-media-object {
+    line-height: 100px;
+    max-width: 100px;
+    height: 100px;
+}
+.my-list-item{
+    padding: 10px 15px 10px 10px !important;
+}

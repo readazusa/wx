@@ -6,20 +6,21 @@
     <script src="../resources/vue/vue.js" type="application/javascript"></script>
     <script src="../resources/jquery/jquery-3.0.0.js"></script>
     <div id="vue">
-
-
+        <img title="{{name}}" alt="{{name}}" :src="url">
+        <input v-model="name">
+        <input v-model="url">
     </div>
 </head>
 <body>
 <script type="application/javascript">
+     new Vue({
+         el:"#vue",
+         data:{
+             name:"背景图片",
+             url:"http://sunmingchun.net:8888//hnwap/images/bg.png"
+         }
+     })
 
-    Vue.component("my-template",{
-        template:"<div>这是一个模板</div>"
-    });
-
-    var vm = new Vue({
-        el: "#vue"
-    });
 
 </script>
 </body>

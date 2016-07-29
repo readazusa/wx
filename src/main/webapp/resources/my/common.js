@@ -8,6 +8,14 @@
         obj.success(4);
         alert("name: "+ name);
     }
+})(smc);
+
+(function($){
+    var TY = {};
+    TY.doAdd = function(x,y){
+        alert(x+y);
+    }
+    window.TY= TY;
+})(window);
 
 
-})(smc)
