@@ -37,7 +37,7 @@ public class ItemController {
     @Resource
     private IWechatApiService wechatApiService;
 
-    @RequestMapping("view")
+    @RequestMapping("goto/view")
     public String view(@RequestParam("uid") String uid,HttpServletRequest request,ModelMap model){
         model.put("uid",uid);
         String query = request.getQueryString();

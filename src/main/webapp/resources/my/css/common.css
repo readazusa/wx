@@ -31,3 +31,12 @@ header{
 .my-list-item{
     padding: 10px 15px 10px 10px !important;
 }
+
+.my-item-bottom{
+    position: absolute;
+    bottom: 10px;
+}
+
+.my-item-right-10{
+    margin-left: 10px;
+}

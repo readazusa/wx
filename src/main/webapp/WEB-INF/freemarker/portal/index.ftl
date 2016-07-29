@@ -87,10 +87,10 @@
             </div>
         </div>
 
-        <div>
-            <ul class="mui-table-view goods-list style-small">
+        <div id="index_item">
+            <ul class="mui-table-view goods-list style-small" id="index_ul_item">
                 <li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
+                    <a href="${base}/item/goto/view.htm?uid=223">
                         <div class="mui-card">
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
@@ -102,7 +102,7 @@
                     </a>
                 </li>
                 <li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
+                    <a href="${base}/item/goto/view.htm?uid=223">
                         <div class="mui-card">
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
@@ -114,7 +114,7 @@
                     </a>
                 </li>
                 <li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
+                    <a href="#">
                         <div class="mui-card">
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
@@ -126,13 +126,34 @@
                     </a>
                 </li>
                 <li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
+                    <a href="#">
                         <div class="mui-card">
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
                             </div>
                             <div class="mui-card-footer">
-
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <a href="#">
+                        <div class="mui-card">
+                            <div class="mui-card-content">
+                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
+                            </div>
+                            <div class="mui-card-footer">
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media">
+                    <a href="#">
+                        <div class="mui-card">
+                            <div class="mui-card-content">
+                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
+                            </div>
+                            <div class="mui-card-footer">
                             </div>
                         </div>
                     </a>
@@ -182,14 +203,27 @@
                     callback: pulldownfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                 },
                 up:{
-                    contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
-                    contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+                    height: 200,//可选,默认50.触发下拉刷新拖动距离,
+                    auto: false,//可选,默认false.自动下拉刷新一次
+                    contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容
+                    contentrefresh  : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
                     callback:pullupfresh
                 }
             }
         });
 
         mui("#indexurl").on('tap','a',function(){
+            var href = this.href;
+            mui.openWindow({
+                id: href,
+                url: this.href,
+                show:{
+                    autoShow:true,//页面loaded事件发生后自动显示，默认为true
+                }
+            });
+        });
+
+        mui("#index_ul_item").on('tap','a',function(){
             var href = this.href;
             mui.openWindow({
                 id: href,
@@ -206,10 +240,22 @@
 //        alert("刷新");
         mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
     }
-
+    var total = 0;
     function pullupfresh(){
 //        alert("上啦刷新");
-        this.endPullupToRefresh(false);
+//        var li = '<li class="mui-table-view-cell mui-media"> <a href="#"> <div class="mui-card"> <div class="mui-card-content"> <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%"> </div> <div class="mui-card-footer"> </div> </div> </a> </li>';
+//
+//
+//        $("#index_ul_item").append(li).append(li);
+        alert(123);
+        total++;
+        if(total<6){
+            this.endPullupToRefresh(false);
+        }else{
+            this.endPullupToRefresh(true);
+
+        }
+
     }
 
     function doOpenWin(id,url){

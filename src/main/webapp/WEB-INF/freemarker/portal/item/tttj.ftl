@@ -23,7 +23,10 @@
             <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">
             <div class="mui-media-body">
                 <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-                
+                <div class="my-item-bottom">
+                    <span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">3499</span>
+                    <span class="mui-badge mui-badge-inverted my-item-right-10" >购买人数:10</span>
+                </div>
             </div>
             </a>
         </li>
@@ -54,6 +57,24 @@
     </ul>
     </div>
 </div>
+<nav class="mui-bar mui-bar-tab">
+    <a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-subpage-about.html">
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item" href="tab-webview-subpage-chat.html">
+        <span class="mui-icon mui-icon-email"></span>
+        <span class="mui-tab-label">消息</span>
+    </a>
+    <a class="mui-tab-item" href="tab-webview-subpage-contact.html">
+        <span class="mui-icon mui-icon-trash"></span>
+        <span class="mui-tab-label">购物车</span>
+    </a>
+    <a class="mui-tab-item" href="tab-webview-subpage-setting.html">
+        <span class="mui-icon mui-icon-contact"></span>
+        <span class="mui-tab-label">我的购</span>
+    </a>
+</nav>
     <@common.jqueryJS></@common.jqueryJS>
     <@common.muiJS></@common.muiJS>
 <script type="application/javascript">
