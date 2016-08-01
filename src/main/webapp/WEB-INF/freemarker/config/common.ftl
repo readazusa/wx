@@ -1,5 +1,5 @@
 <#macro jqueryJS>
-    <script src="${base}/resources/jquery/jquery-2.2.3.min.js" type="application/javascript"></script>
+    <script src="${base}/resources/jquery/jquery-3.0.0.js" type="application/javascript"></script>
 </#macro>
 
 <#macro allCSS>
@@ -32,4 +32,16 @@
 
 <#macro iconfontCSS>
 <link href="${base}/resources/mui/css/iconfont.css" rel="stylesheet" type="text/css">
+</#macro>
+
+<#macro myImageViewCSS>
+    <link href="${base}/resources/mui/css/my.image.view.css" rel="stylesheet" type="text/css">
+</#macro>
+
+<#macro muiImageViewJS>
+    <script src="${base}/resources/mui/js/mui.previewimage.js" type="application/javascript"></script>
+</#macro>
+
+<#macro muiZoomJS>
+    <script src="${base}/resources/mui/js/mui.zoom.js" type="application/javascript"></script>
 </#macro>

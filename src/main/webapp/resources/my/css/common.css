@@ -1,25 +1,27 @@
-.my-index-card li{
+.my-index-card li {
     width: 50%;
 }
 
-.goods-list.style-small>li {
+.goods-list.style-small > li {
     width: 50%;
     float: left;
-    padding: 0 5px 0 0!important;
+    padding: 0 5px 0 0 !important;
     background: 0 0;
 }
-header{
+
+header {
     position: fixed !important;
 }
 
-.my-trans-duration{
+.my-trans-duration {
     transition-duration: 500ms !important;
 }
 
-.my-index-icon{
+.my-index-icon {
     font-size: 34px;
 }
-.my-index-icon-font{
+
+.my-index-icon-font {
     font-size: 5px !important;
 }
 
@@ -28,15 +30,91 @@ header{
     max-width: 100px;
     height: 100px;
 }
-.my-list-item{
+
+.my-list-item {
     padding: 10px 15px 10px 10px !important;
 }
 
-.my-item-bottom{
+.my-item-bottom {
     position: absolute;
     bottom: 10px;
 }
 
-.my-item-right-10{
+.my-item-right-10 {
     margin-left: 10px;
+}
+
+.my-two-ellipsis {
+    overflow: hidden;
+    white-space: pre-line;
+    text-overflow: ellipsis;
+}
+
+.my-view-bar {
+    text-align: left;
+    width: 30%;
+}
+
+nav .my-view-bar-div {
+    float: left;
+    height: 100%;
+    /*margin-left: 5px;*/
+}
+
+nav .my-view-bar-div .my-icon {
+    width:33.333%;
+    text-align: center;
+    border-right: 1px solid #929292;
+    bottom: 0px;
+    float: left;
+    height: 50px;
+}
+nav .my-view-bar-div .my-view-var-div-btn {
+    bottom: 0px;
+    float: left;
+    height: 100%;
+    background-color: #2ac845;
+}
+
+.mui-bar-tab .my-view-bar-div .mui-icon {
+    top: 3px;
+    width: 24px;
+    height: 24px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.mui-bar-tab .my-view-bar-div .my-view-var-div-btn{
+    text-align: center;
+    display: inline-block;
+    color: #fff;
+    font-size:18px;
+    line-height: 50px;
+}
+
+.mui-bar .mui-icon {
+    font-size: 24px;
+    position: relative;
+    z-index: 20;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100%;
+}
+
+.mui-icon {
+    font-family: Muiicons;
+    font-size: 24px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    display: inline-block;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.mui-bar-tab .my-view-bar-div .mui-tab-label {
+    font-size: 11px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #929292;
 }
