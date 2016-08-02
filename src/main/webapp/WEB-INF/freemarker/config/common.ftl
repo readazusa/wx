@@ -45,3 +45,7 @@
 <#macro muiZoomJS>
     <script src="${base}/resources/mui/js/mui.zoom.js" type="application/javascript"></script>
 </#macro>
+
+<#macro muiAppCSS>
+    <link href="${base}/resources/mui/css/app.css" rel="stylesheet" type="text/css">
+</#macro>

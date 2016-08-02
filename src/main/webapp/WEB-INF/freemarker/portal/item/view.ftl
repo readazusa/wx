@@ -12,160 +12,101 @@
     <@common.commonCSS></@common.commonCSS>
     <@common.iconfontCSS></@common.iconfontCSS>
     <@common.myImageViewCSS></@common.myImageViewCSS>
+    <@common.muiAppCSS></@common.muiAppCSS>
 </head>
 <body>
 
-<div class="mui-content">
-    <div id="slider" class="mui-slider">
-        <div class="mui-slider-group mui-slider-loop">
-            <div class="mui-slider-item mui-slider-item-duplicate">
-                <a href="#">
-                    <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
-                </a>
+<div class="mui-content mui-scroll-wrapper" style="margin-bottom: 50px;">
+    <div class="mui-scroll">
+        <div id="slider" class="mui-slider">
+            <div class="mui-slider-group mui-slider-loop">
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a href="#">
+                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
+                    </a>
+                </div>
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="http://120.26.208.194:8888/yd/yuantiao.jpg" data-preview-src=""
+                             data-preview-group="1">
+                    </a>
+                </div>
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="http://120.26.208.194:8888/yd/cbd.jpg" data-preview-src="" data-preview-group="1">
+                    </a>
+                </div>
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="http://120.26.208.194:8888/yd/muwu.jpg" data-preview-src="" data-preview-group="1">
+                    </a>
+                </div>
+                <div class="mui-slider-item">
+                    <a href="#">
+                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg" data-preview-src=""
+                             data-preview-group="1">
+                    </a>
+                </div>
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a href="#">
+                        <img src="http://120.26.208.194:8888/yd/yuantiao.jpg">
+                    </a>
+                </div>
             </div>
-            <div class="mui-slider-item">
-                <a href="#">
-                    <img src="http://120.26.208.194:8888/yd/yuantiao.jpg" data-preview-src="" data-preview-group="1">
-                </a>
-            </div>
-            <div class="mui-slider-item">
-                <a href="#">
-                    <img src="http://120.26.208.194:8888/yd/cbd.jpg" data-preview-src="" data-preview-group="1">
-                </a>
-            </div>
-            <div class="mui-slider-item">
-                <a href="#">
-                    <img src="http://120.26.208.194:8888/yd/muwu.jpg" data-preview-src="" data-preview-group="1">
-                </a>
-            </div>
-            <div class="mui-slider-item">
-                <a href="#">
-                    <img src="http://120.26.208.194:8888/yd/shuijiao.jpg" data-preview-src="" data-preview-group="1">
-                </a>
-            </div>
-            <div class="mui-slider-item mui-slider-item-duplicate">
-                <a href="#">
-                    <img src="http://120.26.208.194:8888/yd/yuantiao.jpg">
-                </a>
+            <div class="mui-slider-indicator">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
             </div>
         </div>
-        <div class="mui-slider-indicator">
-            <div class="mui-indicator mui-active"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-        </div>
-    </div>
-    <ul class="mui-table-view">
-        <li class="mui-table-view-cell mui-media">
-            <a href="javascript:;">
-                <img class="mui-media-object mui-pull-right" src="http://120.26.208.194:8888/yd/yuantiao.jpg">
-                <div class="mui-media-body">
-                    <p class='my-two-ellipsis'>静静的看这个世界，最后终于疯了a阿达大的撒阿萨德阿萨德</p>
-                    <span>价格￥12</span>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+                    <img class="mui-media-object mui-pull-right" src="http://120.26.208.194:8888/yd/yuantiao.jpg">
+                    <div class="mui-media-body">
+                        <p class='my-two-ellipsis'>静静的看这个世界，最后终于疯了a阿达大的撒阿萨德阿萨德</p>
+                        <span>价格￥12</span>
+                        <p>
+                            快递:
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <div id="slider" class="mui-slider">
+            <div id="sliderSegmentedControl"
+                 class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+                <a class="mui-control-item" href="#item1mobile">
+                    图文详情
+                </a>
+                <a class="mui-control-item" href="#item2mobile">
+                    产品参数
+                </a>
+                <a class="mui-control-item" href="#item3mobile">
+                    宝贝推荐
+                </a>
+            </div>
+            <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
+            <div class="mui-slider-group">
+                <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
                     <p>
-                        快递:
+                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
+                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
+                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
                     </p>
                 </div>
-            </a>
-        </li>
-    </ul>
-
-
-
-    <div id="slider" class="mui-slider" style="background-color: #fff">
-        <div id="sliderSegmentedControl"
-             class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-            <a class="mui-control-item" href="#item1mobile">
-                图文详情
-            </a>
-            <a class="mui-control-item" href="#item3mobile">
-                产品参数
-            </a>
-        </div>
-        <div class="mui-slider-group">
-            <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-                <div id="scroll1" class="mui-scroll-wrapper">
-                    <div class="mui-scroll">
-                        <ul class="mui-table-view">
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-1
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-2
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-3
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-4
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-5
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-6
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-7
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-8
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-9
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-10
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-11
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-12
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-13
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-14
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-15
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-16
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-17
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-18
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-19
-                            </li>
-                            <li class="mui-table-view-cell">
-                                第一个选项卡子项-20
-                            </li>
-                        </ul>
-                    </div>
+                <div id="item2mobile" class="mui-slider-item mui-control-content">
+                    产品参数
                 </div>
-            </div>
-            <div id="item3mobile" class="mui-slider-item mui-control-content">
-                <div id="scroll3" class="mui-scroll-wrapper">
-                    <div class="mui-scroll">
-                        <div class="mui-loading">
-                            <div class="mui-spinner">
-                            </div>
-                        </div>
-                    </div>
+                <div id="item3mobile" class="mui-slider-item mui-control-content">
+                    宝贝推荐
                 </div>
-
             </div>
         </div>
     </div>
 </div>
+
 <nav class="mui-bar mui-bar-tab">
     <div class="my-view-bar-div" style="width: 40%;">
         <div class="my-icon">
@@ -182,7 +123,7 @@
         </div>
     </div>
     <div class="my-view-bar-div" style="width: 60%;">
-        <div class="my-view-var-div-btn" style="width: 55%;background-color: #f0ad4e">
+        <div class="my-view-var-div-btn" style="width: 55%;background-color:#f1ad4e">
             加入购物车
         </div>
         <div class="my-view-var-div-btn" style="width: 45%;background-color: red">
@@ -197,9 +138,24 @@
 <script type="application/javascript">
 
     $(function () {
+//        mui.init({
+//            swipeBack: false
+//        });
         mui.previewImage();
+//        $('.mui-scroll-wrapper').scroll({
+//            indicators: true //是否显示滚动条
+//        });
+
+        initMui();
     });
 
+    function initMui(){
+        (function($) {
+            $('.mui-scroll-wrapper').scroll({
+                indicators: true //是否显示滚动条
+            });
+        })(mui);
+    }
 </script>
 </body>
 </html>

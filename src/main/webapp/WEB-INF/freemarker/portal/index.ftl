@@ -163,8 +163,6 @@
     </div>
 </div>
 
-
-
 <nav class="mui-bar mui-bar-tab">
     <a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-subpage-about.html">
         <span class="mui-icon mui-icon-home"></span>
