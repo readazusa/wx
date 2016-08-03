@@ -214,7 +214,7 @@
             var href = this.href;
             mui.openWindow({
                 id: href,
-                url: this.href,
+                url: href,
                 show:{
                     autoShow:true,//页面loaded事件发生后自动显示，默认为true
                 }

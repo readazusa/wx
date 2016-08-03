@@ -102,6 +102,7 @@
                 <div id="item3mobile" class="mui-slider-item mui-control-content">
                     宝贝推荐
                 </div>
+                <p style="text-align: center">已经到底部啦</p>
             </div>
         </div>
     </div>
@@ -126,7 +127,7 @@
         <div class="my-view-var-div-btn" style="width: 55%;background-color:#f1ad4e">
             加入购物车
         </div>
-        <div class="my-view-var-div-btn" style="width: 45%;background-color: red">
+        <div class="my-view-var-div-btn" style="width: 45%;background-color: red" onclick="doBuy('${base}/order/goto/buy_page.htm');">
             立即购买
         </div>
     </div>
@@ -138,14 +139,7 @@
 <script type="application/javascript">
 
     $(function () {
-//        mui.init({
-//            swipeBack: false
-//        });
         mui.previewImage();
-//        $('.mui-scroll-wrapper').scroll({
-//            indicators: true //是否显示滚动条
-//        });
-
         initMui();
     });
 
@@ -155,6 +149,13 @@
                 indicators: true //是否显示滚动条
             });
         })(mui);
+    }
+
+    function  doBuy(url){
+        mui.openWindow({
+            id:url,
+            url:url
+        });
     }
 </script>
 </body>

@@ -1,5 +1,5 @@
 <#macro jqueryJS>
-    <script src="${base}/resources/jquery/jquery-3.0.0.js" type="application/javascript"></script>
+<script src="${base}/resources/jquery/jquery-3.0.0.js" type="application/javascript"></script>
 </#macro>
 
 <#macro allCSS>
@@ -7,7 +7,7 @@
 </#macro>
 
 <#macro weiui>
-    <link href="${base}/resources/wechat/weui.css" rel="stylesheet" type="text/css">
+<link href="${base}/resources/wechat/weui.css" rel="stylesheet" type="text/css">
 </#macro>
 
 <#macro iconCSS>
@@ -15,15 +15,15 @@
 </#macro>
 
 <#macro wxJS>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js" type="application/javascript"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js" type="application/javascript"></script>
 </#macro>
 
 <#macro muiJS>
-    <script src="${base}/resources/mui/js/mui.js" type="application/javascript"></script>
+<script src="${base}/resources/mui/js/mui.js" type="application/javascript"></script>
 </#macro>
 
 <#macro muiCSS>
-    <link href="${base}/resources/mui/css/mui.css" rel="stylesheet" type="text/css">
+<link href="${base}/resources/mui/css/mui.css" rel="stylesheet" type="text/css">
 </#macro>
 
 <#macro commonCSS>
@@ -35,17 +35,42 @@
 </#macro>
 
 <#macro myImageViewCSS>
-    <link href="${base}/resources/mui/css/my.image.view.css" rel="stylesheet" type="text/css">
+<link href="${base}/resources/mui/css/my.image.view.css" rel="stylesheet" type="text/css">
 </#macro>
 
 <#macro muiImageViewJS>
-    <script src="${base}/resources/mui/js/mui.previewimage.js" type="application/javascript"></script>
+<script src="${base}/resources/mui/js/mui.previewimage.js" type="application/javascript"></script>
 </#macro>
 
 <#macro muiZoomJS>
-    <script src="${base}/resources/mui/js/mui.zoom.js" type="application/javascript"></script>
+<script src="${base}/resources/mui/js/mui.zoom.js" type="application/javascript"></script>
 </#macro>
 
 <#macro muiAppCSS>
-    <link href="${base}/resources/mui/css/app.css" rel="stylesheet" type="text/css">
+<link href="${base}/resources/mui/css/app.css" rel="stylesheet" type="text/css">
 </#macro>
+
+<#macro fastclickJS>
+<script src="${base}/resources/fastclick/fastclick.js"></script>
+</#macro>
+
+<#macro addressDataJS>
+<script src="${base}/resources/addressdata/city.data-3.js" type="application/javascript"></script>
+<script src="${base}/resources/addressdata/city.data.js" type="application/javascript"></script>
+<script src="${base}/resources/addressdata/street.js" type="application/javascript"></script>
+</#macro>
+
+<#--
+poppicker组件依赖mui.picker.js/.css mui.poppicker.js/.css请务必在mui.js/css后中引用,也可统一引用 压缩版本:mui.picker.min.js
+-->
+<#macro muiPickerJS>
+    <script src="${base}/resources/mui/js/mui.picker.js" type="application/javascript"></script>
+    <script src="${base}/resources/mui/js/mui.poppicker.js"></script>
+</#macro>
+
+<#macro muiPickerCSS>
+    <link href="${base}/resources/mui/css/mui.picker.css" rel="stylesheet" type="text/css">
+    <link href="${base}/resources/mui/css/mui.poppicker.css" rel="stylesheet" type="text/css">
+</#macro>
+
+
