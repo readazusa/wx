@@ -247,12 +247,18 @@ nav .my-view-bar-div .my-view-var-div-btn {
 .my-center-p p{
     margin: 10px 0px 10px 5px;
 }
-.mui-tab-item{
+
+.my-center-bar{
+    margin-top: 5px;
+    height: 60px;
     width: 100%;
     float: left;
+    background-color: #fff;
+    border-bottom: solid silver 1px;
 }
-.my-center-li .mui-tab-item {
-    /*float: left;*/
+
+.my-center-bar .mui-tab-item {
+    width: 1%;
     display: table-cell;
     overflow: hidden;
     height: 50px;
@@ -262,3 +268,31 @@ nav .my-view-bar-div .my-view-var-div-btn {
     text-overflow: ellipsis;
     color: #929292;
 }
+
+.my-center-bar .mui-tab-item  .mui-tab-label {
+    font-size: 11px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mui-tab-item .order-number{
+    position: relative;
+    font-size: 10px;
+    top: 0px;
+    right: 25px;
+    z-index: 40;
+    float: right;
+    width: 20px;
+    height: 20px;
+    color: #ff5a12;
+    border: solid #ff5a12 2px;
+    border-radius: 50%;
+}
+.my-center-bar .my-center-bar-icon{
+    font-size: 30px;
+}
+.my-center-all-order{
+    clear: both;
+}
+
