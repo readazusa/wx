@@ -224,8 +224,8 @@ nav .my-view-bar-div .my-view-var-div-btn {
     white-space:nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-
 }
+
 .my-input-view{
     padding: 10px 15px;
     height: 40px;
@@ -235,12 +235,30 @@ nav .my-view-bar-div .my-view-var-div-btn {
     white-space:nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-
 }
+
 .my-input-pull-right:after{
     right: 15px;
     content: '\e583';
 }
 .color-silver{
     color: silver;
+}
+.my-center-p p{
+    margin: 10px 0px 10px 5px;
+}
+.mui-tab-item{
+    width: 100%;
+    float: left;
+}
+.my-center-li .mui-tab-item {
+    /*float: left;*/
+    display: table-cell;
+    overflow: hidden;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #929292;
 }

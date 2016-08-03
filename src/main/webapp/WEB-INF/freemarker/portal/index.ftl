@@ -176,7 +176,7 @@
         <span class="mui-icon mui-icon-trash"></span>
         <span class="mui-tab-label">购物车</span>
     </a>
-    <a class="mui-tab-item" href="tab-webview-subpage-setting.html">
+    <a class="mui-tab-item" href="${base}/center/goto/index_page.htm">
         <span class="mui-icon mui-icon-contact"></span>
         <span class="mui-tab-label">我的购</span>
     </a>
@@ -225,7 +225,17 @@
             var href = this.href;
             mui.openWindow({
                 id: href,
-                url: this.href,
+                url: href,
+                show:{
+                    autoShow:true,//页面loaded事件发生后自动显示，默认为true
+                }
+            });
+        });
+        mui(".mui-bar-tab").on('tap','a',function(){
+            var href = this.href;
+            mui.openWindow({
+                id: href,
+                url: href,
                 show:{
                     autoShow:true,//页面loaded事件发生后自动显示，默认为true
                 }
