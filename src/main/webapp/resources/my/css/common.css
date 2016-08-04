@@ -296,3 +296,58 @@ nav .my-view-bar-div .my-view-var-div-btn {
     clear: both;
 }
 
+.my-order-tab{
+    display: none;
+}
+
+.my-order-tab.my-order-active{
+    display: block;
+}
+
+.mui-card-content-inner .my-card-content-img{
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+.my-card-content-inner{
+    padding: 5px;
+    height: 80px;
+}
+.mui-slider-handle .my-shopcart-choice{
+    border: 1px #6d6d72 solid;
+    width: 20px;
+    height:20px;
+    position: absolute;
+    left: 5px;
+    top:35px;
+    border-radius: 50%;
+}
+
+
+.my-shopcart-media{
+    width: 80px;
+    height: 80px;
+    margin-left: 40px;
+}
+.my-table-shopcart-ul{
+    margin-top: 5px;
+}
+.my-table-shopcart-ul li {
+    padding: 5px;
+}
+nav .my-view-bar-div .my-view-shopcart .my-nav-shopcart-choice{
+    border: 1px #6d6d72 solid;
+    width: 20px;
+    height:20px;
+    border-radius: 50%;
+}
+nav .my-view-bar-div .my-view-shopcart {
+    height: 50px;
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    line-height: 50px;
+    right: 0px;
+    text-align: right;
+}
+

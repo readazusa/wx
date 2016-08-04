@@ -94,7 +94,7 @@
                         <div class="mui-card">
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                            </div>
+                        </div>
                             <div class="mui-card-footer">
 
                             </div>
@@ -172,7 +172,7 @@
         <span class="mui-icon mui-icon-email"></span>
         <span class="mui-tab-label">消息</span>
     </a>
-    <a class="mui-tab-item" href="tab-webview-subpage-contact.html">
+    <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
         <span class="mui-icon mui-icon-trash"></span>
         <span class="mui-tab-label">购物车</span>
     </a>

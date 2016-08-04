@@ -24,4 +24,9 @@ public class OrderController {
     public String allPage(){
         return "portal/order/all_page";
     }
+
+    @RequestMapping("goto/shop_cart")
+    public String shopCart(){
+        return "portal/order/shop_cart";
+    }
 }
