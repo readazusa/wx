@@ -151,6 +151,7 @@
         })(mui);
     }
 
+
     function  doBuy(url){
         mui.openWindow({
             id:url,

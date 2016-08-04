@@ -335,19 +335,42 @@ nav .my-view-bar-div .my-view-var-div-btn {
 .my-table-shopcart-ul li {
     padding: 5px;
 }
-nav .my-view-bar-div .my-view-shopcart .my-nav-shopcart-choice{
+nav .my-view-bar-div  .my-shopcart-choice-div{
+
+}
+nav .my-view-bar-div  .my-shopcart-choice-div span{
+    float: left;
+}
+nav .my-view-bar-div  .my-shopcart-choice-div .my-nav-shopcart-choice{
     border: 1px #6d6d72 solid;
     width: 20px;
     height:20px;
     border-radius: 50%;
+    margin-right: 15px;
+    display:block;
+    line-height: 20px;
+    margin-top: 14px;
+    margin-left: 5px;
+
+}
+nav .my-view-bar-div  .my-shopcart-choice-div .my-bav-shopcart-choice-all{
+    font-size: 18px;
 }
 nav .my-view-bar-div .my-view-shopcart {
     height: 50px;
     display: inline-block;
-    width: 100%;
+    width: 70%;
     font-size: 18px;
     line-height: 50px;
     right: 0px;
     text-align: right;
+    float: right;
 }
 
+nav .my-view-bar-div .my-shopcart-choice-div{
+    width: 30%;
+    float: left;
+    height: 50px;
+    display: inline-block;
+    line-height: 50px;
+}

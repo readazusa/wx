@@ -43,9 +43,12 @@
 
 <nav class="mui-bar mui-bar-tab">
     <div class="my-view-bar-div" style="width: 70%;">
+        <div class="my-shopcart-choice-div">
+            <span class="my-nav-shopcart-choice">3</span>
+            <span class="my-bav-shopcart-choice-all">全选</span>
+        </div>
+
         <div class="my-view-shopcart">
-             <span class="my-nav-shopcart-choice"></span>
-             <span style="font-size: 20px;">全选</span>
             合计:<span style="font-size: small;color: red">￥</span><span style="color: red">1234</span>
             <span style="font-size: small;color: silver;padding-right: 10px;">不含运费</span>
         </div>

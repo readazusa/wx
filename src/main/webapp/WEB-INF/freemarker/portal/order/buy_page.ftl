@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div class="mui-content mui-scroll-wrapper">
+<div class="mui-content mui-scroll-wrapper" >
     <div class="mui-scroll">
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
@@ -61,6 +61,7 @@
                 <textarea placeholder="给卖家留言...."></textarea>
         </div>
     </div>
+
 </div>
 
 <nav class="mui-bar mui-bar-tab">
@@ -70,20 +71,26 @@
         </div>
     </div>
     <div class="my-view-bar-div" style="width: 30%;">
-        <div class="my-view-var-div-btn" style="width: 100%;background-color: red">
+        <div class="my-view-var-div-btn" style="width: 100%;background-color: red" onclick="doBuy();">
             确定
         </div>
     </div>
 </nav>
     <@common.muiJS></@common.muiJS>
     <@common.jqueryJS></@common.jqueryJS>
+    <@common.fastclickJS></@common.fastclickJS>
 <script type="application/javascript">
     $(function () {
+        FastClick.attach(document.body);
         mui('.mui-scroll-wrapper').scroll({
             indicators: true //是否显示滚动条
         });
     });
 
+    function  doBuy(){
+
+//        var offCanvasWrapper = mui('#offCanvasWrapper');
+    }
 
 </script>
 </body>
