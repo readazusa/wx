@@ -52,7 +52,7 @@
         </div>
         <ul class="mui-table-view my-center-all-order">
             <li class="mui-table-view-cell mui-media my-list-item">
-                <a href="javascript:;" class="mui-navigate-right">
+                <a href="${base}/order/goto/all_page.htm" class="mui-navigate-right">
                     <#--<img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">-->
                     <div class="mui-media-body my-center-p">
                         <p>全部订单
@@ -157,7 +157,7 @@
         mui('.mui-scroll-wrapper').scroll({
             indicators: true //是否显示滚动条
         });
-        mui(".mui-bar-tab").on('tap', 'a', function () {
+        mui("body").on('tap', 'a', function () {
             var href = this.href;
             mui.openWindow({
                 id: href,

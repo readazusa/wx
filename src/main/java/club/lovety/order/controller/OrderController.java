@@ -19,4 +19,9 @@ public class OrderController {
         System.out.println("123");
         return "portal/order/buy_page";
     }
+
+    @RequestMapping("goto/all_page")
+    public String allPage(){
+        return "portal/order/all_page";
+    }
 }
