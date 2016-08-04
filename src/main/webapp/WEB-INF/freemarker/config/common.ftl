@@ -30,6 +30,12 @@
 <link href="${base}/resources/my/css/common.css" rel="stylesheet" type="text/css">
 </#macro>
 
+<#macro myCommonJS>
+ <script src="${base}/resources/my/js/common.js" type="application/javascript"></script>
+</#macro>
+
+
+
 <#macro iconfontCSS>
 <link href="${base}/resources/mui/css/iconfont.css" rel="stylesheet" type="text/css">
 </#macro>
@@ -72,5 +78,4 @@ poppicker组件依赖mui.picker.js/.css mui.poppicker.js/.css请务必在mui.js/
     <link href="${base}/resources/mui/css/mui.picker.css" rel="stylesheet" type="text/css">
     <link href="${base}/resources/mui/css/mui.poppicker.css" rel="stylesheet" type="text/css">
 </#macro>
-
 

@@ -374,3 +374,31 @@ nav .my-view-bar-div .my-shopcart-choice-div{
     display: inline-block;
     line-height: 50px;
 }
+
+/**弹出组件的编写 */
+.my-popover-win{
+    display: none;
+    z-index: 1000;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 200px;
+    opacity: 0.9;
+    background-color: #6d6d72;
+}
+
+.my-popover-win-show{
+    display: block;
+}
+
+.my-popover{
+    /*display: none;*/
+    z-index: 1000;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+    background-color: #6d6d72;
+}
+

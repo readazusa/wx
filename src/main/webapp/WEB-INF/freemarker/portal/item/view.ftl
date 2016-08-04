@@ -107,6 +107,9 @@
         </div>
     </div>
 </div>
+<div class="my-popover">
+    asdasdasdasd
+</div>
 
 <nav class="mui-bar mui-bar-tab">
     <div class="my-view-bar-div" style="width: 40%;">
@@ -132,6 +135,7 @@
         </div>
     </div>
 </nav>
+
     <@common.jqueryJS></@common.jqueryJS>
     <@common.muiJS></@common.muiJS>
     <@common.muiZoomJS></@common.muiZoomJS>

@@ -10,6 +10,26 @@ Date.prototype.addDay=function(source){
         var newDay = day+source;
         return year+"-"+month+"-"+newDay;
     }
-
 }
+
+(function($){
+
+    $.show = function(){
+        $(document).append("<div class='my-popover'></div>")
+    }
+
+    $(".my-popover").on("click",function(){
+
+    });
+
+    $(".my-popover-win").on("click",function(){
+
+    });
+
+    $.showPopover = function(){
+        $(".my-popover-win").addClass("my-popover-win-show");
+
+    }
+})($)
+
 
