@@ -13,6 +13,7 @@
     <@common.iconfontCSS></@common.iconfontCSS>
     <@common.myImageViewCSS></@common.myImageViewCSS>
     <@common.muiAppCSS></@common.muiAppCSS>
+    <@common.animateCSS></@common.animateCSS>
 </head>
 <body>
 
@@ -107,8 +108,29 @@
         </div>
     </div>
 </div>
-<div class="my-popover">
-    asdasdasdasd
+<div class="my-popover-win">
+    <div class="my-buy-div">
+        <div class="my-buy-div-img">
+            <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
+        </div>
+        <span class="my-close">x</span>
+        <div class="my-buy-detal">
+            <p>静静的看这个世界，最后终于疯了a阿达大的撒阿萨德阿萨德</p>
+            <p> ￥234.00</p>
+        </div>
+    </div>
+    <div class="my-buy-number">
+        <span style="float: left;margin-right: 5px; margin-top: 7px;">购买数量</span>
+        <span class="my-buy-number-kc">库存:12</span>
+        <div class="mui-numbox my-numbox">
+            <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+            <input class="mui-input-numbox" type="number"/>
+            <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+        </div>
+    </div>
+    <div class="my-buy-btn">
+        <button type="button" class="mui-btn mui-btn-danger mui-btn-block" style="background-color: red" onclick="doBuyOrder('${base}/order/goto/buy_page.htm')">确定</button>
+    </div>
 </div>
 
 <nav class="mui-bar mui-bar-tab">
@@ -130,16 +152,17 @@
         <div class="my-view-var-div-btn" style="width: 55%;background-color:#f1ad4e">
             加入购物车
         </div>
-        <div class="my-view-var-div-btn" style="width: 45%;background-color: red" onclick="doBuy('${base}/order/goto/buy_page.htm');">
+        <div class="my-view-var-div-btn" style="width: 45%;background-color: red"
+             onclick="doBuy('${base}/order/goto/buy_page.htm');">
             立即购买
         </div>
     </div>
 </nav>
-
     <@common.jqueryJS></@common.jqueryJS>
     <@common.muiJS></@common.muiJS>
     <@common.muiZoomJS></@common.muiZoomJS>
     <@common.muiImageViewJS></@common.muiImageViewJS>
+    <@common.myCommonJS></@common.myCommonJS>
 <script type="application/javascript">
 
     $(function () {
@@ -147,20 +170,23 @@
         initMui();
     });
 
-    function initMui(){
-        (function($) {
+    function initMui() {
+        (function ($) {
             $('.mui-scroll-wrapper').scroll({
                 indicators: true //是否显示滚动条
             });
         })(mui);
     }
 
-
-    function  doBuy(url){
+    function doBuyOrder(url){
         mui.openWindow({
             id:url,
             url:url
         });
+    }
+    function doBuy(url) {
+        $.showWin();
+//
     }
 </script>
 </body>

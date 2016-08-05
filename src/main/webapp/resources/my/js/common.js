@@ -1,34 +1,24 @@
-Date.prototype.addDay=function(source){
-
-    if(source){
-        var year = this.getFullYear();
-        console.info("year: "+ year);
-        var month = this.getMonth()+1;
-        console.info("moth: "+ month);
-        var day = this.getDate();
-        console.info("day:  "+ day);
-        var newDay = day+source;
-        return year+"-"+month+"-"+newDay;
-    }
-}
-
 (function($){
 
-    $.show = function(){
-        $(document).append("<div class='my-popover'></div>")
+    $.showWin = function(){
+        $("body").append("<div class='my-popover'></div>");
+        $.showPopover();
+        $(".my-popover").on("click",function(){
+            $(".my-popover").remove();
+            //$(".my-popover-win").removeClass("my-popover-win-show");
+            $(".my-popover-win").addClass("zoomOut");
+            setTimeout(function(){
+                $(".my-popover-win").removeClass("my-popover-win-show zoomOut");
+            },500)
+        });
     }
 
-    $(".my-popover").on("click",function(){
-
-    });
-
-    $(".my-popover-win").on("click",function(){
-
-    });
-
     $.showPopover = function(){
-        $(".my-popover-win").addClass("my-popover-win-show");
+        $(".my-popover-win").addClass("my-popover-win-show animated zoomIn");
+    }
 
+    $.closePopover = function(){
+        $(".my-popover-win").removeClass("my-popover-win-show");
     }
 })($)
 

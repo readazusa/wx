@@ -79,3 +79,8 @@ poppicker组件依赖mui.picker.js/.css mui.poppicker.js/.css请务必在mui.js/
     <link href="${base}/resources/mui/css/mui.poppicker.css" rel="stylesheet" type="text/css">
 </#macro>
 
+
+<#--动画css-->
+<#macro animateCSS>
+<link href="${base}/resources/animate/animate.css" rel="stylesheet" type="text/css">
+</#macro>
