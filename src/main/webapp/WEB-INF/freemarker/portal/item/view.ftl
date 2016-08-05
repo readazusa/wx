@@ -163,11 +163,13 @@
     <@common.muiZoomJS></@common.muiZoomJS>
     <@common.muiImageViewJS></@common.muiImageViewJS>
     <@common.myCommonJS></@common.myCommonJS>
+    <@common.fastclickJS></@common.fastclickJS>
 <script type="application/javascript">
 
     $(function () {
         mui.previewImage();
         initMui();
+        FastClick.attach(document.body);
     });
 
     function initMui() {

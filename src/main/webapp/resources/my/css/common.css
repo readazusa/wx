@@ -441,7 +441,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     z-index: 1100;
     margin-left: 20px;
     float: left;
-    padding: 10px;
+    padding: 5px;
     background-color: #fff;
     border: 1px silver solid;
 }
@@ -483,6 +483,6 @@ nav .my-view-bar-div .my-shopcart-choice-div {
 .my-popover-win .my-buy-number .my-buy-number-kc{
     padding-right: 5px;
     float: left;
-    margin-left: 100px;
+    margin-left: 25%;
     margin-top: 7px;
 }
