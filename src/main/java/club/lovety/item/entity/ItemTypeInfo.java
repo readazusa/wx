@@ -1,6 +1,7 @@
-package club.lovety.portal.entity;
+package club.lovety.item.entity;
 
-import java.util.Date;
+
+import club.lovety.base.entity.BasePO;
 
 /**
  * club.lovety.portal.entity
@@ -8,7 +9,7 @@ import java.util.Date;
  * date on 2016/4/26.
  * Email:sunmch@163.com
  */
-public class ItemType {
+public class ItemTypeInfo extends BasePO {
 
     private String uid;
 
@@ -18,7 +19,7 @@ public class ItemType {
 
     private String sort;  //排序
 
-    private Date createTime;
+
 
 
     public String getUid() {
@@ -37,13 +38,6 @@ public class ItemType {
         this.name = name;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 
     public String getSort() {
         return sort;
@@ -60,4 +54,7 @@ public class ItemType {
     public void setDeep(int deep) {
         this.deep = deep;
     }
+
+
+
 }

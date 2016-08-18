@@ -1,12 +1,9 @@
 package club.lovety.item.controller;
 
-import club.lovety.base.entity.BasePagePO;
 import club.lovety.base.entity.WxConfig;
 import club.lovety.base.service.IWechatApiService;
 import club.lovety.common.Constants;
 import club.lovety.common.WxConfigUtils;
-import club.lovety.portal.entity.ItemInfo;
-import club.lovety.portal.service.IItemService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +28,7 @@ public class ItemController {
 
     private static final Logger log = LoggerFactory.getLogger(ItemController.class);
 
-    @Resource
-    private IItemService itemService;
+
 
     @Resource
     private IWechatApiService wechatApiService;
@@ -47,9 +43,6 @@ public class ItemController {
         String jsapiTicket = wechatApiService.getJsApiTicket();
         log.debug("jsapiticket: {}",jsapiTicket);
         log.debug("jsurl: {}",Constants.PORTAL_JSSDK_URL);
-        WxConfig wxConfig = WxConfigUtils.getWxConfig(Constants.PORTAL_JSSDK_URL,jsapiTicket);
-        log.debug("wxConfig: {}",wxConfig.toString());
-        model.put("wxConfig",wxConfig);
         return "portal/item/view";
     }
 
@@ -67,11 +60,10 @@ public class ItemController {
         }
         String title = request.getParameter("title");
         String cid = request.getParameter("cid");
-        BasePagePO<ItemInfo> basePagePO = itemService.getPageSearch(pageSize,pageIndex,title,cid,null);
-        model.put("basePageItem",basePagePO);
+//        BasePagePO<ItemInfo> basePagePO = itemService.getPageSearch(pageSize,pageIndex,title,cid,null);
+//        model.put("basePageItem",basePagePO);
         return "portal/item/index";
     }
-
     @RequestMapping("tj")
     public String tjItem(HttpServletRequest request,ModelMap model){
         String pageSizeS = request.getParameter("pageSize");
@@ -86,8 +78,8 @@ public class ItemController {
         }
         String title = request.getParameter("title");
         String cid = request.getParameter("cid");
-        BasePagePO<ItemInfo> basePagePO = itemService.getPageSearch(pageSize,pageIndex,title,cid,"0");
-        model.put("basePageItem",basePagePO);
+//        BasePagePO<ItemInfo> basePagePO = itemService.getPageSearch(pageSize,pageIndex,title,cid,"0");
+//        model.put("basePageItem",basePagePO);
         return "portal/item/tj";
     }
 

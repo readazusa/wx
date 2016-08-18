@@ -23,11 +23,12 @@
 </#macro>
 
 <#macro muiCSS>
+<link href="${base}/resources/mui/css/icons-extra.css" rel="stylesheet" type="text/css">
 <link href="${base}/resources/mui/css/mui.css" rel="stylesheet" type="text/css">
 </#macro>
 
 <#macro commonCSS>
-<link href="${base}/resources/my/css/common.css" rel="stylesheet" type="text/css">
+    <link href="${base}/resources/my/css/common.css" rel="stylesheet" type="text/css">
 </#macro>
 
 <#macro myCommonJS>

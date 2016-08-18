@@ -18,7 +18,14 @@ header {
 }
 
 .my-index-icon {
-    font-size: 34px;
+    font-size: 30px;
+    border: 1px solid silver;
+    border-radius: 50px;
+    height: 45px;
+    width: 45px;
+    line-height: 45px !important;
+    margin-top: 2px;
+    /*background-color: yellowgreen;*/
 }
 
 .my-index-icon-font {
@@ -485,4 +492,16 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     float: left;
     margin-left: 25%;
     margin-top: 7px;
+}
+
+.my-middle-grid-view li{
+    width: 20%;
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 0px !important;
+}
+.my-middle-icon-name{
+    font-size: 5px !important;
+    margin-top: 0px !important;
+    color: #5D5050 !important;
 }

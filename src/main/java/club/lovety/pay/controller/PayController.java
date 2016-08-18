@@ -1,15 +1,11 @@
 package club.lovety.pay.controller;
 
-import club.lovety.base.entity.WxConfig;
 import club.lovety.base.entity.WxPayConfig;
 import club.lovety.base.service.IWechatApiService;
-import club.lovety.common.Constants;
 import club.lovety.common.WeChatUrlUtils;
-import club.lovety.common.WxConfigUtils;
 import club.lovety.common.WxPayConfigUtils;
 import club.lovety.pay.entity.PayObj;
 import club.lovety.pay.entity.PayRetObj;
-import club.lovety.portal.service.IItemService;
 import club.lovety.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,8 +37,6 @@ public class PayController {
     @Resource
     private IWechatApiService wechatApiService;
 
-    @Resource
-    private IItemService itemService;
 
     /**
      * 接收付款返回订单

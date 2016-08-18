@@ -13,11 +13,11 @@
 </head>
 <body>
 <header class="mui-bar mui-bar-nav">
-    <div class="mui-input-row mui-search">
-    <#--<form action="${base}/item/search" method="post">-->
-        <input type="search" class="mui-input-clear" placeholder="查询">
-    <#--</form>-->
-    </div>
+    <form action="${base}/item/search" method="post">
+        <div class="mui-input-row mui-search">
+            <input type="search" class="mui-input-clear" placeholder="查询">
+        </div>
+    </form>
 </header>
 <div class="mui-content mui-scroll-wrapper" id="refreshContainer">
     <div class="mui-scroll my-trans-duration">
@@ -25,55 +25,56 @@
             <div class="mui-slider-group mui-slider-loop">
                 <div class="mui-slider-item mui-slider-item-duplicate">
                     <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/head1.png">
+                        <img src="${indexPageInfoList[0].picUrl}">
                     </a>
                 </div>
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/head2.png">
-                    </a>
-                </div>
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/head1.png">
-                    </a>
-                </div>
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/head2.png">
-                    </a>
-                </div>
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/head1.png">
-                    </a>
-                </div>
+                <#list indexPageInfoList as indexPageInfo>
+                    <div class="mui-slider-item">
+                        <a href="#">
+                            <img src="${indexPageInfo.picUrl}">
+                        </a>
+                    </div>
+                </#list>
                 <div class="mui-slider-item mui-slider-item-duplicate">
                     <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/head2.png">
+                        <img src="${indexPageInfoList[indexPageInfoList?size-1].picUrl}">
                     </a>
                 </div>
             </div>
             <div class="mui-slider-indicator">
-                <div class="mui-indicator mui-active"></div>
-                <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
+                <#list indexPageInfoList as indexPageInfo>
+                    <#if indexPageInfo?index==0 ></#if>
+                    <div class="mui-indicator mui-active"></div>
+                <#else>
+                    <div class="mui-indicator"></div>
+                </#list>
             </div>
         </div>
-        <div class="my-grid">
-            <ul class="mui-table-view mui-grid-view mui-grid-9" id="indexurl">
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                    <span class="iconfont icon-xinpinshangshi my-index-icon" id="zxss"></span>
-                    <div class="mui-media-body">最新上市</div></a></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="tttj"><a href="${base}/item/goto/tttj.htm">
-                    <span class="iconfont  icon-tejia my-index-icon"></span>
-                    <div class="mui-media-body ">天天特惠</div></a></li>
-                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="indexfl"><a href="#">
-                    <span class="iconfont icon-fenlei my-index-icon"></span>
-                    <div class="mui-media-body">种类</div></a></li>
-            </ul>
 
+        <div class="my-grid">
+            <ul class="mui-table-view mui-grid-view my-middle-grid-view" id="indexurl">
+                <li class="mui-table-view-cell mui-media"><a href="#">
+                    <span class=" mui-icon-extra mui-icon-extra-new my-index-icon" id="zxss" style="color: #0BB20C"></span>
+                    <div class="mui-media-body my-middle-icon-name">最新上市</div>
+                </a></li>
+                <li class="mui-table-view-cell mui-media" id="tttj"><a
+                        href="${base}/item/goto/tttj.htm">
+                    <span class="mui-icon-extra mui-icon-extra-gift  my-index-icon" style="background-color: yellow;color: #fff"></span>
+                    <div class="mui-media-body my-middle-icon-name">天天特惠</div>
+                </a></li>
+                <li class="mui-table-view-cell mui-media" id="indexfl"><a href="#">
+                    <span class="mui-icon-extra mui-icon-extra-filter my-index-icon"></span>
+                    <div class="mui-media-body my-middle-icon-name">好贵</div>
+                </a></li>
+                <li class="mui-table-view-cell mui-media" id="indexfl"><a href="#">
+                    <span class="mui-icon-extra mui-icon-extra-outline my-index-icon"></span>
+                    <div class="mui-media-body my-middle-icon-name">限时购</div>
+                </a></li>
+                <li class="mui-table-view-cell mui-media" id="dd"><a href="#">
+                    <span class="mui-icon-extra mui-icon-extra-class  my-index-icon"></span>
+                    <div class="mui-media-body my-middle-icon-name">种类</div>
+                </a></li>
+            </ul>
         </div>
         <div class="card-content">
             <div>
@@ -94,7 +95,7 @@
                         <div class="mui-card">
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                        </div>
+                            </div>
                             <div class="mui-card-footer">
 
                             </div>
@@ -200,44 +201,44 @@
                     contentrefresh: "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback: pulldownfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                 },
-                up:{
+                up: {
                     height: 200,//可选,默认50.触发下拉刷新拖动距离,
                     auto: false,//可选,默认false.自动下拉刷新一次
-                    contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容
-                    contentrefresh  : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
-                    callback:pullupfresh
+                    contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容
+                    contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                    callback: pullupfresh
                 }
             }
         });
 
-        mui("#indexurl").on('tap','a',function(){
+        mui("#indexurl").on('tap', 'a', function () {
             var href = this.href;
             mui.openWindow({
                 id: href,
                 url: href,
-                show:{
-                    autoShow:true,//页面loaded事件发生后自动显示，默认为true
+                show: {
+                    autoShow: true,//页面loaded事件发生后自动显示，默认为true
                 }
             });
         });
 
-        mui("#index_ul_item").on('tap','a',function(){
+        mui("#index_ul_item").on('tap', 'a', function () {
             var href = this.href;
             mui.openWindow({
                 id: href,
                 url: href,
-                show:{
-                    autoShow:true,//页面loaded事件发生后自动显示，默认为true
+                show: {
+                    autoShow: true,//页面loaded事件发生后自动显示，默认为true
                 }
             });
         });
-        mui(".mui-bar-tab").on('tap','a',function(){
+        mui(".mui-bar-tab").on('tap', 'a', function () {
             var href = this.href;
             mui.openWindow({
                 id: href,
                 url: href,
-                show:{
-                    autoShow:true,//页面loaded事件发生后自动显示，默认为true
+                show: {
+                    autoShow: true,//页面loaded事件发生后自动显示，默认为true
                 }
             });
         });
@@ -249,7 +250,7 @@
         mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
     }
     var total = 0;
-    function pullupfresh(){
+    function pullupfresh() {
 //        alert("上啦刷新");
 //        var li = '<li class="mui-table-view-cell mui-media"> <a href="#"> <div class="mui-card"> <div class="mui-card-content"> <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%"> </div> <div class="mui-card-footer"> </div> </div> </a> </li>';
 //
@@ -257,20 +258,20 @@
 //        $("#index_ul_item").append(li).append(li);
         alert(123);
         total++;
-        if(total<6){
+        if (total < 6) {
             this.endPullupToRefresh(false);
-        }else{
+        } else {
             this.endPullupToRefresh(true);
 
         }
 
     }
 
-    function doOpenWin(id,url){
+    function doOpenWin(id, url) {
         alert("跳转特价页面")
         mui.openWindow({
-            id:id,
-            url:url
+            id: id,
+            url: url
         });
     }
 

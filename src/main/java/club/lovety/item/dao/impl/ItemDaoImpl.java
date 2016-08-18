@@ -1,33 +1,28 @@
-package club.lovety.portal.dao.impl;
+package club.lovety.item.dao.impl;
 
-import club.lovety.base.entity.BaseSearchPO;
-import club.lovety.portal.dao.IItemDao;
-import club.lovety.portal.entity.ItemInfo;
+import club.lovety.item.dao.IItemDao;
+import club.lovety.item.entity.ItemInfo;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * club.lovety.portal.dao
- * Created by smc
- * date on 2016/4/26.
+ * Created by 念梓  on 2016/8/18.
  * Email:sunmch@163.com
+ * TEL:13913534135
+ * author: 念梓
+ * des:
  */
 @Repository
 public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 
-    @Autowired
+    @Resource
     @Override
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
         super.setSqlSessionFactory(sqlSessionFactory);
-    }
-
-    @Override
-    public List<ItemInfo> getPageSearch(BaseSearchPO<ItemInfo> baseSearchPO) {
-        return this.getSqlSession().selectList(ItemInfo.class.getName()+".queryPage",baseSearchPO);
     }
 
     @Override
@@ -52,7 +47,7 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 
     @Override
     public ItemInfo queryObjectById(String id) {
-        return this.getSqlSession().selectOne(ItemInfo.class.getName()+".queryObjectByUid",id);
+        return null;
     }
 
     @Override
@@ -67,6 +62,6 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 
     @Override
     public int queryTotalCount(ItemInfo itemInfo) {
-        return this.getSqlSession().selectOne(itemInfo.getClass().getName()+".queryPageCount",itemInfo);
+        return 0;
     }
 }

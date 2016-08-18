@@ -1,4 +1,7 @@
-package club.lovety.portal.entity;
+package club.lovety.item.entity;
+
+
+import club.lovety.base.entity.BasePO;
 
 import java.util.Date;
 
@@ -10,7 +13,7 @@ import java.util.Date;
  * 商品信息实体类
  *
  */
-public class ItemInfo {
+public class ItemInfo extends BasePO {
 
     private  String uid;
 
@@ -38,15 +41,15 @@ public class ItemInfo {
 
     private String status;  // 0:上架  1:下架
 
-    private String tj;  //   是否特价专卖  0：特价  1：非特价
-
+    private String search;
     /**
      * 交易商品对应的类目ID
      */
     private String cid;
 
-    private String conpany;  //单位  斤  瓶
+    private String company;  //单位  斤  瓶
 
+    private String fileIds;
 
     public String getUid() {
         return uid;
@@ -144,12 +147,12 @@ public class ItemInfo {
         this.postage = postage;
     }
 
-    public String getConpany() {
-        return conpany;
+    public String getCompany() {
+        return company;
     }
 
-    public void setConpany(String conpany) {
-        this.conpany = conpany;
+    public void setCompany(String company) {
+        this.company = company;
     }
 
     public String getStatus() {
@@ -168,11 +171,19 @@ public class ItemInfo {
         this.cid = cid;
     }
 
-    public String getTj() {
-        return tj;
+    public String getSearch() {
+        return search;
     }
 
-    public void setTj(String tj) {
-        this.tj = tj;
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    public String getFileIds() {
+        return fileIds;
+    }
+
+    public void setFileIds(String fileIds) {
+        this.fileIds = fileIds;
     }
 }
