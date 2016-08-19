@@ -51,6 +51,10 @@ public class ItemInfo extends BasePO {
 
     private String fileIds;
 
+    private String isIndex;  //是否首页显示  0:显示  1:不显示
+
+    private String isTj;   //是否特价  0：特价 1：非特价
+
     public String getUid() {
         return uid;
     }
@@ -185,5 +189,22 @@ public class ItemInfo extends BasePO {
 
     public void setFileIds(String fileIds) {
         this.fileIds = fileIds;
+    }
+
+
+    public String getIsIndex() {
+        return isIndex;
+    }
+
+    public void setIsIndex(String isIndex) {
+        this.isIndex = isIndex;
+    }
+
+    public String getIsTj() {
+        return isTj;
+    }
+
+    public void setIsTj(String isTj) {
+        this.isTj = isTj;
     }
 }

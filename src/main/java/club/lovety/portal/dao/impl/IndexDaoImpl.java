@@ -1,6 +1,7 @@
 package club.lovety.portal.dao.impl;
 
 
+import club.lovety.base.entity.BaseSearchPO;
 import club.lovety.portal.dao.IIndexDao;
 
 import club.lovety.portal.entity.IndexPageInfo;
@@ -71,5 +72,10 @@ public class IndexDaoImpl extends SqlSessionDaoSupport implements IIndexDao {
     @Override
     public List<IndexPageInfo> queryList(IndexPageInfo indexPageInfo) {
         return this.getSqlSession().selectList("IndexPageInfo.queryList",indexPageInfo);
+    }
+
+    @Override
+    public List<IndexPageInfo> queryPage(BaseSearchPO<IndexPageInfo> baseSearchPO) {
+        return null;
     }
 }

@@ -54,12 +54,12 @@
         <div class="my-grid">
             <ul class="mui-table-view mui-grid-view my-middle-grid-view" id="indexurl">
                 <li class="mui-table-view-cell mui-media"><a href="#">
-                    <span class=" mui-icon-extra mui-icon-extra-new my-index-icon" id="zxss" style="color: #0BB20C"></span>
+                    <span class=" mui-icon-extra mui-icon-extra-new my-index-icon" id="zxss" style="color: #fff;background-color: #CC66FF"></span>
                     <div class="mui-media-body my-middle-icon-name">最新上市</div>
                 </a></li>
                 <li class="mui-table-view-cell mui-media" id="tttj"><a
                         href="${base}/item/goto/tttj.htm">
-                    <span class="mui-icon-extra mui-icon-extra-gift  my-index-icon" style="background-color: yellow;color: #fff"></span>
+                    <span class="mui-icon-extra mui-icon-extra-gift  my-index-icon" style="background-color: #33FF00;color: #fff"></span>
                     <div class="mui-media-body my-middle-icon-name">天天特惠</div>
                 </a></li>
                 <li class="mui-table-view-cell mui-media" id="indexfl"><a href="#">
@@ -78,13 +78,7 @@
         </div>
         <div class="card-content">
             <div>
-                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-            </div>
-            <div class="mui-card-content">
-                <div class="mui-card-content-inner">
-                    <p>Posted on January 18, 2016</p>
-                    <p style="color: #333;">这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>
-                </div>
+                <img src="http://120.26.208.194:8888/yd/cbd.jpg" height="100%" width="100%">
             </div>
         </div>
 
@@ -96,8 +90,10 @@
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
                             </div>
-                            <div class="mui-card-footer">
-
+                            <div class="mui-card-footer my-index-card-footer">
+                                <div class="my-mui-ellipsis">aaas拉时间段拉科技垃圾的垃圾的安静的垃圾了卡惊呆了看的看大家都垃圾的来看是端口看撒娇大神</div>
+                                <span class="left-span">￥12.9</span>
+                                <span class="right-span">热销</span>
                             </div>
                         </div>
                     </a>
@@ -108,7 +104,7 @@
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
                             </div>
-                            <div class="mui-card-footer">
+                            <div class="mui-card-footer my-index-card-footer">
 
                             </div>
                         </div>
@@ -120,7 +116,7 @@
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
                             </div>
-                            <div class="mui-card-footer">
+                            <div class="mui-card-footer my-index-card-footer">
 
                             </div>
                         </div>
@@ -132,7 +128,18 @@
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
                             </div>
-                            <div class="mui-card-footer">
+                            <div class="mui-card-footer my-index-card-footer">
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="mui-table-view-cell mui-media ">
+                    <a href="#">
+                        <div class="mui-card">
+                            <div class="mui-card-content">
+                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
+                            </div>
+                            <div class="mui-card-footer my-index-card-footer">
                             </div>
                         </div>
                     </a>
@@ -143,18 +150,7 @@
                             <div class="mui-card-content">
                                 <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
                             </div>
-                            <div class="mui-card-footer">
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="#">
-                        <div class="mui-card">
-                            <div class="mui-card-content">
-                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                            </div>
-                            <div class="mui-card-footer">
+                            <div class="mui-card-footer my-index-card-footer">
                             </div>
                         </div>
                     </a>
@@ -202,7 +198,7 @@
                     callback: pulldownfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                 },
                 up: {
-                    height: 200,//可选,默认50.触发下拉刷新拖动距离,
+                    height: 100,//可选,默认50.触发下拉刷新拖动距离,
                     auto: false,//可选,默认false.自动下拉刷新一次
                     contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容
                     contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
@@ -210,7 +206,6 @@
                 }
             }
         });
-
         mui("#indexurl").on('tap', 'a', function () {
             var href = this.href;
             mui.openWindow({
@@ -221,7 +216,6 @@
                 }
             });
         });
-
         mui("#index_ul_item").on('tap', 'a', function () {
             var href = this.href;
             mui.openWindow({
@@ -244,34 +238,38 @@
         });
     });
 
-
     function pulldownfresh() {
-//        alert("刷新");
-        mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+        setTimeout(function(){
+            mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+        },1000);
+
     }
     var total = 0;
     function pullupfresh() {
-//        alert("上啦刷新");
-//        var li = '<li class="mui-table-view-cell mui-media"> <a href="#"> <div class="mui-card"> <div class="mui-card-content"> <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%"> </div> <div class="mui-card-footer"> </div> </div> </a> </li>';
-//
-//
-//        $("#index_ul_item").append(li).append(li);
-        alert(123);
         total++;
-        if (total < 6) {
-            this.endPullupToRefresh(false);
-        } else {
-            this.endPullupToRefresh(true);
-
-        }
-
+        setTimeout(function(){
+            mui('#refreshContainer').pullRefresh().endPullupToRefresh((++total > 2));
+            console.info("total: "+ total);
+        },1500);
     }
+
+
+
 
     function doOpenWin(id, url) {
         alert("跳转特价页面")
         mui.openWindow({
             id: id,
             url: url
+        });
+    }
+
+    function insertHtml(){
+        $.ajax({
+            url:"",
+            success:function(resp){
+
+            }
         });
     }
 

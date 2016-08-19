@@ -1,5 +1,6 @@
 package club.lovety.item.dao.impl;
 
+import club.lovety.base.entity.BaseSearchPO;
 import club.lovety.item.dao.IItemDao;
 import club.lovety.item.entity.ItemInfo;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -47,7 +48,8 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 
     @Override
     public ItemInfo queryObjectById(String id) {
-        return null;
+        List<ItemInfo> itemInfos = this.getSqlSession().selectList("ItemInfo.select",id);
+        return itemInfos.size()>1?itemInfos.get(1):null;
     }
 
     @Override
@@ -62,6 +64,11 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
 
     @Override
     public int queryTotalCount(ItemInfo itemInfo) {
-        return 0;
+        return this.getSqlSession().selectOne("ItemInfo.queryTotalCount",itemInfo);
+    }
+
+    @Override
+    public List<ItemInfo> queryPage(BaseSearchPO<ItemInfo> baseSearchPO) {
+        return this.getSqlSession().selectList("ItemInfo.queryPage",baseSearchPO);
     }
 }

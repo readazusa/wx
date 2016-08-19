@@ -1,5 +1,6 @@
 package club.lovety.user.dao.impl;
 
+import club.lovety.base.entity.BaseSearchPO;
 import club.lovety.user.dao.IAddressInfoDao;
 import club.lovety.user.entity.AddressInfo;
 import club.lovety.user.entity.UserInfo;
@@ -63,5 +64,10 @@ public class AddressInfoDaoImpl extends SqlSessionDaoSupport implements IAddress
     @Override
     public int queryTotalCount(AddressInfo addressInfo) {
         return 0;
+    }
+
+    @Override
+    public List<AddressInfo> queryPage(BaseSearchPO<AddressInfo> baseSearchPO) {
+        return null;
     }
 }

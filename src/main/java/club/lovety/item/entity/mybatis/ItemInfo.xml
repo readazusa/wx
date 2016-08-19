@@ -22,11 +22,24 @@
 
         <select id="queryPage" resultType="ItemInfo" parameterType="BaseSearchPO">
                 select <include refid="param"></include> from  t_wx_item where 1=1
+                <if test="obj.isIndex != null and obj.isIndex !=''">
+                        and isindex = #{obj.isIndex}
+                </if>
+                <if test="obj.isTj != null and obj.isTj != ''">
+                        and isTj = #{obj.isTj}
+                </if>
+
+                <if test="obj.search != null and obj.search != ''">
+                        and title like '${obj.search}%'
+                </if>
                 limit #{pageIndex},#{pageSize}
         </select>
 
         <select id="queryTotalCount" resultType="java.lang.Integer" parameterType="ItemInfo">
                 select count(1) from t_wx_item where 1 =1
+                <if test="isTj != null and isTj != ''">
+                        and  istj = #{isTj}
+                </if>
                 <if test="title !=null and title != ''">
                     and  title like '${title}%'
                 </if>
@@ -36,10 +49,11 @@
 
         </select>
 
-
         <delete id="deleteItemVsFileByItemId" parameterType="java.lang.String">
                 delete from t_wx_item_vs_file where itemid = #{id}
         </delete>
+
+
 
 
 

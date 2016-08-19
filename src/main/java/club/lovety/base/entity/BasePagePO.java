@@ -13,7 +13,7 @@ public class BasePagePO<T> {
 
     private int recordsFiltered;
 
-    private int numPage;  //总共多少页
+    private int totalPage;  //总共多少页
 
     private int pageSize;
 
@@ -51,7 +51,7 @@ public class BasePagePO<T> {
         this.data = data;
     }
 
-    public int getNumPage() {
+    public int getTotalPage() {
         int middleNumPage = 0;
         if(recordsTotal !=0){
             if(recordsTotal % pageSize ==0){
@@ -61,10 +61,6 @@ public class BasePagePO<T> {
             }
         }
         return middleNumPage;
-    }
-
-    public void setNumPage(int numPage) {
-        this.numPage = numPage;
     }
 
     public int getPageSize() {

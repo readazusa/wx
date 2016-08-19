@@ -1,7 +1,11 @@
 package club.lovety.item.service;
 
+import club.lovety.base.entity.BasePagePO;
 import club.lovety.base.service.IService;
 import club.lovety.item.entity.ItemInfo;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by 念梓  on 2016/8/18.
@@ -12,6 +16,7 @@ import club.lovety.item.entity.ItemInfo;
  */
 public interface IItemService extends IService<ItemInfo>{
 
+    public BasePagePO<ItemInfo> queryList(HttpServletRequest request);
 
 
 }

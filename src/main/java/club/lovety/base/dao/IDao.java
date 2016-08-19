@@ -1,5 +1,7 @@
 package club.lovety.base.dao;
 
+import club.lovety.base.entity.BaseSearchPO;
+
 import java.util.List;
 
 /**
@@ -23,6 +25,8 @@ public interface IDao<T> {
     public List<T> queryList();
 
     public int queryTotalCount(T t);    //获取匹配条件的个数
+
+    public List<T> queryPage(BaseSearchPO<T> baseSearchPO);
 
 
 }

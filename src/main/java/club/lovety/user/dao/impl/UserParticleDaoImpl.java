@@ -1,5 +1,6 @@
 package club.lovety.user.dao.impl;
 
+import club.lovety.base.entity.BaseSearchPO;
 import club.lovety.user.dao.IUserParticleDao;
 import club.lovety.user.entity.UserParticle;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -62,5 +63,10 @@ public class UserParticleDaoImpl extends SqlSessionDaoSupport implements IUserPa
     @Override
     public int queryTotalCount(UserParticle userParticle) {
         return 0;
+    }
+
+    @Override
+    public List<UserParticle> queryPage(BaseSearchPO<UserParticle> baseSearchPO) {
+        return null;
     }
 }

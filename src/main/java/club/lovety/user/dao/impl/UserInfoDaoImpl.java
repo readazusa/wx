@@ -1,5 +1,6 @@
 package club.lovety.user.dao.impl;
 
+import club.lovety.base.entity.BaseSearchPO;
 import club.lovety.user.dao.IUserInfoDao;
 import club.lovety.user.entity.UserInfo;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -75,5 +76,10 @@ public class UserInfoDaoImpl extends SqlSessionDaoSupport implements IUserInfoDa
     @Override
     public int updateSubDate(UserInfo userInfo) {
         return this.getSqlSession().selectOne("club.lovety.user.entity.UserInfo.updateSubDate",userInfo);
+    }
+
+    @Override
+    public List<UserInfo> queryPage(BaseSearchPO<UserInfo> baseSearchPO) {
+        return null;
     }
 }

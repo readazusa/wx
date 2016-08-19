@@ -40,14 +40,11 @@ public class PortalIndexController {
         }catch (Exception ex){
             log.error("查询表头失败: ",ex);
         }
-
         return "portal/index";
     }
 
     @RequestMapping("cart")
     public String cart(HttpServletRequest request,ModelMap model){
-
-
 
         return null;
     }

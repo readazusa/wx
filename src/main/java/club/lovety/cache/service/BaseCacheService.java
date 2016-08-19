@@ -114,4 +114,9 @@ public class BaseCacheService {
         }
         return null;
     }
+
+    public void test(){
+//        redisTemplate.exec();
+//        redisTemplate.sort()
+    }
 }
