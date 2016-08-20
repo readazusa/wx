@@ -501,7 +501,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     margin-right: 0px !important;
 }
 .my-middle-icon-name{
-    font-size: 5px !important;
+    font-size: 12px !important;
     margin-top: 0px !important;
     color: #5D5050 !important;
 }
@@ -509,7 +509,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
 #index_ul_item li .left-span{
     /*background-color: #FF0000;*/
     color: #FF0000;
-    font-size: 10px;
+    font-size: 15px;
     border-radius: 10%;
     padding-left: 10px;
 }
@@ -517,7 +517,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
 #index_ul_item li .right-span{
     background-color: #FF3300;
     color: #fff;
-    font-size: 5px;
+    font-size: 15px;
     border-radius: 10%;
     float: right;
     width:40px ;
@@ -526,7 +526,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
 }
 
 #index_ul_item li .my-index-card-footer .my-mui-ellipsis{
-    font-size: 10px;
+    font-size: 15px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow:hidden;

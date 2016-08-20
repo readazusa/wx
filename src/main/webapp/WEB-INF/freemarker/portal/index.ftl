@@ -19,7 +19,7 @@
         </div>
     </form>
 </header>
-<div class="mui-content mui-scroll-wrapper" id="refreshContainer">
+<div class="mui-content mui-scroll-wrapper" id="refreshContainer" style="margin-bottom: 50px;">
     <div class="mui-scroll my-trans-duration">
         <div id="slider" class="mui-slider">
             <div class="mui-slider-group mui-slider-loop">
@@ -84,78 +84,11 @@
 
         <div id="index_item">
             <ul class="mui-table-view goods-list style-small" id="index_ul_item">
-                <li class="mui-table-view-cell mui-media">
-                    <a href="${base}/item/goto/view.htm?uid=223">
-                        <div class="mui-card">
-                            <div class="mui-card-content">
-                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                            </div>
-                            <div class="mui-card-footer my-index-card-footer">
-                                <div class="my-mui-ellipsis">aaas拉时间段拉科技垃圾的垃圾的安静的垃圾了卡惊呆了看的看大家都垃圾的来看是端口看撒娇大神</div>
-                                <span class="left-span">￥12.9</span>
-                                <span class="right-span">热销</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="${base}/item/goto/view.htm?uid=223">
-                        <div class="mui-card">
-                            <div class="mui-card-content">
-                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                            </div>
-                            <div class="mui-card-footer my-index-card-footer">
-
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="#">
-                        <div class="mui-card">
-                            <div class="mui-card-content">
-                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                            </div>
-                            <div class="mui-card-footer my-index-card-footer">
-
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="#">
-                        <div class="mui-card">
-                            <div class="mui-card-content">
-                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                            </div>
-                            <div class="mui-card-footer my-index-card-footer">
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media ">
-                    <a href="#">
-                        <div class="mui-card">
-                            <div class="mui-card-content">
-                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                            </div>
-                            <div class="mui-card-footer my-index-card-footer">
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="#">
-                        <div class="mui-card">
-                            <div class="mui-card-content">
-                                <img src="http://120.26.208.194:8888/yd//cbd.jpg" height="100%" width="100%">
-                            </div>
-                            <div class="mui-card-footer my-index-card-footer">
-                            </div>
-                        </div>
-                    </a>
-                </li>
             </ul>
+            <input type="hidden" id="search" value="${search?default("")}">
+            <input type="hidden" id="pageSize" value="10">
+            <input type="hidden" id="pageIndex" value="1">
+            <input type="hidden" id="totalPage" value="0">
         </div>
     </div>
 </div>
@@ -236,26 +169,37 @@
                 }
             });
         });
+        init();
     });
 
     function pulldownfresh() {
         setTimeout(function(){
             mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
         },1000);
-
     }
-    var total = 0;
+    var total = 1;
     function pullupfresh() {
         total++;
-        setTimeout(function(){
-            mui('#refreshContainer').pullRefresh().endPullupToRefresh((++total > 2));
-            console.info("total: "+ total);
-        },1500);
+        $.ajax({
+            url:"${base}/item/index/list.json",
+            data:{search:$("#search").val(),pageSize:$("#pageSize").val(),pageIndex:$("#pageIndex").val(),isIndex:"0"},
+            success:function(resp){
+                if(resp.code == "SUCCESS"){
+                    var totalPage = resp.data.totalPage;
+                    var currentPage = resp.data.currentPage;
+                    $("#pageIndex").val(parseInt(currentPage)+1);
+                    var html = insertHtml(resp.data.data);
+                    $("#index_ul_item").append(html);
+                    mui('#refreshContainer').pullRefresh().endPullupToRefresh(total >= totalPage);
+                }
+            },
+            error:function(resp){
+
+            }
+        });
+
+
     }
-
-
-
-
     function doOpenWin(id, url) {
         alert("跳转特价页面")
         mui.openWindow({
@@ -264,13 +208,38 @@
         });
     }
 
-    function insertHtml(){
+    function init(){
         $.ajax({
-            url:"",
+            url:"${base}/item/index/list.json",
+            data:{search:$("#search").val(),pageSize:$("#pageSize").val(),pageIndex:$("#pageIndex").val(),isIndex:"0"},
             success:function(resp){
+                if(resp.code == "SUCCESS"){
+                    var totalPage = resp.data.totalPage;
+                    var currentPage = resp.data.currentPage;
+                    $("#pageIndex").val(parseInt(currentPage)+1);
+                    var html = insertHtml(resp.data.data);
+                    $("#index_ul_item").append(html);
+                }
+            },
+            error:function(resp){
 
             }
         });
+    }
+
+    function insertHtml(data){
+        var html= "";
+        $.each(data,function(index,obj){
+                html += '<li class="mui-table-view-cell mui-media">';
+                html +='<a href="${base}/item/goto/view.htm?uid=223" target="_blank">';
+                html +='<div class="mui-card"><div class="mui-card-content">';
+                html +='  <img src="'+obj.phonePicUrl+'" height="100px" width="100%">'
+                html +='</div> <div class="mui-card-footer my-index-card-footer">';
+                html +='  <div class="my-mui-ellipsis">'+obj.title+'</div>';
+                html +=' <span class="left-span">￥'+obj.price+'</span> <span class="right-span">热销</span>';
+                html +=' </div></div></a> </li>';
+        });
+        return html;
     }
 
 

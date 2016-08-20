@@ -19,6 +19,8 @@ public class BasePagePO<T> {
 
     private List<T> data;
 
+    private int currentPage= 1;  //当前页
+
     public int getDraw() {
         return draw;
     }
@@ -69,5 +71,18 @@ public class BasePagePO<T> {
 
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
+    }
+
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 }

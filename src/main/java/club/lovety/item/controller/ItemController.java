@@ -4,10 +4,12 @@ import club.lovety.base.entity.BasePagePO;
 import club.lovety.base.entity.WxConfig;
 import club.lovety.base.service.IWechatApiService;
 import club.lovety.common.Constants;
+import club.lovety.common.Result;
 import club.lovety.common.WxConfigUtils;
 import club.lovety.item.entity.ItemInfo;
 import club.lovety.item.service.IItemService;
 import club.lovety.portal.serivce.IIndexService;
+import com.sun.org.apache.regexp.internal.RE;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,8 +69,16 @@ public class ItemController {
     @RequestMapping("index/list")
     @ResponseBody
     public Object indexList(HttpServletRequest request){
-        BasePagePO<ItemInfo> basePagePO = itemService.queryList(request);
-        return basePagePO;
+        Result result = new Result();
+        try{
+            BasePagePO<ItemInfo> basePagePO = itemService.queryList(request);
+            result.setData(basePagePO);
+            result.setCode(Result.SUCCESS);
+        }catch (Exception ex){
+            result.setCode(Result.ERROR);
+            log.error("获取主页的数据列表错误,错误信息如下： ",ex);
+        }
+        return result;
     }
 
 

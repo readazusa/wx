@@ -92,6 +92,7 @@ public class ItemServiceImpl implements IItemService {
         basePagePO.setPageSize(pageSize);
         basePagePO.setData(itemInfos);
         basePagePO.setRecordsTotal(totalCount);
+        basePagePO.setCurrentPage(pageIndex);
         return basePagePO;
     }
 

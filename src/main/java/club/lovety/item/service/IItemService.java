@@ -18,5 +18,4 @@ public interface IItemService extends IService<ItemInfo>{
 
     public BasePagePO<ItemInfo> queryList(HttpServletRequest request);
 
-
 }
