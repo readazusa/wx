@@ -116,11 +116,14 @@
         <span class="my-close">x</span>
         <div class="my-buy-detal">
             <p>静静的看这个世界，最后终于疯了a阿达大的撒阿萨德阿萨德</p>
-            <p> ￥234.00</p>
+            <p>￥234.00</p>
         </div>
     </div>
     <div class="my-buy-number">
-        <span style="float: left;margin-right: 5px; margin-top: 7px;">购买数量</span>
+        <span style="float: left;margin-right: 5px; margin-top: 7px;">
+
+           购买数量
+           </span>
         <span class="my-buy-number-kc">库存:12</span>
         <div class="mui-numbox my-numbox">
             <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>

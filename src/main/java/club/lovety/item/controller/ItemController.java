@@ -39,6 +39,7 @@ public class ItemController {
     private IItemService itemService;
 
 
+
     @RequestMapping("goto/view")
     public String view(@RequestParam("uid") String uid,HttpServletRequest request,ModelMap model){
         return "portal/item/view";
@@ -46,7 +47,7 @@ public class ItemController {
 
     @RequestMapping("search")
     public String search(HttpServletRequest request,ModelMap model){
-        return "portal/item/index";
+        return "portal/item/list";
     }
     @RequestMapping("tj")
     public String tjItem(HttpServletRequest request,ModelMap model){

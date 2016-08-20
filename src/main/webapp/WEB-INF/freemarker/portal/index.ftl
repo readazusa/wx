@@ -13,7 +13,7 @@
 </head>
 <body>
 <header class="mui-bar mui-bar-nav">
-    <form action="${base}/item/search" method="post">
+    <form action="${base}/item/search.htm" method="post">
         <div class="mui-input-row mui-search">
             <input type="search" class="mui-input-clear" placeholder="查询">
         </div>
@@ -54,12 +54,14 @@
         <div class="my-grid">
             <ul class="mui-table-view mui-grid-view my-middle-grid-view" id="indexurl">
                 <li class="mui-table-view-cell mui-media"><a href="#">
-                    <span class=" mui-icon-extra mui-icon-extra-new my-index-icon" id="zxss" style="color: #fff;background-color: #CC66FF"></span>
+                    <span class=" mui-icon-extra mui-icon-extra-new my-index-icon" id="zxss"
+                          style="color: #fff;background-color: #CC66FF"></span>
                     <div class="mui-media-body my-middle-icon-name">最新上市</div>
                 </a></li>
                 <li class="mui-table-view-cell mui-media" id="tttj"><a
                         href="${base}/item/goto/tttj.htm">
-                    <span class="mui-icon-extra mui-icon-extra-gift  my-index-icon" style="background-color: #33FF00;color: #fff"></span>
+                    <span class="mui-icon-extra mui-icon-extra-gift  my-index-icon"
+                          style="background-color: #33FF00;color: #fff"></span>
                     <div class="mui-media-body my-middle-icon-name">天天特惠</div>
                 </a></li>
                 <li class="mui-table-view-cell mui-media" id="indexfl"><a href="#">
@@ -89,6 +91,7 @@
             <input type="hidden" id="pageSize" value="10">
             <input type="hidden" id="pageIndex" value="1">
             <input type="hidden" id="totalPage" value="0">
+
         </div>
     </div>
 </div>
@@ -114,7 +117,10 @@
     <@common.jqueryJS></@common.jqueryJS>
     <@common.muiJS></@common.muiJS>
 <script type="application/javascript">
+
+
     $(function () {
+
         var gallery = mui('.mui-slider');
         gallery.slider({
             interval: 5000//自动轮播周期，若为0则不自动播放，默认为0；
@@ -168,37 +174,82 @@
                     autoShow: true,//页面loaded事件发生后自动显示，默认为true
                 }
             });
-        });
-        init();
+        })
+        if (1 == $("#pageIndex").val()) {
+            init();
+        } else {
+            initCache();    //初始化页数不是第一页 则表示是返回操作，页面数据从缓存中获取
+        }
+
+
     });
 
     function pulldownfresh() {
-        setTimeout(function(){
-            mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
-        },1000);
-    }
-    var total = 1;
-    function pullupfresh() {
-        total++;
+        sessionStorage.removeItem("indexHtml");
+        $("#pageIndex").val(1);
+        total = 1;
         $.ajax({
-            url:"${base}/item/index/list.json",
-            data:{search:$("#search").val(),pageSize:$("#pageSize").val(),pageIndex:$("#pageIndex").val(),isIndex:"0"},
-            success:function(resp){
-                if(resp.code == "SUCCESS"){
+            url: "${base}/item/index/list.json",
+            data: {
+                search: $("#search").val(),
+                pageSize: $("#pageSize").val(),
+                pageIndex: $("#pageIndex").val(),
+                isIndex: "0"
+            },
+            success: function (resp) {
+                if (resp.code == "SUCCESS") {
                     var totalPage = resp.data.totalPage;
                     var currentPage = resp.data.currentPage;
-                    $("#pageIndex").val(parseInt(currentPage)+1);
+                    $("#pageIndex").val(parseInt(currentPage) + 1);
                     var html = insertHtml(resp.data.data);
-                    $("#index_ul_item").append(html);
-                    mui('#refreshContainer').pullRefresh().endPullupToRefresh(total >= totalPage);
+                    $("#index_ul_item").empty().append(html);
+                    var oldHtml =sessionStorage.getItem("indexHtml")
+                    sessionStorage.setItem("indexHtml", oldHtml+html);
+                    mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+                    mui('#refreshContainer').pullRefresh().refresh(true);
                 }
             },
-            error:function(resp){
+            error: function (resp) {
 
             }
         });
 
+//
+//
+//        setTimeout(function () {
+//            mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+//        }, 1000);
+    }
 
+
+
+    var total = 1;
+    function pullupfresh() {
+        total++;
+        $.ajax({
+            url: "${base}/item/index/list.json",
+            data: {
+                search: $("#search").val(),
+                pageSize: $("#pageSize").val(),
+                pageIndex: $("#pageIndex").val(),
+                isIndex: "0"
+            },
+            success: function (resp) {
+                if (resp.code == "SUCCESS") {
+                    var totalPage = resp.data.totalPage;
+                    var currentPage = resp.data.currentPage;
+                    $("#pageIndex").val(parseInt(currentPage) + 1);
+                    var html = insertHtml(resp.data.data);
+                    $("#index_ul_item").append(html);
+                    var oldHtml =    sessionStorage.getItem("indexHtml")
+                    sessionStorage.setItem("indexHtml", oldHtml+html);
+                    mui('#refreshContainer').pullRefresh().endPullupToRefresh(total >= totalPage);
+                }
+            },
+            error: function (resp) {
+
+            }
+        });
     }
     function doOpenWin(id, url) {
         alert("跳转特价页面")
@@ -208,41 +259,51 @@
         });
     }
 
-    function init(){
+    function init() {
+
         $.ajax({
-            url:"${base}/item/index/list.json",
-            data:{search:$("#search").val(),pageSize:$("#pageSize").val(),pageIndex:$("#pageIndex").val(),isIndex:"0"},
-            success:function(resp){
-                if(resp.code == "SUCCESS"){
+            url: "${base}/item/index/list.json",
+            data: {
+                search: $("#search").val(),
+                pageSize: $("#pageSize").val(),
+                pageIndex: $("#pageIndex").val(),
+                isIndex: "0"
+            },
+            success: function (resp) {
+                if (resp.code == "SUCCESS") {
                     var totalPage = resp.data.totalPage;
                     var currentPage = resp.data.currentPage;
-                    $("#pageIndex").val(parseInt(currentPage)+1);
+                    $("#pageIndex").val(parseInt(currentPage) + 1);
                     var html = insertHtml(resp.data.data);
+                    sessionStorage.setItem("indexHtml", html);
                     $("#index_ul_item").append(html);
                 }
             },
-            error:function(resp){
+            error: function (resp) {
 
             }
         });
     }
 
-    function insertHtml(data){
-        var html= "";
-        $.each(data,function(index,obj){
-                html += '<li class="mui-table-view-cell mui-media">';
-                html +='<a href="${base}/item/goto/view.htm?uid=223" target="_blank">';
-                html +='<div class="mui-card"><div class="mui-card-content">';
-                html +='  <img src="'+obj.phonePicUrl+'" height="100px" width="100%">'
-                html +='</div> <div class="mui-card-footer my-index-card-footer">';
-                html +='  <div class="my-mui-ellipsis">'+obj.title+'</div>';
-                html +=' <span class="left-span">￥'+obj.price+'</span> <span class="right-span">热销</span>';
-                html +=' </div></div></a> </li>';
+    function insertHtml(data) {
+        var html = "";
+        $.each(data, function (index, obj) {
+            html += '<li class="mui-table-view-cell mui-media">';
+            html += '<a href="${base}/item/goto/view.htm?uid=' + obj.uid + '">';
+            html += '<div class="mui-card"><div class="mui-card-content">';
+            html += '  <img src="' + obj.phonePicUrl + '" height="100px" width="100%">'
+            html += '</div> <div class="mui-card-footer my-index-card-footer">';
+            html += '  <div class="my-mui-ellipsis">' + obj.title + '</div>';
+            html += ' <span class="left-span">￥' + obj.price + '</span> <span class="right-span">热销</span>';
+            html += ' </div></div></a> </li>';
         });
         return html;
     }
 
-
+    function initCache() {
+        var html = sessionStorage.getItem("indexHtml");
+        $("#index_ul_item").append(html);
+    }
 </script>
 </body>
 </html>
