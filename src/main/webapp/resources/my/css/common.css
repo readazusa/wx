@@ -540,3 +540,38 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     display: block;
     /*min-height: 65px;*/
 }
+
+.my-item-list-header{
+    height: 40px;
+}
+.my-item-list-header ul{
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.my-item-list-header ul li{
+    float: left;
+    width: 25%;
+    height: 30px;
+    margin-top: 5px;
+    border-right: 1px silver solid;
+    line-height: 30px;
+    /*display: inline-block;*/
+    text-align: center;
+    font-size: 15px;
+}
+
+
+.my-item-list-header ul li .my-header-icon{
+    line-height: 30px;
+    color: #777;
+    font-size: 18px;
+    display: inline-block;
+    /*height: 30px;*/
+    /*padding-top: 5px;*/
+    /*text-align: center;*/
+}

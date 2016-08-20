@@ -12,8 +12,22 @@
     <@common.iconfontCSS></@common.iconfontCSS>
 </head>
 <body>
-<header class="mui-bar mui-bar-nav">
-
+<header class="mui-bar mui-bar-nav my-item-list-header">
+<ul id="headerul">
+<li><div>默认</div>
+    </li>
+    <li>
+        销量
+        <i class="iconfont icon-16pxshengjiangxu my-header-icon">
+        </i>
+    </li>
+    <li>新品
+        <i class="iconfont icon-16pxshengjiangxu my-header-icon">
+        </i></li>
+    <li>价格
+        <i class="iconfont icon-16pxshengjiangxu my-header-icon">
+        </i></li>
+</ul>
 </header>
 <div class="mui-content mui-scroll-wrapper" id="refreshContainer">
     <div class="mui-scroll my-trans-duration">
@@ -77,8 +91,10 @@
 </nav>
     <@common.jqueryJS></@common.jqueryJS>
     <@common.muiJS></@common.muiJS>
+    <@common.fastclickJS></@common.fastclickJS>
 <script type="application/javascript">
     $(function () {
+        FastClick.attach(document.body);
         mui.init({
             pullRefresh: {
                 container: "#refreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
@@ -97,16 +113,23 @@
                 }
             }
         });
-//        mui("#indexurl").on('tap','a',function(){
-//            var href = this.href;
-//            mui.openWindow({
-//                id: href,
-//                url: this.href,
-//                show:{
-//                    autoShow:true,//页面loaded事件发生后自动显示，默认为true
-//                }
-//            });
-//        });
+
+
+        $("#headerul li").on("click",function(){
+           var children = $(this).children("i");
+            //icon-16pxshengjiangxu
+            if($(children).html()){
+               if($(children).hasClass("icon-16pxshengjiangxu")){
+                   $(children).removeClass("icon-16pxshengjiangxu").addClass("icon-shengxu")
+                   //after-icon-shengxu
+               }else if($(children).hasClass("icon-shengxu")) {
+                   $(children).removeClass("icon-shengxu").addClass("icon-jiangxu-copy")
+
+               }else{
+                   $(children).removeClass("icon-jiangxu-copy").addClass("icon-shengxu")
+               }
+            }
+        });
     });
 
     function pulldownfresh() {
