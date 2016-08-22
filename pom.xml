@@ -38,7 +38,6 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
-      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -232,11 +231,6 @@
       <version>4.1</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc7</artifactId>
-      <version>12.1.0.2</version>
-    </dependency>
 
     <dependency>
       <groupId>commons-io</groupId>
@@ -319,11 +313,6 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-jms</artifactId>
       <version>4.2.5.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc7</artifactId>
-      <version>12.1.0.2</version>
     </dependency>
 
     <dependency>
