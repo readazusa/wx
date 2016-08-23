@@ -205,7 +205,7 @@
                     var totalPage = resp.data.totalPage;
                     var currentPage = resp.data.currentPage;
                     $("#pageIndex").val(parseInt(currentPage) + 1);
-                    var html = insertHtml(resp.data.data);
+                    var html = loadHtml(resp.data.data);
                     $("#index_ul_item").empty().append(html);
                     var oldHtml =sessionStorage.getItem("indexHtml")
                     sessionStorage.setItem("indexHtml", oldHtml+html);
@@ -243,7 +243,7 @@
                     var totalPage = resp.data.totalPage;
                     var currentPage = resp.data.currentPage;
                     $("#pageIndex").val(parseInt(currentPage) + 1);
-                    var html = insertHtml(resp.data.data);
+                    var html = loadHtml(resp.data.data);
                     $("#index_ul_item").append(html);
                     var oldHtml =    sessionStorage.getItem("indexHtml")
                     sessionStorage.setItem("indexHtml", oldHtml+html);
@@ -264,7 +264,6 @@
     }
 
     function init() {
-
         $.ajax({
             url: "${base}/item/index/list.json",
             data: {
@@ -278,7 +277,7 @@
                     var totalPage = resp.data.totalPage;
                     var currentPage = resp.data.currentPage;
                     $("#pageIndex").val(parseInt(currentPage) + 1);
-                    var html = insertHtml(resp.data.data);
+                    var html = loadHtml(resp.data.data);
                     sessionStorage.setItem("indexHtml", html);
                     $("#index_ul_item").append(html);
                 }
@@ -289,7 +288,10 @@
         });
     }
 
-    function insertHtml(data) {
+
+
+
+    function loadHtml(data) {
         var html = "";
         $.each(data, function (index, obj) {
             html += '<li class="mui-table-view-cell mui-media">';

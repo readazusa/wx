@@ -55,6 +55,10 @@ public class ItemInfo extends BasePO {
 
     private String isTj;   //是否特价  0：特价 1：非特价
 
+    private int sales;  //销量
+
+    private int purchaseNumber;  //购买数量
+
     public String getUid() {
         return uid;
     }
@@ -206,5 +210,21 @@ public class ItemInfo extends BasePO {
 
     public void setIsTj(String isTj) {
         this.isTj = isTj;
+    }
+
+    public int getSales() {
+        return sales;
+    }
+
+    public void setSales(int sales) {
+        this.sales = sales;
+    }
+
+    public int getPurchaseNumber() {
+        return purchaseNumber;
+    }
+
+    public void setPurchaseNumber(int purchaseNumber) {
+        this.purchaseNumber = purchaseNumber;
     }
 }

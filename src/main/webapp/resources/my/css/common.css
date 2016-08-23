@@ -621,7 +621,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
 .my-item-list-shop-cart{
     float: right;
     margin-right: 5px;
-    font-size: 20px;
+    font-size: 20px  !important;
 }
 
 .mui-tab-item .my-shop-cart-bz {
@@ -637,5 +637,8 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     border:1px solid silver;
     border-radius: 50%;
     background-color: red;
+}
 
+.my-color-red{
+    color: red !important;
 }

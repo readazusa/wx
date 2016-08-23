@@ -1,5 +1,7 @@
 package club.lovety.base.entity;
 
+import java.util.List;
+
 /**
  * Created by smc on 2015/11/22.
  */
@@ -14,6 +16,8 @@ public class BaseSearchPO<T> {
     private  String orderName;
 
     private String orderValue;
+
+    private List<DbOrderInfo> dbOrderInfoList;
 
     public T getObj() {
         return obj;
@@ -55,4 +59,11 @@ public class BaseSearchPO<T> {
         this.orderValue = orderValue;
     }
 
+    public List<DbOrderInfo> getDbOrderInfoList() {
+        return dbOrderInfoList;
+    }
+
+    public void setDbOrderInfoList(List<DbOrderInfo> dbOrderInfoList) {
+        this.dbOrderInfoList = dbOrderInfoList;
+    }
 }

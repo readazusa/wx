@@ -2,6 +2,7 @@ package club.lovety.item.service.impl;
 
 import club.lovety.base.entity.BasePagePO;
 import club.lovety.base.entity.BaseSearchPO;
+import club.lovety.base.entity.DbOrderInfo;
 import club.lovety.base.entity.LoadBaseSearchUtil;
 import club.lovety.item.dao.IItemDao;
 import club.lovety.item.entity.ItemInfo;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -73,11 +76,29 @@ public class ItemServiceImpl implements IItemService {
     }
 
     @Override
+    public  List<ItemInfo> queryListPO(int pageIndex, int pageSize, String orderName,String orderValue, ItemInfo itemInfo) {
+        BaseSearchPO<ItemInfo> baseSearchPO = LoadBaseSearchUtil.getBaseSearch(pageIndex,pageSize,orderName,orderValue,itemInfo);
+        return itemDao.queryPage(baseSearchPO);
+    }
+
+
+    @Override
     public BasePagePO<ItemInfo> queryList(HttpServletRequest request) {
         String pageIndexStr = request.getParameter("pageIndex");
         String pageSizeStr = request.getParameter("pageSize");
+        String orderName = request.getParameter("orderName");
+        String orderValue = request.getParameter("orderValue");
         int pageSize = StringUtils.isNotBlank(pageSizeStr)?Integer.parseInt(pageSizeStr):10;
         int pageIndex = StringUtils.isNoneBlank(pageIndexStr)?Integer.parseInt(pageIndexStr):1;
+        ItemInfo itemInfo =loadSearchCondition(request);
+        int totalCount = this.getTotalCount(itemInfo);
+        List<ItemInfo> itemInfos = this.queryListPO(pageIndex,pageSize,orderName,orderValue,itemInfo);
+        BasePagePO<ItemInfo> basePagePO = loadResultBasePageInfo(itemInfos,totalCount,pageIndex,pageSize);
+        return basePagePO;
+    }
+
+
+    private ItemInfo loadSearchCondition(HttpServletRequest request){
         ItemInfo itemInfo = new ItemInfo();
         String search = request.getParameter("search");
         String isIndex = request.getParameter("isIndex");
@@ -86,19 +107,18 @@ public class ItemServiceImpl implements IItemService {
         itemInfo.setTitle(search);
         itemInfo.setIsTj(isTj);
         itemInfo.setIsIndex(isIndex);
-        BasePagePO<ItemInfo> basePagePO = new BasePagePO<>();
-        int totalCount = this.getTotalCount(itemInfo);
-        List<ItemInfo> itemInfos = this.queryListPO(pageIndex,pageSize,itemInfo);
-        basePagePO.setPageSize(pageSize);
-        basePagePO.setData(itemInfos);
-        basePagePO.setRecordsTotal(totalCount);
-        basePagePO.setCurrentPage(pageIndex);
-        return basePagePO;
+        return itemInfo;
     }
 
 
 
-
-
+  private BasePagePO<ItemInfo> loadResultBasePageInfo(List<ItemInfo> itemInfos,int totalCount,int pageIndex,int pageSize){
+      BasePagePO<ItemInfo> basePagePO = new BasePagePO<>();
+      basePagePO.setPageSize(pageSize);
+      basePagePO.setData(itemInfos);
+      basePagePO.setRecordsTotal(totalCount);
+      basePagePO.setCurrentPage(pageIndex);
+      return basePagePO;
+  }
 
 }

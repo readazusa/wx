@@ -1,6 +1,7 @@
 package club.lovety.item.service;
 
 import club.lovety.base.entity.BasePagePO;
+import club.lovety.base.entity.DbOrderInfo;
 import club.lovety.base.service.IService;
 import club.lovety.item.entity.ItemInfo;
 
@@ -17,5 +18,7 @@ import java.util.List;
 public interface IItemService extends IService<ItemInfo>{
 
     public BasePagePO<ItemInfo> queryList(HttpServletRequest request);
+
+    public  List<ItemInfo> queryListPO(int pageIndex,int pageSize,String orderName,String orderValue,ItemInfo itemInfo);
 
 }

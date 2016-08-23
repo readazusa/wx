@@ -1,5 +1,7 @@
 package club.lovety.base.entity;
 
+import java.util.List;
+
 /**
  * Created by 念梓  on 2016/8/19.
  * Email:sunmch@163.com
@@ -16,5 +18,17 @@ public final class LoadBaseSearchUtil{
         baseSearchPO.setObj(obj);
         return baseSearchPO;
     }
+
+
+    public static<T> BaseSearchPO getBaseSearch(int pageIndex, int pageSize, String orderName,String orderValue, T obj){
+        BaseSearchPO<T> baseSearchPO = getBaseSearch(pageIndex,pageSize,obj);
+        baseSearchPO.setOrderValue(orderValue);
+        baseSearchPO.setOrderName(orderName);
+        return baseSearchPO;
+
+
+
+    }
+
 
 }

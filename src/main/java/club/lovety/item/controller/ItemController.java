@@ -1,6 +1,7 @@
 package club.lovety.item.controller;
 
 import club.lovety.base.entity.BasePagePO;
+import club.lovety.base.entity.BaseSearchPO;
 import club.lovety.base.entity.WxConfig;
 import club.lovety.base.service.IWechatApiService;
 import club.lovety.common.Constants;
@@ -73,8 +74,7 @@ public class ItemController {
         Result result = new Result();
         try{
             BasePagePO<ItemInfo> basePagePO = itemService.queryList(request);
-            result.setData(basePagePO);
-            result.setCode(Result.SUCCESS);
+            setResultData(result,basePagePO);
         }catch (Exception ex){
             result.setCode(Result.ERROR);
             log.error("获取主页的数据列表错误,错误信息如下： ",ex);
@@ -82,5 +82,23 @@ public class ItemController {
         return result;
     }
 
+    @RequestMapping("search/list")
+    @ResponseBody
+    public Object searchList(HttpServletRequest request){
+        Result result = new Result();
+        try{
+            BasePagePO<ItemInfo> basePagePO = itemService.queryList(request);
+            setResultData(result,basePagePO);
+        }catch (Exception ex){
+            result.setCode(Result.ERROR);
+            log.error("search 查询失败,失败信息： ",ex);
+        }
+        return result;
+    }
+
+    private void setResultData(Result resultData,BasePagePO<ItemInfo> basePagePO){
+        resultData.setData(basePagePO);
+        resultData.setCode(Result.SUCCESS);
+    }
 
 }

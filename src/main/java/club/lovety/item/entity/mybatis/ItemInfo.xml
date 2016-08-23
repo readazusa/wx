@@ -3,61 +3,60 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="ItemInfo">
-        <sql id="param">
-                uid,title,price,pcpicurl,phonepicurl,descr,listtime,delisttime,stock,discountprice,orgin,postage,status,company,cid
+    <sql id="param">
+                uid,title,price,pcpicurl,phonepicurl,descr,listtime,delisttime,stock,discountprice,orgin,postage,status,company,cid,purchaseNumber
         </sql>
-        <insert id="save" parameterType="ItemInfo">
+    <insert id="save" parameterType="ItemInfo">
                 insert into t_wx_item(uid,title,price,pcpicurl,phonepicurl,descr,listtime,delisttime,stock,discountprice,orgin,postage,status,company,cid)
                 values(#{uid},#{title},#{price},#{pcPicUrl},#{phonePicUrl},#{descr},#{listTime},#{delistTime},#{stock},#{discountPrice},
                 #{orgin},#{postage},#{status},#{company},#{cid})
         </insert>
 
-        <select id="select" parameterType="java.lang.String" resultType="ItemInfo">
+    <select id="select" parameterType="java.lang.String" resultType="ItemInfo">
                 select * from t_wx_item where uid = #{id}
         </select>
 
-        <update id="update" parameterType="ItemInfo">
+    <update id="update" parameterType="ItemInfo">
                 update t_wx_item set title=#{title},price=#{price},pcpicurl=#{pcPicUrl},descr=#{descr},stock=#{stock},postage = #{postage} where uid = #{uid}
         </update>
 
-        <select id="queryPage" resultType="ItemInfo" parameterType="BaseSearchPO">
-                select <include refid="param"></include> from  t_wx_item where 1=1
-                <if test="obj.isIndex != null and obj.isIndex !=''">
-                        and isindex = #{obj.isIndex}
-                </if>
-                <if test="obj.isTj != null and obj.isTj != ''">
-                        and isTj = #{obj.isTj}
-                </if>
+    <select id="queryPage" resultType="ItemInfo" parameterType="BaseSearchPO">
+        select
+        <include refid="param"></include>
+        from t_wx_item where 1=1
+        <if test="obj.isIndex != null and obj.isIndex !=''">
+            and isindex = #{obj.isIndex}
+        </if>
+        <if test="obj.isTj != null and obj.isTj != ''">
+            and isTj = #{obj.isTj}
+        </if>
 
-                <if test="obj.search != null and obj.search != ''">
-                        and title like '${obj.search}%'
-                </if>
-                limit #{pageIndex},#{pageSize}
-        </select>
+        <if test="obj.search != null and obj.search != ''">
+            and title like '${obj.search}%'
+        </if>
+        <if test="orderValue != null and orderValue !=''">
+            order by ${orderName} ${orderValue}
+        </if>
+        limit #{pageIndex},#{pageSize}
+    </select>
 
-        <select id="queryTotalCount" resultType="java.lang.Integer" parameterType="ItemInfo">
-                select count(1) from t_wx_item where 1 =1
-                <if test="isTj != null and isTj != ''">
-                        and  istj = #{isTj}
-                </if>
-                <if test="title !=null and title != ''">
-                    and  title like '${title}%'
-                </if>
-        </select>
+    <select id="queryTotalCount" resultType="java.lang.Integer" parameterType="ItemInfo">
+        select count(1) from t_wx_item where 1 =1
+        <if test="isTj != null and isTj != ''">
+            and istj = #{isTj}
+        </if>
+        <if test="title !=null and title != ''">
+            and title like '${title}%'
+        </if>
+    </select>
 
-        <select id="queryPageTotalCount" resultType="java.lang.Integer" parameterType="BaseSearchPO">
+    <select id="queryPageTotalCount" resultType="java.lang.Integer" parameterType="BaseSearchPO">
 
-        </select>
+    </select>
 
-        <delete id="deleteItemVsFileByItemId" parameterType="java.lang.String">
+    <delete id="deleteItemVsFileByItemId" parameterType="java.lang.String">
                 delete from t_wx_item_vs_file where itemid = #{id}
         </delete>
-
-
-
-
-
-
 
 
 </mapper>

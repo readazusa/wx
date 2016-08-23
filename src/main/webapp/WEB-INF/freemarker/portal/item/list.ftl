@@ -13,39 +13,44 @@
 </head>
 <body>
 <header class="mui-bar mui-bar-nav my-item-list-header">
-<ul id="headerul">
-<li><div>默认</div>
-    </li>
-    <li>
-        销量
-        <i class="iconfont icon-paixu my-header-icon">
-        </i>
-    </li>
-    <li>新品
-        <i class="iconfont icon-paixu my-header-icon">
-        </i></li>
-    <li>价格
-        <i class="iconfont icon-paixu my-header-icon">
-        </i></li>
-</ul>
+    <ul id="headerul">
+        <li>
+            <div>默认</div>
+        </li>
+        <li orderName="sales">
+            销量
+            <i class="iconfont icon-paixu my-header-icon">
+            </i>
+        </li>
+        <li orderName="listtime">新品
+            <i class="iconfont icon-paixu my-header-icon">
+            </i></li>
+        <li orderName="price">价格
+            <i class="iconfont icon-paixu my-header-icon">
+            </i></li>
+    </ul>
 </header>
 <div class="mui-content mui-scroll-wrapper" id="refreshContainer">
     <div class="mui-scroll my-trans-duration">
-    <ul class="mui-table-view" style="margin-top: 5px;">
-        <li class="mui-table-view-cell mui-media my-list-item">
-            <a href="javascript:;">
-            <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">
-            <div class="mui-media-body">
-                <p class='my-item-list-title'>能和心爱的人一起睡是件幸福的事可是打呼噜怎么办的事可是打呼噜怎么办打呼噜怎么办</p>
-                <div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart"></span></div>
-                <div class="my-item-bottom">
-                    <span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">3499</span>
-                    <span class="mui-badge mui-badge-inverted my-item-right-10" >购买人数:10</span>
-                </div>
-            </div>
-            </a>
-        </li>
-    </ul>
+        <ul class="mui-table-view" style="margin-top: 5px;" id="listItemHtml">
+        <#--<li class="mui-table-view-cell mui-media my-list-item">-->
+                <#--<a href="javascript:;">-->
+                    <#--<img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">-->
+                    <#--<div class="mui-media-body">-->
+                        <#--<p class='my-item-list-title'>能和心爱的人一起睡是件幸福的事可是打呼噜怎么办的事可是打呼噜怎么办打呼噜怎么办</p>-->
+                        <#--<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart"></span></div>-->
+                        <#--<div class="my-item-bottom">-->
+                            <#--<span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">3499</span>-->
+                            <#--<span class="mui-badge mui-badge-inverted my-item-right-10">购买人数:10</span>-->
+                        <#--</div>-->
+                    <#--</div>-->
+                <#--</a>-->
+            <#--</li>-->
+        </ul>
+        <input type="hidden" id="orderName">
+        <input type="hidden" id="orderValue">
+        <input type="hidden" id="search" value="${search?default("")}">
+        <input type="hidden" id="pageIndex" value="1">
     </div>
 </div>
 <nav class="mui-bar mui-bar-tab">
@@ -58,7 +63,7 @@
         <span class="mui-tab-label">消息</span>
     </a>
     <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
-        <img src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png"  class="my-head-pic">
+        <img src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png" class="my-head-pic">
     </a>
     <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm" id="icon-cart">
         <span class="my-shop-cart-bz">1</span>
@@ -74,6 +79,7 @@
     <@common.muiJS></@common.muiJS>
     <@common.fastclickJS></@common.fastclickJS>
     <@common.flyJS></@common.flyJS>
+    <@common.myCommonJS></@common.myCommonJS>
 <script type="application/javascript">
     $(function () {
         FastClick.attach(document.body);
@@ -88,63 +94,108 @@
                     contentrefresh: "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback: pulldownfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                 },
-                up:{
-                    contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
-                    contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
-                    callback:pullupfresh
+                up: {
+                    contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                    contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+                    callback: pullupfresh
                 }
             }
         });
 
-
-        $("#headerul li").on("click",function(){
-           var children = $(this).children("i");
-            //icon-16pxshengjiangxu
-            if($(children).html()){
-               if($(children).hasClass("icon-16pxshengjiangxu")){
-                   $(children).removeClass("icon-16pxshengjiangxu").addClass("icon-shengxu")
-                   //after-icon-shengxu
-               }else if($(children).hasClass("icon-shengxu")) {
-                   $(children).removeClass("icon-shengxu").addClass("icon-jiangxu-copy")
-
-               }else{
-                   $(children).removeClass("icon-jiangxu-copy").addClass("icon-shengxu")
-               }
+        $("#headerul li").on("click", function () {
+            var children = $(this).children("i");
+            if ($(children).html()) {
+                if ($(children).hasClass("icon-paixu")) {
+                    MyObj.removeOrderClass(this);
+                    $(this).addClass("my-color-red");
+                    $(children).removeClass("icon-paixu").addClass("icon-shengxu my-color-red");
+                    setOrder(this, "asc");
+                } else if ($(children).hasClass("icon-shengxu")) {
+                    $(children).removeClass("icon-shengxu").addClass("icon-jiangxu-copy");
+                    setOrder(this, "desc");
+                } else {
+                    $(children).removeClass("icon-jiangxu-copy").addClass("icon-shengxu");
+                    setOrder(this, "desc");
+                }
             }
         });
-        var offset = $("#icon-cart").offset();
-        $(".my-item-list-shop-cart").click(function(event){
-            var flyer = $('<img class="flyer-img" src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png">');
-
-            flyer.fly({
-                start: {
-                    left: event.pageX,
-                    top: event.pageY
-                },
-                end: {
-                    left: offset.left + 10,//抛物体终点横坐标
-                    top: offset.top + 10, //抛物体终点纵坐标
-                },
-                onEnd: function() {
-                    alert("结束");
-//                    $("#tip").show().animate({width: '200px'},300).fadeOut(500);////成功加入购物车动画效果
-//                    this.destory(); //销毁抛物体
-                }
-            });
-
-        });
+        init();
     });
 
 
+    function init() {
+        var data = {
+            "search": $("#search").val(),
+            "pageIndex": $("#pageIndex").val()
+        }
+        MyObj.ajaxSubmit("${base}/item/search/list.json", data, "post", insertHtml);
+    }
+
+
+    function insertHtml(resp) {
+        if ("SUCCESS" == resp.code) {
+            var newPageIndex = parseInt($("#pageIndex").val()) + resp.data.currentPage;
+            $("#pageIndex").val(newPageIndex);
+            var itemHtml = loadHtml(resp.data.data);
+            $("#listItemHtml").append(itemHtml);
+            var oldSearchListItemHtml = sessionStorage.getItem("search_list_item");
+            if(oldSearchListItemHtml){
+                sessionStorage.setItem("search_list_item",oldSearchListItemHtml+loadHtml);
+            }else{
+                sessionStorage.setItem("search_list_item",loadHtml);
+            }
+        }
+    }
+
+    function loadHtml(data) {
+        var liHtml = "";
+        data.forEach(function (obj) {
+            liHtml += '<li class="mui-table-view-cell mui-media my-list-item">' +
+                    '<a href="javascript:;">' +
+                    '<img class="my-mui-media-object mui-pull-left" src="' + obj.phonePicUrl + '">' +
+                    '<div class="mui-media-body">' +
+                    '<p class="my-item-list-title">' + obj.title + '</p>' +
+                    '<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart" onclick="addShopCart(\''+obj.uid+'\')"></span></div>' +
+                    '<div class="my-item-bottom">' +
+                    '<span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">' + obj.price + '</span>' +
+                    '<span class="mui-badge mui-badge-inverted my-item-right-10">购买人数:' + obj.purchaseNumber + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</li>';
+        });
+        return liHtml;
+    }
+
+    function addShopCart(uid) {
+        alert(123);
+    }
+    function setOrder(obj, orderValue) {
+        var orderName = $(obj).attr("orderName");
+        $("#orderName").val(orderName);
+        $("#orderValue").val(orderValue);
+        var data = {
+            "search": $("#search").val(),
+            "orderName": orderName,
+            "orderValue": orderValue
+        }
+        MyObj.ajaxSubmit("${base}/item/search/list.json", data, "post", doExecuteData);
+    }
+
+    function doExecuteData(resp) {
+        if (resp.code == "SUCCESS") {
+
+        }
+    }
+
 
     function pulldownfresh() {
-//        alert("刷新");
         mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
     }
 
-    function pullupfresh(){
-//        alert("上啦刷新");
-        this.endPullupToRefresh(false);
+    var total = 1;
+    function pullupfresh() {
+
     }
 </script>
 </body>

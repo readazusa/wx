@@ -52,6 +52,19 @@ MyObj.ajaxSubmit= function(url,data,method,callback,dataType,contentType){
     }
 }
 
+/**
+ * 在查询列表页面，处理表头的点击排序操作
+ * @param obj
+ */
+MyObj.removeOrderClass=function(obj){
+    var parent = $(obj).parent();
+    $(parent).children().each(function(){
+        var childOrder= $(this).children("i");
+        $(this).removeClass("my-color-red");
+        $(childOrder).removeClass("icon-jiangxu-copy icon-shengxu my-color-red").addClass("icon-paixu");
+    });
+}
+
 
 
 
