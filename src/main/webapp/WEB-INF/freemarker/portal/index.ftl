@@ -106,13 +106,17 @@
         <span class="mui-tab-label">消息</span>
     </a>
     <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
-        <span class="mui-icon mui-icon-trash"></span>
-        <span class="mui-tab-label">购物车</span>
+        <img src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png"  class="my-head-pic">
     </a>
     <a class="mui-tab-item" href="${base}/center/goto/index_page.htm">
         <span class="mui-icon mui-icon-contact"></span>
-        <span class="mui-tab-label">我的购</span>
+        <span class="mui-tab-label">发现</span>
     </a>
+    <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
+        <span class="mui-icon-extra mui-icon-extra-cart"></span>
+        <span class="mui-tab-label">购物车</span>
+    </a>
+
 </nav>
     <@common.jqueryJS></@common.jqueryJS>
     <@common.muiJS></@common.muiJS>

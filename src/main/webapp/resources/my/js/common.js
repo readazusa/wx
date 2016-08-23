@@ -21,5 +21,41 @@
         $(".my-popover-win").removeClass("my-popover-win-show");
     }
 })($)
+var  MyObj={};
+
+
+/**
+ *
+ * @param url
+ * @param data
+ * @param method   请求方式 get post
+ * @param callback
+ * @param dataType   返回数据内容 默认 text，
+ * @param contentType  请求的数据格式 默认： application/x-www-form-urlencoded
+ */
+MyObj.ajaxSubmit= function(url,data,method,callback,dataType,contentType){
+
+    try{
+        $.ajax({
+            url:url,
+            data:data,
+            type:method,
+            success:function(resp){
+                callback(resp);
+            },
+            error:function(resp){
+                 window.alert(JSON.stringify(resp));
+            }
+        });
+    } catch(e) {
+        console.info("执行ajax请求错误:" + e.message);
+    }
+}
+
+
+
+
+
+
 
 

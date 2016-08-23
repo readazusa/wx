@@ -12,14 +12,15 @@
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
 }
+.icon-faxian:before { content: "\e607"; }
+.icon-iconfontgouwuche:before { content: "\e609"; }
+.icon-paixu:before { content: "\e606"; }
 .icon-xuanze:before { content: "\e600"; }
+.icon-faxian1:before { content: "\e608"; }
+.icon-tianjiagouwuche:before { content: "\e60a"; }
 .icon-xuanze1:before { content: "\e601"; }
 .icon-shengxu:before { content: "\e603"; }
 .icon-xuanze2:before { content: "\e602"; }
 .icon-16pxshengjiangxu:before { content: "\e604"; }
 .icon-jiangxu-copy:before { content: "\e605"; }
 
-
-.after-icon-shengxu:after { content: "\e603"; }
-.after-icon-16pxshengjiangxu:after { content: "\e604"; }
-.after-icon-jiangxu-copy:after { content: "\e605"; }

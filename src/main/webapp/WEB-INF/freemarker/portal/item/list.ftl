@@ -18,14 +18,14 @@
     </li>
     <li>
         销量
-        <i class="iconfont icon-16pxshengjiangxu my-header-icon">
+        <i class="iconfont icon-paixu my-header-icon">
         </i>
     </li>
     <li>新品
-        <i class="iconfont icon-16pxshengjiangxu my-header-icon">
+        <i class="iconfont icon-paixu my-header-icon">
         </i></li>
     <li>价格
-        <i class="iconfont icon-16pxshengjiangxu my-header-icon">
+        <i class="iconfont icon-paixu my-header-icon">
         </i></li>
 </ul>
 </header>
@@ -36,36 +36,13 @@
             <a href="javascript:;">
             <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">
             <div class="mui-media-body">
-                <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                <p class='my-item-list-title'>能和心爱的人一起睡是件幸福的事可是打呼噜怎么办的事可是打呼噜怎么办打呼噜怎么办</p>
+                <div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart"></span></div>
                 <div class="my-item-bottom">
                     <span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">3499</span>
                     <span class="mui-badge mui-badge-inverted my-item-right-10" >购买人数:10</span>
                 </div>
             </div>
-            </a>
-        </li>
-        <li class="mui-table-view-cell mui-media my-list-item">
-            <a href="javascript:;">
-                <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">
-                <div class="mui-media-body">
-                    <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-                </div>
-            </a>
-        </li>
-        <li class="mui-table-view-cell mui-media my-list-item">
-            <a href="javascript:;">
-                <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">
-                <div class="mui-media-body">
-                    <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-                </div>
-            </a>
-        </li>
-        <li class="mui-table-view-cell mui-media my-list-item">
-            <a href="javascript:;">
-                <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">
-                <div class="mui-media-body">
-                    <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-                </div>
             </a>
         </li>
     </ul>
@@ -80,18 +57,23 @@
         <span class="mui-icon mui-icon-email"></span>
         <span class="mui-tab-label">消息</span>
     </a>
-    <a class="mui-tab-item" href="tab-webview-subpage-contact.html">
-        <span class="mui-icon mui-icon-trash"></span>
+    <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
+        <img src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png"  class="my-head-pic">
+    </a>
+    <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm" id="icon-cart">
+        <span class="my-shop-cart-bz">1</span>
+        <span class="mui-icon-extra mui-icon-extra-cart"></span>
         <span class="mui-tab-label">购物车</span>
     </a>
-    <a class="mui-tab-item" href="tab-webview-subpage-setting.html">
+    <a class="mui-tab-item" href="${base}/center/goto/index_page.htm">
         <span class="mui-icon mui-icon-contact"></span>
-        <span class="mui-tab-label">我的购</span>
+        <span class="mui-tab-label">发现</span>
     </a>
 </nav>
     <@common.jqueryJS></@common.jqueryJS>
     <@common.muiJS></@common.muiJS>
     <@common.fastclickJS></@common.fastclickJS>
+    <@common.flyJS></@common.flyJS>
 <script type="application/javascript">
     $(function () {
         FastClick.attach(document.body);
@@ -130,7 +112,30 @@
                }
             }
         });
+        var offset = $("#icon-cart").offset();
+        $(".my-item-list-shop-cart").click(function(event){
+            var flyer = $('<img class="flyer-img" src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png">');
+
+            flyer.fly({
+                start: {
+                    left: event.pageX,
+                    top: event.pageY
+                },
+                end: {
+                    left: offset.left + 10,//抛物体终点横坐标
+                    top: offset.top + 10, //抛物体终点纵坐标
+                },
+                onEnd: function() {
+                    alert("结束");
+//                    $("#tip").show().animate({width: '200px'},300).fadeOut(500);////成功加入购物车动画效果
+//                    this.destory(); //销毁抛物体
+                }
+            });
+
+        });
     });
+
+
 
     function pulldownfresh() {
 //        alert("刷新");
