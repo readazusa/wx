@@ -30,9 +30,9 @@
             </i></li>
     </ul>
 </header>
-<div class="mui-content mui-scroll-wrapper" id="refreshContainer">
+<div class="mui-content mui-scroll-wrapper" id="refreshContainer" style="margin-bottom: 50px;">
     <div class="mui-scroll my-trans-duration">
-        <ul class="mui-table-view" style="margin-top: 5px;" id="listItemHtml">
+        <ul class="mui-table-view" id="listItemHtml">
         <#--<li class="mui-table-view-cell mui-media my-list-item">-->
                 <#--<a href="javascript:;">-->
                     <#--<img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">-->
@@ -115,7 +115,7 @@
                     setOrder(this, "desc");
                 } else {
                     $(children).removeClass("icon-jiangxu-copy").addClass("icon-shengxu");
-                    setOrder(this, "desc");
+                    setOrder(this, "asc");
                 }
             }
         });
@@ -125,8 +125,10 @@
             loadItemListByCache();
         }
 
+//        mui("#listItemHtml").on('tap', '.my-item-list-shop-cart', function () {
+//            MyObj.addShopCart("#icon-cart",".my-shop-cart-bz",this.id,this.getAttribute("url"));
+//        });
     });
-
 
     function init() {
         var data = {
@@ -138,16 +140,18 @@
 
     //插入初始化的页面数据
     function insertHtml(resp) {
+
         if ("SUCCESS" == resp.code) {
+            sessionStorage.removeItem("search_list_item");
             var newPageIndex =  resp.data.currentPage+1;
             $("#pageIndex").val(newPageIndex);
             var itemHtml = loadHtml(resp.data.data);
             $("#listItemHtml").append(itemHtml);
             var oldSearchListItemHtml = sessionStorage.getItem("search_list_item");
             if (oldSearchListItemHtml) {
-                sessionStorage.setItem("search_list_item", oldSearchListItemHtml + loadHtml);
+                sessionStorage.setItem("search_list_item", oldSearchListItemHtml + itemHtml);
             } else {
-                sessionStorage.setItem("search_list_item", loadHtml);
+                sessionStorage.setItem("search_list_item", itemHtml);
             }
         }
     }
@@ -156,25 +160,55 @@
         var liHtml = "";
         data.forEach(function (obj) {
             liHtml += '<li class="mui-table-view-cell mui-media my-list-item">' +
-                    '<a href="javascript:;">' +
-                    '<img class="my-mui-media-object mui-pull-left" src="' + obj.phonePicUrl + '">' +
+//                    '<a href="javascript:">' +
+                    '<img class="my-mui-media-object mui-pull-left" src="' + obj.phonePicUrl + '" onclick="gotoHref(\'${base}/item/goto/view.htm?uid='+obj.uid+'\');">' +
                     '<div class="mui-media-body">' +
                     '<p class="my-item-list-title">' + obj.title + '</p>' +
-                    '<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart" onclick="addShopCart(\'' + obj.uid + '\')"></span></div>' +
+//                    '<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart" id="'+obj.uid+'" url="'+obj.phonePicUrl+'"></span></div>' +
+                    '<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart" onclick="addShopCart(\'' + obj.uid + '\',\''+obj.phonePicUrl+'\')"></span></div>' +
                     '<div class="my-item-bottom">' +
                     '<span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">' + obj.price + '</span>' +
                     '<span class="mui-badge mui-badge-inverted my-item-right-10">购买人数:' + obj.purchaseNumber + '</span>' +
                     '</div>' +
                     '</div>' +
-                    '</a>' +
+//                    '</a>' +
                     '</li>';
         });
         return liHtml;
     }
-    function addShopCart(uid) {
-        alert(123);
+    function addShopCart(uid,url) {
+        var event = window.event;
+//        mui.alert(event.type+",  "+ event.pageX);
+           var offset = $("#icon-cart").offset();
+        var top = offset.top;
+        var left = offset.left;
+
+        var flyer = $('<img class="flyer-img" src="' + url + '">');
+        flyer.fly({
+            start: {
+                left: event.pageX,//抛物体起点横坐标
+                top: event.pageY //抛物体起点纵坐标
+            },
+            end: {
+                left: offset.left + 10,//抛物体终点横坐标
+                top: offset.top + 10 //抛物体终点纵坐标
+            },
+            onEnd: function() {
+//                $("#tip").show().animate({width: '200px'},300).fadeOut(500);////成功加入购物车动画效果
+                //flyer.destory(); //销毁抛物体
+                $(".flyer-img").remove();
+            }
+        });
+
+//        flyer.destory(); //销毁抛物体
+
+
+//        mui.alert("购物车left: "+left+" ,top: "+ top);
+
     }
+
     function setOrder(obj, orderValue) {
+
         var orderName = $(obj).attr("orderName");
         $("#orderName").val(orderName);
         $("#orderValue").val(orderValue);
@@ -194,8 +228,9 @@
             var newPageIndex = parseInt($("#pageIndex").val()) + resp.data.currentPage;
             $("#pageIndex").val(newPageIndex);
             var itemHtml = loadHtml(resp.data.data);
-            $("#listItemHtml").append(itemHtml);
-            sessionStorage.setItem("search_list_item", loadHtml);
+            $("#listItemHtml").empty().append(itemHtml);
+            sessionStorage.setItem("search_list_item", itemHtml);
+            mui('#refreshContainer').pullRefresh().refresh(true);
         }
     }
 
@@ -210,7 +245,9 @@
         sessionStorage.removeItem("search_list_item");
         $("#pageIndex").val("1");
         var data = {
-            "search": $("#search").val()
+            "search": $("#search").val(),
+            "orderName": $("#orderName").val(),
+            "orderValue": $("#orderValue").val()
         };
         MyObj.ajaxSubmit("${base}/item/search/list.json", data, "post", pulldownfreshHtml)
     }
@@ -220,18 +257,21 @@
              var newPageIndex =  resp.data.currentPage+1;
              $("#pageIndex").val(newPageIndex);
              var itemHtml = loadHtml(resp.data.data);
-             $("#listItemHtml").append(itemHtml);
+             $("#listItemHtml").empty().append(itemHtml);
              sessionStorage.setItem("search_list_item",itemHtml);
              mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+             mui('#refreshContainer').pullRefresh().refresh(true);
          }
     }
 
     function pullupfresh() {
         var data = {
             "search": $("#search").val(),
-            "pageIndex":$("#pageIndex").val()
+            "pageIndex":$("#pageIndex").val(),
+            "orderName": $("#orderName").val(),
+            "orderValue": $("#orderValue").val()
         };
-        MyObj.ajaxSubmit("${base}/item/search/list.json", data, "post", pullupfresh)
+        MyObj.ajaxSubmit("${base}/item/search/list.json", data, "post", pullupfreshHtml)
     }
 
     var total = 1;
@@ -245,13 +285,14 @@
             $("#listItemHtml").append(itemHtml);
             var oldSearchListItemHtml = sessionStorage.getItem("search_list_item");
             if (oldSearchListItemHtml) {
-                sessionStorage.setItem("search_list_item", oldSearchListItemHtml + loadHtml);
+                sessionStorage.setItem("search_list_item", oldSearchListItemHtml + itemHtml);
             } else {
-                sessionStorage.setItem("search_list_item", loadHtml);
+                sessionStorage.setItem("search_list_item", itemHtml);
             }
             mui('#refreshContainer').pullRefresh().endPullupToRefresh(total >= totalPage);
         }
     }
+
 </script>
 </body>
 </html>

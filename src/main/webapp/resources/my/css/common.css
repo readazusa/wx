@@ -621,7 +621,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
 .my-item-list-shop-cart{
     float: right;
     margin-right: 5px;
-    font-size: 20px  !important;
+    font-size: 25px  !important;
 }
 
 .mui-tab-item .my-shop-cart-bz {
@@ -633,12 +633,18 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     font-size: 10px;
     color: #fff;
     height: 20px;
-    width: 25px;
+    width: 20px;
     border:1px solid silver;
     border-radius: 50%;
-    background-color: red;
+    color: #fff;
+    background-color:#3366FF;
 }
 
 .my-color-red{
     color: red !important;
 }
+.mui-table-view-cell.mui-active{
+    background-color: #fff;
+}
+
+.flyer-img{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;}

@@ -43,6 +43,7 @@ public class ItemController {
 
     @RequestMapping("goto/view")
     public String view(@RequestParam("uid") String uid,HttpServletRequest request,ModelMap model){
+
         return "portal/item/view";
     }
 
