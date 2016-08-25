@@ -66,7 +66,7 @@
         <img src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png" class="my-head-pic">
     </a>
     <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm" id="icon-cart">
-        <span class="my-shop-cart-bz">1</span>
+        <span class="my-shop-cart-bz my-shop-cart-bz-hidden"></span>
         <span class="mui-icon-extra mui-icon-extra-cart"></span>
         <span class="mui-tab-label">购物车</span>
     </a>
@@ -101,7 +101,6 @@
                 }
             }
         });
-
         $("#headerul li").on("click", function () {
             var children = $(this).children("i");
             if ($(children).html()) {
@@ -125,9 +124,16 @@
             loadItemListByCache();
         }
 
-//        mui("#listItemHtml").on('tap', '.my-item-list-shop-cart', function () {
-//            MyObj.addShopCart("#icon-cart",".my-shop-cart-bz",this.id,this.getAttribute("url"));
+//        mui("#listItemHtml").on('tap', '.my-item-list-shop-cart', function (event) {
+//                alert(JSON.stringify(event))
+////            MyObj.addShopCart("#icon-cart",".my-shop-cart-bz",this.id,this.getAttribute("url"));
 //        });
+
+//         $(".my-item-list-shop-cart").click(function(){
+//            alert("nihao ");
+//         });
+
+
     });
 
     function init() {
@@ -153,6 +159,11 @@
             } else {
                 sessionStorage.setItem("search_list_item", itemHtml);
             }
+
+
+//            $(".my-item-list-shop-cart").bind("click",function(){
+//                alert(33123);
+//            });
         }
     }
 
@@ -195,11 +206,19 @@
             },
             onEnd: function() {
                 $(".flyer-img").remove();
+                var oldShopCartNum = $(".my-shop-cart-bz").html();
+                if(!oldShopCartNum){
+                    oldShopCartNum = 0;
+                    $(".my-shop-cart-bz").removeClass("my-shop-cart-bz-hidden")
+                }
+                var newShopCartNum = parseInt(oldShopCartNum)+1;
+                $(".my-shop-cart-bz").html(newShopCartNum);
             }
         });
-        var oldShopCartNum = $(".my-shop-cart-bz").html();
-        var newShopCartNum = parseInt(oldShopCartNum)+1;
-        $(".my-shop-cart-bz").html(newShopCartNum);
+
+        var data={"id":uid};
+        MyObj.ajaxSubmit("${base}/shopcart/add.json?id"+uid,data,"get");
+
     }
 
     function setOrder(obj, orderValue) {
@@ -233,8 +252,8 @@
     function loadItemListByCache() {
         var itemHtml = sessionStorage.getItem("search_list_item")
         $("#listItemHtml").append(itemHtml);
-
     }
+
 
     function pulldownfresh() {
         sessionStorage.removeItem("search_list_item");

@@ -67,11 +67,11 @@ MyObj.removeOrderClass=function(obj){
 
 MyObj.addShopCart =function(shopCartId,shopCartNumClass,itemId,itemPic){
     var event = window.event;
-    mui.alert(event.type+",  "+ event.pageX);
-    var offset = $("#icon-cart").offset();
-    var top = offset.top;
-    var left = offset.left;
-    //mui.alert("购物车left: "+left+" ,top: "+ top);
+    mui.alert(event.type+",  "+ event.altKey);
+    //var offset = $("#icon-cart").offset();
+    //var top = offset.top;
+    //var left = offset.left;
+    ////mui.alert("购物车left: "+left+" ,top: "+ top);
 
 
 

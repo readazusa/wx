@@ -21,6 +21,7 @@ public class ShopCartInfo extends BasePO {
 
     private String picUrl;
 
+    private int num;
 
     public String getItemId() {
         return itemId;
@@ -45,5 +46,29 @@ public class ShopCartInfo extends BasePO {
 
     public void setOpenId(String openId) {
         this.openId = openId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 }

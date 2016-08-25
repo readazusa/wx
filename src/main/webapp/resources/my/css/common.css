@@ -640,6 +640,9 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     background-color:#3366FF;
 }
 
+.my-shop-cart-bz-hidden{
+    display:none !important;
+}
 .my-color-red{
     color: red !important;
 }
