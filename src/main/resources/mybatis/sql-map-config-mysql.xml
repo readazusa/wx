@@ -16,6 +16,7 @@
 		<typeAlias type="club.lovety.portal.entity.IndexPageInfo" alias="IndexPageInfo"></typeAlias>
 
 		<typeAlias type="club.lovety.base.entity.BaseSearchPO" alias="BaseSearchPO"></typeAlias>
+		<typeAlias type="club.lovety.shopcart.po.ShopCartInfo" alias="ShopCartInfo"></typeAlias>
 		<!--<typeAlias type="club.lovety.base.entity.BasePagePO" alias="BasePagePO"></typeAlias>-->
 	</typeAliases>
 

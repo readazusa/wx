@@ -194,17 +194,12 @@
                 top: offset.top + 10 //抛物体终点纵坐标
             },
             onEnd: function() {
-//                $("#tip").show().animate({width: '200px'},300).fadeOut(500);////成功加入购物车动画效果
-                //flyer.destory(); //销毁抛物体
                 $(".flyer-img").remove();
             }
         });
-
-//        flyer.destory(); //销毁抛物体
-
-
-//        mui.alert("购物车left: "+left+" ,top: "+ top);
-
+        var oldShopCartNum = $(".my-shop-cart-bz").html();
+        var newShopCartNum = parseInt(oldShopCartNum)+1;
+        $(".my-shop-cart-bz").html(newShopCartNum);
     }
 
     function setOrder(obj, orderValue) {
