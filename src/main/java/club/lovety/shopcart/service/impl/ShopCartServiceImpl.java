@@ -1,7 +1,9 @@
 package club.lovety.shopcart.service.impl;
 
+import club.lovety.shopcart.dao.IShopCartDao;
 import club.lovety.shopcart.po.ShopCartInfo;
 import club.lovety.shopcart.service.IShopCartService;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +20,20 @@ import java.util.List;
 @Service
 public class ShopCartServiceImpl implements IShopCartService {
 
+
+
     @Resource(name = "shopCartJmsTemplate")
     private JmsTemplate jmsTemplate;
 
+    @Resource
+    private IShopCartDao shopCartDao;
+
     @Override
-    public void saveItemIdIntoMq(String itemId) {
-        jmsTemplate.convertAndSend(itemId);
+    public void saveItemIdIntoMq(String itemId,String openId) {
+        ShopCartInfo shopCartInfo = new ShopCartInfo();
+        shopCartInfo.setItemId(itemId);
+        shopCartInfo.setOpenId(openId);
+        jmsTemplate.convertAndSend(JSONObject.toJSONString(shopCartInfo));
     }
 
     @Override
@@ -72,5 +82,8 @@ public class ShopCartServiceImpl implements IShopCartService {
     }
 
 
-
+    @Override
+    public int getShopCartCountByOpenId(String openId) {
+        return shopCartDao.queryShopCartCountByOpenId(openId);
+    }
 }

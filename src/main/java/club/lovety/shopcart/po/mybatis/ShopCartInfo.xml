@@ -8,8 +8,13 @@
         select count(1) from t_wx_shopcart where openid = #{id}
     </select>
 
-    <select id="queryListByOpenId" parameterType="java.lang.String" resultType="SHopCart">
+    <select id="queryListByOpenId" parameterType="java.lang.String" resultType="ShopCartInfo">
         select * from t_wx_shopcart where openid = #{id}
     </select>
+
+    <select id="queryShopCartCountByOpenId" parameterType="java.lang.String" resultType="java.lang.Integer">
+          select sum(num) from t_wx_shopcart where openid = #{id}
+    </select>
+
 
 </mapper>

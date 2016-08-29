@@ -25,6 +25,7 @@
 		<mapper resource="club/lovety/item/entity/mybatis/ItemInfo.xml"></mapper>
 		<mapper resource="club/lovety/item/entity/mybatis/ItemTypeInfo.xml"></mapper>
 		<mapper resource="club/lovety/portal/entity/mybatis/IndexPageInfo.xml"></mapper>
+		<mapper resource="club/lovety/shopcart/po/mybatis/ShopCartInfo.xml"></mapper>
 	</mappers>
 
 </configuration>

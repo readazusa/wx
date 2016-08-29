@@ -40,7 +40,6 @@ public class ItemController {
     private IItemService itemService;
 
 
-
     @RequestMapping("goto/view")
     public String view(@RequestParam("uid") String uid,HttpServletRequest request,ModelMap model){
 
@@ -101,5 +100,9 @@ public class ItemController {
         resultData.setData(basePagePO);
         resultData.setCode(Result.SUCCESS);
     }
+
+
+
+
 
 }

@@ -70,4 +70,10 @@ public class ShopCartDaoImpl extends SqlSessionDaoSupport implements IShopCartDa
     public List<ShopCartInfo> queryPage(BaseSearchPO<ShopCartInfo> baseSearchPO) {
         return null;
     }
+
+    @Override
+    public int queryShopCartCountByOpenId(String openId) {
+
+        return this.getSqlSession().selectOne("ShopCartInfo.queryShopCartCountByOpenId",openId);
+    }
 }

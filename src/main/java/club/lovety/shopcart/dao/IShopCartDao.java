@@ -11,4 +11,8 @@ import club.lovety.shopcart.po.ShopCartInfo;
  * des:
  */
 public interface IShopCartDao extends IDao<ShopCartInfo> {
+
+    public  int queryShopCartCountByOpenId(String openId);
+
+
 }

@@ -48,6 +48,7 @@
                              data-preview-group="1">
                     </a>
                 </div>
+
                 <div class="mui-slider-item mui-slider-item-duplicate">
                     <a href="#">
                         <img src="http://120.26.208.194:8888/yd/yuantiao.jpg">

@@ -14,8 +14,9 @@ public interface IShopCartService extends IService<ShopCartInfo>{
 
 
 
+    public  void  saveItemIdIntoMq(String itemId,String openId);
 
 
-    public  void  saveItemIdIntoMq(String itemId);
+    public int getShopCartCountByOpenId(String openId);
 
 }

@@ -651,3 +651,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
 }
 
 .flyer-img{display: block;width: 50px;height: 50px;border-radius: 50px;position: fixed;z-index: 9999;}
+
+#mui_slider_loop_id{
+    min-height: 131px;
+}

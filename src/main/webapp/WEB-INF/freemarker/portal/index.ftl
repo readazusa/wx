@@ -22,32 +22,9 @@
 <div class="mui-content mui-scroll-wrapper" id="refreshContainer" style="margin-bottom: 50px;">
     <div class="mui-scroll my-trans-duration">
         <div id="slider" class="mui-slider">
-            <div class="mui-slider-group mui-slider-loop">
-                <div class="mui-slider-item mui-slider-item-duplicate">
-                    <a href="#">
-                        <img src="${indexPageInfoList[0].picUrl}">
-                    </a>
-                </div>
-                <#list indexPageInfoList as indexPageInfo>
-                    <div class="mui-slider-item">
-                        <a href="#">
-                            <img src="${indexPageInfo.picUrl}">
-                        </a>
-                    </div>
-                </#list>
-                <div class="mui-slider-item mui-slider-item-duplicate">
-                    <a href="#">
-                        <img src="${indexPageInfoList[indexPageInfoList?size-1].picUrl}">
-                    </a>
-                </div>
+            <div class="mui-slider-group mui-slider-loop" id="mui_slider_loop_id">
             </div>
-            <div class="mui-slider-indicator">
-                <#list indexPageInfoList as indexPageInfo>
-                    <#if indexPageInfo?index==0 ></#if>
-                    <div class="mui-indicator mui-active"></div>
-                <#else>
-                    <div class="mui-indicator"></div>
-                </#list>
+            <div class="mui-slider-indicator" id="mui_slider_indicator_id">
             </div>
         </div>
 
@@ -108,18 +85,21 @@
     <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
         <img src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png"  class="my-head-pic">
     </a>
+    <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
+        <span class="my-shop-cart-bz my-shop-cart-bz-hidden"></span>
+        <span class="mui-icon-extra mui-icon-extra-cart"></span>
+        <span class="mui-tab-label">购物车</span>
+    </a>
     <a class="mui-tab-item" href="${base}/center/goto/index_page.htm">
         <span class="mui-icon mui-icon-contact"></span>
         <span class="mui-tab-label">发现</span>
     </a>
-    <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
-        <span class="mui-icon-extra mui-icon-extra-cart"></span>
-        <span class="mui-tab-label">购物车</span>
-    </a>
+
 
 </nav>
     <@common.jqueryJS></@common.jqueryJS>
     <@common.muiJS></@common.muiJS>
+    <@common.myCommonJS></@common.myCommonJS>
 <script type="application/javascript">
 
 
@@ -149,6 +129,9 @@
                 }
             }
         });
+        MyObj.ajaxSubmit("${base}/portal/show_index_content.json",null,"get",MyObj.intiIndexContent);
+        MyObj.ajaxSubmit("${base}/shopcart/shop_cart_count.json",null,"get",MyObj.loadShopCartCountByOpenId)
+
         mui("#indexurl").on('tap', 'a', function () {
             var href = this.href;
             mui.openWindow({
@@ -218,8 +201,6 @@
             }
         });
 
-//
-//
 //        setTimeout(function () {
 //            mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
 //        }, 1000);

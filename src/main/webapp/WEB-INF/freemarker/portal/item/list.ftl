@@ -124,16 +124,12 @@
             loadItemListByCache();
         }
 
-//        mui("#listItemHtml").on('tap', '.my-item-list-shop-cart', function (event) {
-//                alert(JSON.stringify(event))
-////            MyObj.addShopCart("#icon-cart",".my-shop-cart-bz",this.id,this.getAttribute("url"));
-//        });
+        mui("#listItemHtml").on('tap', '.my-item-list-shop-cart', function () {
+            var btn = mui.gestures.session.firstTouch.touches[0];
+            MyObj.addShopCart("#icon-cart",".my-shop-cart-bz",this.id,this.getAttribute("url"),btn);
+        });
 
-//         $(".my-item-list-shop-cart").click(function(){
-//            alert("nihao ");
-//         });
-
-
+        MyObj.ajaxSubmit("${base}/shopcart/shop_cart_count.json",null,"get",MyObj.loadShopCartCountByOpenId)
     });
 
     function init() {
@@ -175,8 +171,8 @@
                     '<img class="my-mui-media-object mui-pull-left" src="' + obj.phonePicUrl + '" onclick="gotoHref(\'${base}/item/goto/view.htm?uid='+obj.uid+'\');">' +
                     '<div class="mui-media-body">' +
                     '<p class="my-item-list-title">' + obj.title + '</p>' +
-//                    '<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart" id="'+obj.uid+'" url="'+obj.phonePicUrl+'"></span></div>' +
-                    '<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart" onclick="addShopCart(\'' + obj.uid + '\',\''+obj.phonePicUrl+'\')"></span></div>' +
+                    '<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart" id="'+obj.uid+'" url="'+obj.phonePicUrl+'"></span></div>' +
+//                    '<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart" onclick="addShopCart(\'' + obj.uid + '\',\''+obj.phonePicUrl+'\')"></span></div>' +
                     '<div class="my-item-bottom">' +
                     '<span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">' + obj.price + '</span>' +
                     '<span class="mui-badge mui-badge-inverted my-item-right-10">购买人数:' + obj.purchaseNumber + '</span>' +
