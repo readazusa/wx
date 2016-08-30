@@ -9,6 +9,7 @@ import club.lovety.item.entity.ItemInfo;
 import club.lovety.item.service.IItemService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,11 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     public ItemInfo queryObjectById(String id) {
-        return null;
+        ItemInfo itemInfo = itemDao.queryObjectById(id);
+        Assert.notNull(itemInfo, "需要查询的商品id不存在");
+        List<String> itemPicUrlList = itemDao.queryItemPicListByItemId(id);
+        itemInfo.setPicUrlList(itemPicUrlList);
+        return itemInfo;
     }
 
     @Override
@@ -71,13 +76,13 @@ public class ItemServiceImpl implements IItemService {
 
     @Override
     public List<ItemInfo> queryListPO(int pageIndex, int pageSize, ItemInfo itemInfo) {
-        BaseSearchPO<ItemInfo> baseSearchPO = LoadBaseSearchUtil.getBaseSearch(pageIndex,pageSize,itemInfo);
+        BaseSearchPO<ItemInfo> baseSearchPO = LoadBaseSearchUtil.getBaseSearch(pageIndex, pageSize, itemInfo);
         return itemDao.queryPage(baseSearchPO);
     }
 
     @Override
-    public  List<ItemInfo> queryListPO(int pageIndex, int pageSize, String orderName,String orderValue, ItemInfo itemInfo) {
-        BaseSearchPO<ItemInfo> baseSearchPO = LoadBaseSearchUtil.getBaseSearch(pageIndex,pageSize,orderName,orderValue,itemInfo);
+    public List<ItemInfo> queryListPO(int pageIndex, int pageSize, String orderName, String orderValue, ItemInfo itemInfo) {
+        BaseSearchPO<ItemInfo> baseSearchPO = LoadBaseSearchUtil.getBaseSearch(pageIndex, pageSize, orderName, orderValue, itemInfo);
         return itemDao.queryPage(baseSearchPO);
     }
 
@@ -88,17 +93,17 @@ public class ItemServiceImpl implements IItemService {
         String pageSizeStr = request.getParameter("pageSize");
         String orderName = request.getParameter("orderName");
         String orderValue = request.getParameter("orderValue");
-        int pageSize = StringUtils.isNotBlank(pageSizeStr)?Integer.parseInt(pageSizeStr):10;
-        int pageIndex = StringUtils.isNoneBlank(pageIndexStr)?Integer.parseInt(pageIndexStr):1;
-        ItemInfo itemInfo =loadSearchCondition(request);
+        int pageSize = StringUtils.isNotBlank(pageSizeStr) ? Integer.parseInt(pageSizeStr) : 10;
+        int pageIndex = StringUtils.isNoneBlank(pageIndexStr) ? Integer.parseInt(pageIndexStr) : 1;
+        ItemInfo itemInfo = loadSearchCondition(request);
         int totalCount = this.getTotalCount(itemInfo);
-        List<ItemInfo> itemInfos = this.queryListPO(pageIndex,pageSize,orderName,orderValue,itemInfo);
-        BasePagePO<ItemInfo> basePagePO = loadResultBasePageInfo(itemInfos,totalCount,pageIndex,pageSize);
+        List<ItemInfo> itemInfos = this.queryListPO(pageIndex, pageSize, orderName, orderValue, itemInfo);
+        BasePagePO<ItemInfo> basePagePO = loadResultBasePageInfo(itemInfos, totalCount, pageIndex, pageSize);
         return basePagePO;
     }
 
 
-    private ItemInfo loadSearchCondition(HttpServletRequest request){
+    private ItemInfo loadSearchCondition(HttpServletRequest request) {
         ItemInfo itemInfo = new ItemInfo();
         String search = request.getParameter("search");
         String isIndex = request.getParameter("isIndex");
@@ -111,14 +116,14 @@ public class ItemServiceImpl implements IItemService {
     }
 
 
+    private BasePagePO<ItemInfo> loadResultBasePageInfo(List<ItemInfo> itemInfos, int totalCount, int pageIndex, int pageSize) {
+        BasePagePO<ItemInfo> basePagePO = new BasePagePO<>();
+        basePagePO.setPageSize(pageSize);
+        basePagePO.setData(itemInfos);
+        basePagePO.setRecordsTotal(totalCount);
+        basePagePO.setCurrentPage(pageIndex);
+        return basePagePO;
+    }
 
-  private BasePagePO<ItemInfo> loadResultBasePageInfo(List<ItemInfo> itemInfos,int totalCount,int pageIndex,int pageSize){
-      BasePagePO<ItemInfo> basePagePO = new BasePagePO<>();
-      basePagePO.setPageSize(pageSize);
-      basePagePO.setData(itemInfos);
-      basePagePO.setRecordsTotal(totalCount);
-      basePagePO.setCurrentPage(pageIndex);
-      return basePagePO;
-  }
 
 }

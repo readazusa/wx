@@ -49,7 +49,7 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
     @Override
     public ItemInfo queryObjectById(String id) {
         List<ItemInfo> itemInfos = this.getSqlSession().selectList("ItemInfo.select",id);
-        return itemInfos.size()>1?itemInfos.get(1):null;
+        return itemInfos.size()>0?itemInfos.get(0):null;
     }
 
     @Override
@@ -70,5 +70,10 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
     @Override
     public List<ItemInfo> queryPage(BaseSearchPO<ItemInfo> baseSearchPO) {
         return this.getSqlSession().selectList("ItemInfo.queryPage",baseSearchPO);
+    }
+
+    @Override
+    public List<String> queryItemPicListByItemId(String itemId) {
+        return this.getSqlSession().selectList("FilePO.queryItemPicListByItemId",itemId);
     }
 }

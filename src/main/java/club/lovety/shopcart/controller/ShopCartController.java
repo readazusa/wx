@@ -46,7 +46,6 @@ public class ShopCartController {
         return null;
     }
 
-
     @RequestMapping("shop_cart_count")
     @ResponseBody
     public Object loadShopCartCount(HttpServletRequest request){
@@ -62,6 +61,4 @@ public class ShopCartController {
         }
         return result;
     }
-
-
 }

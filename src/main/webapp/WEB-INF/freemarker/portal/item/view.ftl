@@ -20,63 +20,67 @@
 <div class="mui-content mui-scroll-wrapper" style="margin-bottom: 50px;">
     <div class="mui-scroll">
         <div id="slider" class="mui-slider">
-            <div class="mui-slider-group mui-slider-loop">
-                <div class="mui-slider-item mui-slider-item-duplicate">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
-                    </a>
-                </div>
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/yuantiao.jpg" data-preview-src=""
-                             data-preview-group="1">
-                    </a>
-                </div>
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/cbd.jpg" data-preview-src="" data-preview-group="1">
-                    </a>
-                </div>
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/muwu.jpg" data-preview-src="" data-preview-group="1">
-                    </a>
-                </div>
-                <div class="mui-slider-item">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg" data-preview-src=""
-                             data-preview-group="1">
-                    </a>
-                </div>
+            <div class="mui-slider-group mui-slider-loop" id="item_view_page_slider_loop" style="width: 100%;height: 250px;">
+                <#--<div class="mui-slider-item mui-slider-item-duplicate">-->
+                    <#--<a href="#">-->
+                        <#--<img src="http://120.26.208.194:8888/yd/shuijiao.jpg">-->
+                    <#--</a>-->
+                <#--</div>-->
+                <#--<div class="mui-slider-item">-->
+                    <#--<a href="#">-->
+                        <#--<img src="http://120.26.208.194:8888/yd/yuantiao.jpg" data-preview-src=""-->
+                             <#--data-preview-group="1">-->
+                    <#--</a>-->
+                <#--</div>-->
+                <#--<div class="mui-slider-item">-->
+                    <#--<a href="#">-->
+                        <#--<img src="http://120.26.208.194:8888/yd/cbd.jpg" data-preview-src="" data-preview-group="1">-->
+                    <#--</a>-->
+                <#--</div>-->
+                <#--<div class="mui-slider-item">-->
+                    <#--<a href="#">-->
+                        <#--<img src="http://120.26.208.194:8888/yd/muwu.jpg" data-preview-src="" data-preview-group="1">-->
+                    <#--</a>-->
+                <#--</div>-->
+                <#--<div class="mui-slider-item">-->
+                    <#--<a href="#">-->
+                        <#--<img src="http://120.26.208.194:8888/yd/shuijiao.jpg" data-preview-src=""-->
+                             <#--data-preview-group="1">-->
+                    <#--</a>-->
+                <#--</div>-->
 
-                <div class="mui-slider-item mui-slider-item-duplicate">
-                    <a href="#">
-                        <img src="http://120.26.208.194:8888/yd/yuantiao.jpg">
-                    </a>
-                </div>
+                <#--<div class="mui-slider-item mui-slider-item-duplicate">-->
+                    <#--<a href="#">-->
+                        <#--<img src="http://120.26.208.194:8888/yd/yuantiao.jpg">-->
+                    <#--</a>-->
+                <#--</div>-->
             </div>
-            <div class="mui-slider-indicator">
-                <div class="mui-indicator mui-active"></div>
-                <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
-                <div class="mui-indicator"></div>
+            <div class="mui-slider-indicator" id="item_view_page_slider_indicator">
+                <#--<div class="mui-indicator mui-active"></div>-->
+                <#--<div class="mui-indicator"></div>-->
+                <#--<div class="mui-indicator"></div>-->
+                <#--<div class="mui-indicator"></div>-->
             </div>
         </div>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media">
-                <a href="javascript:;">
-                    <img class="mui-media-object mui-pull-right" src="http://120.26.208.194:8888/yd/yuantiao.jpg">
+                <#--<a href="javascript:;">-->
+                    <#--<img class="mui-media-object mui-pull-right" src="http://120.26.208.194:8888/yd/yuantiao.jpg">-->
+                    <div class="mui-pull-right my-item-view-share" onclick="doShare('${uid}')">
+                        <span class="mui-icon-extra mui-icon-extra-share"></span>
+                        <span>分享</span>
+                    </div>
                     <div class="mui-media-body">
-                        <p class='my-two-ellipsis'>静静的看这个世界，最后终于疯了a阿达大的撒阿萨德阿萨德</p>
-                        <span>价格￥12</span>
-                        <p>
+                        <p class='my-two-ellipsis' id="itemTitle"></p>
+                        <span id="itemPrice">价格￥12</span>
+                        <p id="itemPostage">
                             快递:
                         </p>
                     </div>
-                </a>
+                <#--</a>-->
             </li>
         </ul>
-        <div id="slider" class="mui-slider">
+        <div id="slider" class="mui-slidertt">
             <div id="sliderSegmentedControl"
                  class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
                 <a class="mui-control-item" href="#item1mobile">
@@ -92,11 +96,11 @@
             <div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-4"></div>
             <div class="mui-slider-group">
                 <div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
-                    <p>
-                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
-                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
-                        <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
-                    </p>
+                    <#--<p>-->
+                        <#--<img src="http://120.26.208.194:8888/yd/shuijiao.jpg">-->
+                        <#--<img src="http://120.26.208.194:8888/yd/shuijiao.jpg">-->
+                        <#--<img src="http://120.26.208.194:8888/yd/shuijiao.jpg">-->
+                    <#--</p>-->
                 </div>
                 <div id="item2mobile" class="mui-slider-item mui-control-content">
                     产品参数
@@ -122,7 +126,6 @@
     </div>
     <div class="my-buy-number">
         <span style="float: left;margin-right: 5px; margin-top: 7px;">
-
            购买数量
            </span>
         <span class="my-buy-number-kc">库存:12</span>
@@ -174,6 +177,8 @@
         mui.previewImage();
         initMui();
         FastClick.attach(document.body);
+        MyObj.ajaxSubmit("${base}/item/load_item.json",{"itemId":"${uid}"},"get",MyObj.loadItemInViewPage);
+
     });
 
     function initMui() {
@@ -194,6 +199,11 @@
         $.showWin();
 //
     }
+
+    function doShare(itemId){
+
+    }
+
 </script>
 </body>
 </html>

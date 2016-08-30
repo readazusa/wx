@@ -4,6 +4,7 @@ package club.lovety.item.entity;
 import club.lovety.base.entity.BasePO;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * club.lovety.portal.entity
@@ -58,6 +59,11 @@ public class ItemInfo extends BasePO {
     private int sales;  //销量
 
     private int purchaseNumber;  //购买数量
+
+
+    private List<String> picUrlList; //商品图片list列表
+
+
 
     public String getUid() {
         return uid;
@@ -226,5 +232,13 @@ public class ItemInfo extends BasePO {
 
     public void setPurchaseNumber(int purchaseNumber) {
         this.purchaseNumber = purchaseNumber;
+    }
+
+    public List<String> getPicUrlList() {
+        return picUrlList;
+    }
+
+    public void setPicUrlList(List<String> picUrlList) {
+        this.picUrlList = picUrlList;
     }
 }

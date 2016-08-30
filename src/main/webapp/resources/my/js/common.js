@@ -150,6 +150,31 @@ MyObj.loadShopCartCountByOpenId = function(resp){
     }
 }
 
+MyObj.loadItemInViewPage = function(resp){
+    if(resp.code = "SUCCESS"){
+        var itemObj = resp.data;
+        var itemPicUrlList = itemObj.picUrlList;
+        var firstLoopDiv = '<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="'+itemPicUrlList[itemPicUrlList.length-1]+'" /></a></div>';
+        var lastLoopDiv = '<div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="'+itemPicUrlList[0]+'"/></a></div>'
+        var loopDiv = "";
+        var sliderDiv = "";
+        itemPicUrlList.forEach(function(e,index){
+            if(0 == index){
+                sliderDiv +='<div class="mui-indicator mui-active"></div>';
+            }else{
+                sliderDiv +='<div class="mui-indicator"></div>';
+            }
+            loopDiv +='<div class="mui-slider-item"><a href="#"><img src="'+e+'" data-preview-src=""  data-preview-group="1" /></a></div>'
+        });
+        $("#item_view_page_slider_loop").empty().append(firstLoopDiv+loopDiv+lastLoopDiv);
+        $("#item_view_page_slider_indicator").empty().append(sliderDiv);
+        MyObj.setSlider();
+        $("#itemTitle").text(itemObj.title);
+        $("#itemPrice").text("价格:￥"+itemObj.price);
+        $("#itemPostage").text("快递:"+itemObj.postage);
+        $("#item1mobile").html(itemObj.descr);
+    }
+}
 
 
 

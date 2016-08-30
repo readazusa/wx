@@ -33,19 +33,6 @@
 <div class="mui-content mui-scroll-wrapper" id="refreshContainer" style="margin-bottom: 50px;">
     <div class="mui-scroll my-trans-duration">
         <ul class="mui-table-view" id="listItemHtml">
-        <#--<li class="mui-table-view-cell mui-media my-list-item">-->
-                <#--<a href="javascript:;">-->
-                    <#--<img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">-->
-                    <#--<div class="mui-media-body">-->
-                        <#--<p class='my-item-list-title'>能和心爱的人一起睡是件幸福的事可是打呼噜怎么办的事可是打呼噜怎么办打呼噜怎么办</p>-->
-                        <#--<div><span class="iconfont icon-iconfontgouwuche my-item-list-shop-cart"></span></div>-->
-                        <#--<div class="my-item-bottom">-->
-                            <#--<span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">3499</span>-->
-                            <#--<span class="mui-badge mui-badge-inverted my-item-right-10">购买人数:10</span>-->
-                        <#--</div>-->
-                    <#--</div>-->
-                <#--</a>-->
-            <#--</li>-->
         </ul>
         <input type="hidden" id="orderName">
         <input type="hidden" id="orderValue">
