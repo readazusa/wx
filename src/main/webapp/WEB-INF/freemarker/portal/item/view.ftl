@@ -116,22 +116,22 @@
 <div class="my-popover-win">
     <div class="my-buy-div">
         <div class="my-buy-div-img">
-            <img src="http://120.26.208.194:8888/yd/shuijiao.jpg">
+            <img src="http://120.26.208.194:8888/yd/shuijiao.jpg" id="buyPic">
         </div>
         <span class="my-close">x</span>
         <div class="my-buy-detal">
-            <p>静静的看这个世界，最后终于疯了a阿达大的撒阿萨德阿萨德</p>
-            <p>￥234.00</p>
+            <p id="buyTitle">静静的看这个世界，最后终于疯了a阿达大的撒阿萨德阿萨德</p>
+            <p id="buyPrice">￥234.00</p>
         </div>
     </div>
     <div class="my-buy-number">
         <span style="float: left;margin-right: 5px; margin-top: 7px;">
            购买数量
            </span>
-        <span class="my-buy-number-kc">库存:12</span>
-        <div class="mui-numbox my-numbox">
+        <span class="my-buy-number-kc" id="buyStock">库存:12</span>
+        <div class="mui-numbox my-numbox" data-numbox-min="1" data-numbox-max="${stock?default(5)}">
             <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-            <input class="mui-input-numbox" type="number"/>
+            <input class="mui-input-numbox" type="number" />
             <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
         </div>
     </div>
@@ -150,13 +150,14 @@
             <span class="mui-icon mui-icon-trash"></span>
             <span class="mui-tab-label">店铺</span>
         </div>
-        <div class="my-icon">
-            <span class="mui-icon mui-icon-trash"></span>
-            <span class="mui-tab-label">收藏</span>
+        <div class="my-icon" id="icon-cart">
+            <span class="my-shop-cart-view-bz my-shop-cart-bz-hidden"></span>
+            <span class="mui-icon-extra mui-icon-extra-cart my-item-view-icon" ></span>
+            <span class="mui-tab-label">购物车</span>
         </div>
     </div>
-    <div class="my-view-bar-div" style="width: 60%;">
-        <div class="my-view-var-div-btn" style="width: 55%;background-color:#f1ad4e">
+    <div class="my-view-bar-div" style="width: 60%;" >
+        <div class="my-view-var-div-btn" style="width: 55%;background-color:#f1ad4e" id="item-view-shop-cart" itemId ="${uid}" >
             加入购物车
         </div>
         <div class="my-view-var-div-btn" style="width: 45%;background-color: red"
@@ -169,17 +170,37 @@
     <@common.muiJS></@common.muiJS>
     <@common.muiZoomJS></@common.muiZoomJS>
     <@common.muiImageViewJS></@common.muiImageViewJS>
+    <@common.flyJS></@common.flyJS>
     <@common.myCommonJS></@common.myCommonJS>
     <@common.fastclickJS></@common.fastclickJS>
 <script type="application/javascript">
 
     $(function () {
         mui.previewImage();
+        MyObj.ajaxSubmit("${base}/item/load_item.json",{"itemId":"${uid}"},"get",MyObj.loadItemInViewPage);
         initMui();
         FastClick.attach(document.body);
-        MyObj.ajaxSubmit("${base}/item/load_item.json",{"itemId":"${uid}"},"get",MyObj.loadItemInViewPage);
+        $("#item-view-shop-cart").bind("click",function(e){
+            var itemId = $(this).attr("itemId");
+            var url = $(this).attr("pic");
+            MyObj.addShopCart(itemId,url,e,"#icon-cart",".my-shop-cart-view-bz");
+        });
+
+        MyObj.ajaxSubmit("${base}/shopcart/shop_cart_count.json",null,"get",initShopCart)
 
     });
+    function initShopCart(resp){
+        if(resp.code = "SUCCESS"){
+            var shopCartCountByOpenId = resp.data;
+            if(shopCartCountByOpenId){
+                if("0" != shopCartCountByOpenId){
+                    $(".my-shop-cart-view-bz").html(shopCartCountByOpenId);
+                    $(".my-shop-cart-view-bz").removeClass("my-shop-cart-bz-hidden")
+                }
+            }
+        }
+    }
+
 
     function initMui() {
         (function ($) {

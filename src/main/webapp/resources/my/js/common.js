@@ -18,8 +18,19 @@
     }
 
     $.closePopover = function(){
-        $(".my-popover-win").removeClass("my-popover-win-show");
+        $(".my-popover").remove();
+        //$(".my-popover-win").removeClass("my-popover-win-show");
+        $(".my-popover-win").addClass("zoomOut");
+        setTimeout(function(){
+            $(".my-popover-win").removeClass("my-popover-win-show zoomOut");
+        },500)
     }
+
+    $(".my-close").click(function(){
+       $.closePopover();
+    });
+
+
 })($)
 var  MyObj={};
 
@@ -65,12 +76,11 @@ MyObj.removeOrderClass=function(obj){
     });
 }
 
-MyObj.addShopCart =function(shopCartId,shopCartNumClass,itemId,itemPic,event){
+MyObj.addShopCart =function(itemId,itemPic,event,offsetId,shopCartClass){
 
-    var offset = $("#icon-cart").offset();
+    var offset = $(offsetId).offset();
     var top = offset.top;
     var left = offset.left;
-
     var flyer = $('<img class="flyer-img" src="' + itemPic + '">');
     flyer.fly({
         start: {
@@ -83,13 +93,13 @@ MyObj.addShopCart =function(shopCartId,shopCartNumClass,itemId,itemPic,event){
         },
         onEnd: function() {
             $(".flyer-img").remove();
-            var oldShopCartNum = $(".my-shop-cart-bz").html();
+            var oldShopCartNum = $(shopCartClass).html();
             if(!oldShopCartNum){
                 oldShopCartNum = 0;
-                $(".my-shop-cart-bz").removeClass("my-shop-cart-bz-hidden")
+                $(shopCartClass).removeClass("my-shop-cart-bz-hidden")
             }
             var newShopCartNum = parseInt(oldShopCartNum)+1;
-            $(".my-shop-cart-bz").html(newShopCartNum);
+            $(shopCartClass).html(newShopCartNum);
         }
     });
 
@@ -169,10 +179,17 @@ MyObj.loadItemInViewPage = function(resp){
         $("#item_view_page_slider_loop").empty().append(firstLoopDiv+loopDiv+lastLoopDiv);
         $("#item_view_page_slider_indicator").empty().append(sliderDiv);
         MyObj.setSlider();
-        $("#itemTitle").text(itemObj.title);
+        $("#itemTitle").html(itemObj.title);
         $("#itemPrice").text("价格:￥"+itemObj.price);
         $("#itemPostage").text("快递:"+itemObj.postage);
         $("#item1mobile").html(itemObj.descr);
+
+        $("#buyPic").attr("src",itemObj.phonePicUrl);
+        $("#buyPrice").text("￥"+itemObj.price);
+        $("#buyTitle").html(itemObj.title);
+        $("#buyStock").text("库存:"+itemObj.stock);
+         //$(".mui-numbox").attr("data-numbox-max",itemObj.stock);
+        $("#item-view-shop-cart").attr("pic",itemObj.phonePicUrl);
     }
 }
 

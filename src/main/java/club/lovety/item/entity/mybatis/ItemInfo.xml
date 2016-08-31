@@ -58,5 +58,7 @@
                 delete from t_wx_item_vs_file where itemid = #{id}
         </delete>
 
-
+<select id="queryItemStockCountByItemId" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select stock from t_wx_item where uid = #{id}
+</select>
 </mapper>

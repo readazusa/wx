@@ -21,4 +21,7 @@ public interface IItemService extends IService<ItemInfo>{
 
     public  List<ItemInfo> queryListPO(int pageIndex,int pageSize,String orderName,String orderValue,ItemInfo itemInfo);
 
+
+    public int getStockByItemId(String id);
+
 }

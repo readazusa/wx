@@ -20,4 +20,7 @@ public interface IItemDao extends IDao<ItemInfo> {
      * @return
      */
     public List<String>  queryItemPicListByItemId(String itemId);
+
+
+    public int queryItemStockCountByItemId(String id);
 }

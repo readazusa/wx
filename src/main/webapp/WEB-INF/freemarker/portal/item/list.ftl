@@ -113,7 +113,7 @@
 
         mui("#listItemHtml").on('tap', '.my-item-list-shop-cart', function () {
             var btn = mui.gestures.session.firstTouch.touches[0];
-            MyObj.addShopCart("#icon-cart",".my-shop-cart-bz",this.id,this.getAttribute("url"),btn);
+            MyObj.addShopCart(this.id,this.getAttribute("url"),btn,"#icon-cart",".my-shop-cart-bz");
         });
 
         MyObj.ajaxSubmit("${base}/shopcart/shop_cart_count.json",null,"get",MyObj.loadShopCartCountByOpenId)

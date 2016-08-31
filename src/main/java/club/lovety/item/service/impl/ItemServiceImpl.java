@@ -125,5 +125,8 @@ public class ItemServiceImpl implements IItemService {
         return basePagePO;
     }
 
-
+    @Override
+    public int getStockByItemId(String id) {
+        return this.itemDao.queryItemStockCountByItemId(id);
+    }
 }

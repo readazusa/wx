@@ -76,4 +76,9 @@ public class ItemDaoImpl extends SqlSessionDaoSupport implements IItemDao {
     public List<String> queryItemPicListByItemId(String itemId) {
         return this.getSqlSession().selectList("FilePO.queryItemPicListByItemId",itemId);
     }
+
+    @Override
+    public int queryItemStockCountByItemId(String id) {
+        return this.getSqlSession().selectOne("ItemInfo.queryItemStockCountByItemId",id);
+    }
 }

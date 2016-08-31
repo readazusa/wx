@@ -42,6 +42,8 @@ public class ItemController {
     @RequestMapping("goto/view")
     public String view(@RequestParam("uid") String uid, HttpServletRequest request, ModelMap model) {
         model.put("uid", uid);
+        int stock = itemService.getStockByItemId(uid);
+        model.put("stock",stock);
         return "portal/item/view";
     }
 
@@ -57,7 +59,6 @@ public class ItemController {
 
     /**
      * 跳转天天特价
-     *
      * @return
      */
     @RequestMapping("goto/tttj")
