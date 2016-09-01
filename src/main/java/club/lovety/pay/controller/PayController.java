@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +53,8 @@ public class PayController {
      * @return
      */
     @RequestMapping("create")
-    public String createPay(HttpServletRequest request,ModelMap model){
+    @ResponseBody
+    public Object createPay(HttpServletRequest request){
         HttpSession session = request.getSession();
         Object openId = session.getAttribute("openId");
         log.debug("支付获取session中 openid: {}",openId);
@@ -93,9 +95,17 @@ public class PayController {
         PayRetObj payRetObj = XML2Object.getXml2Obj("xml",resultPay,PayRetObj.class);
         log.debug("统一订单的返回实体类结果：{}",payRetObj.toString());
         WxPayConfig wxPayConfig = WxPayConfigUtils.getWxPayConfig(payRetObj.getNonce_str(),payRetObj.getPrepay_id(),"MD5");
-        model.put("wxPayConfig",wxPayConfig);
-        return "portal/item/pay";
+//        model.put("wxPayConfig",wxPayConfig);
+        return wxPayConfig;
     }
+
+
+
+
+
+
+
+
 
     private static String createNonceStr() {
         return UuidUtils.getUuid();

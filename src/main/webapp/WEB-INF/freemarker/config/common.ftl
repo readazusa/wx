@@ -90,3 +90,7 @@ poppicker组件依赖mui.picker.js/.css mui.poppicker.js/.css请务必在mui.js/
 <#macro flyJS>
     <script src="${base}/resources/fly/jquery.fly.js" type="application/javascript"></script>
 </#macro>
+
+<#macro vueJS>
+    <script src="${base}/resources/vue/vue.min.js" type="application/javascript"></script>
+</#macro>

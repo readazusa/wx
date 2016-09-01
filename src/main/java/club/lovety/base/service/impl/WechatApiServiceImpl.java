@@ -163,17 +163,9 @@ public class WechatApiServiceImpl implements IWechatApiService {
             cdSubbuttonThree.setUrl(WeChatUrlUtils.INDEX_URL);
             cdSubbuttonThree.setType(MenuType.VIEW);
 
-
-            MenuButton cdSubbuttonFour = new MenuButton();
-            cdSubbuttonFour.setName("最新店铺");
-            cdSubbuttonFour.setUrl("http://sunmingchun.net:8080/wx/portal/index.htm");
-            cdSubbuttonFour.setType(MenuType.VIEW);
-
-
             cdSubbutton.add(cdSubbuttonOne);
             cdSubbutton.add(cdSubbuttonTwo);
             cdSubbutton.add(cdSubbuttonThree);
-            cdSubbutton.add(cdSubbuttonFour);
 
             menuButtonCd.setSub_button(cdSubbutton);
             menuButtons.add(menuButtonCd);

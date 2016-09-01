@@ -13,6 +13,7 @@
             <mvc:interceptor>
                 <mvc:mapping path="/**/*.htm" />
                 <mvc:exclude-mapping path="/oauth/**"></mvc:exclude-mapping>
+                <mvc:exclude-mapping path="/wx/**"></mvc:exclude-mapping>
                 <mvc:exclude-mapping path="/portal/index.htm"></mvc:exclude-mapping>
                 <bean class="club.lovety.interceptor.WxSystemInterceptor">
                     <!--<property name="url" value="http://www.sunmingchun.net:8080/oauth/code.htm"></property>-->

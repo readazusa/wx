@@ -41,9 +41,10 @@ public class ShopCartController {
     @RequestMapping("add")
     @ResponseBody
     public Object add(String id, HttpServletRequest request) {
+        Result result = new Result();
         String openId = (String)request.getSession().getAttribute("openId");
         shopCartService.saveItemIdIntoMq(id,openId);
-        return null;
+        return result;
     }
 
     @RequestMapping("shop_cart_count")

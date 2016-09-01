@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div class="mui-content mui-scroll-wrapper" >
+<div class="mui-content mui-scroll-wrapper">
     <div class="mui-scroll">
         <ul class="mui-table-view">
             <li class="mui-table-view-cell">
@@ -31,15 +31,16 @@
                 </a>
             </li>
         </ul>
-        <ul class="mui-table-view" style="margin-top: 5px;">
+        <ul class="mui-table-view" style="margin-top: 5px;background-color: #efeff4;">
             <li class="mui-table-view-cell mui-media my-list-item">
                 <a href="javascript:;">
                     <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">
                     <div class="mui-media-body">
-                        <p class='my-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+                        <p class='my-ellipsis'>${buyItemInfo.title}</p>
                         <div class="my-item-bottom">
-                            <span class="mui-badge mui-badge-inverted">￥</span><span style="color: red">3499</span>
-                            <span class="mui-badge mui-badge-inverted my-item-left-170">X<i style="font-size: 20px;">1</i></span>
+                            <span class="mui-badge mui-badge-inverted">￥</span><span
+                                style="color: red">${buyItemInfo.price}</span>
+                            <span class="mui-badge mui-badge-inverted my-item-left-200">X<span style="font-size: 15px;">{{buyCount}}</span></span>
                         </div>
                     </div>
                 </a>
@@ -47,27 +48,39 @@
         </ul>
         <div class="my-order-number">
             <span>
-                购买数量   </span><div class="mui-numbox my-numbox">
+                购买数量   </span>
+            <div class="mui-numbox my-numbox" data-numbox-min="1" data-numbox-max="${buyItemInfo.stock}">
                 <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-                <input class="mui-input-numbox" type="number" />
+                <input class="mui-input-numbox" type="number" v-model="buyCount" />
                 <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
             </div>
         </div>
         <div class="my-order-ps">
-            <span>配送方式</span>
-            <span class="my-order-yj-price">快递 ￥12</span>
+            <span>配送方式  ${buyItemInfo.sendMethod}</span>
+            <span class="my-order-yj-price">快递 ￥${buyItemInfo.postage}</span>
         </div>
         <div class="my-order-liuyan">
-                <textarea placeholder="给卖家留言...."></textarea>
+            <textarea placeholder="给卖家留言...." v-model="ly"></textarea>
         </div>
     </div>
-
 </div>
+
+<form>
+    <input type="hidden" name="itemId" value="${buyItemInfo.itemId}">
+    <input type="hidden" name="totalPrice" v-model="totalPrice">
+    <input type="hidden" name="count" v-model="buyCount">
+    <input type="hidden" name="title" value="${buyItemInfo.title}">
+    <input type="hidden" name="postage" value="${buyItemInfo.postage}">
+    <input type="hidden" name="price"  value="${buyItemInfo.price}">
+    <input type="hidden" name="ly" v-model="ly">
+</form>
+
+
 
 <nav class="mui-bar mui-bar-tab">
     <div class="my-view-bar-div" style="width: 70%;">
         <div class="my-view-buy-price">
-            合计:<span style="font-size: small;color: red">￥</span><span style="color: red">1234</span>
+            合计:<span style="font-size: small;color: red">￥</span><span style="color: red">{{totalPrice}}</span>
         </div>
     </div>
     <div class="my-view-bar-div" style="width: 30%;">
@@ -79,17 +92,46 @@
     <@common.muiJS></@common.muiJS>
     <@common.jqueryJS></@common.jqueryJS>
     <@common.fastclickJS></@common.fastclickJS>
+    <@common.vueJS></@common.vueJS>
+<@common.myCommonJS></@common.myCommonJS>
+
 <script type="application/javascript">
+    var vue= null;
     $(function () {
         FastClick.attach(document.body);
         mui('.mui-scroll-wrapper').scroll({
             indicators: true //是否显示滚动条
         });
+        vue =  new Vue({
+            el:"body",
+            data:{
+                buyCount:${buyItemInfo.buyCount},
+                price:${buyItemInfo.price},
+                postage:${buyItemInfo.postage}
+            },
+            computed:{
+                totalPrice:function(){
+                    return this.buyCount*this.price+this.postage;
+                }
+            }
+        })
     });
 
-    function  doBuy(){
+    function doBuy() {
+        MyObj.ajaxSubmit("${base}/pay/create.json",null,"get",pay);
+    }
+    function  pay(resp){
+        WeixinJSBridge.invoke('getBrandWCPayRequest',{
+            "appId":resp.appId,
+            "timeStamp":resp.timeStamp,
+            "nonceStr":resp.nonceStr,
+            "package":resp.payPackage,
+            "signType":resp.signType,
+            "paySign":resp.paySign
+        }, function (res) {
 
-//        var offCanvasWrapper = mui('#offCanvasWrapper');
+            alert("微信支付的返回结果： "+ res.err_msg);
+        });
     }
 
 </script>

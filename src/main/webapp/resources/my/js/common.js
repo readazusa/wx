@@ -32,9 +32,12 @@
 
 
 })($)
+
+
+
 var  MyObj={};
 
-
+MyObj.locationUrl=window.location.origin+"/wx";
 /**
  *
  * @param url
@@ -104,7 +107,7 @@ MyObj.addShopCart =function(itemId,itemPic,event,offsetId,shopCartClass){
     });
 
     var data={"id":itemId};
-    MyObj.ajaxSubmit("/shopcart/add.json",data,"get",MyObj.receive);
+    MyObj.ajaxSubmit(MyObj.locationUrl+"/shopcart/add.json",data,"get",MyObj.receive);
 }
 
 MyObj.receive = function(){
@@ -188,8 +191,12 @@ MyObj.loadItemInViewPage = function(resp){
         $("#buyPrice").text("￥"+itemObj.price);
         $("#buyTitle").html(itemObj.title);
         $("#buyStock").text("库存:"+itemObj.stock);
-         //$(".mui-numbox").attr("data-numbox-max",itemObj.stock);
         $("#item-view-shop-cart").attr("pic",itemObj.phonePicUrl);
+
+        $("#price").val(itemObj.price);
+        $("#title").val(itemObj.title);
+        $("#postage").val(itemObj.postage);
+
     }
 }
 

@@ -17,6 +17,11 @@
 
 		<typeAlias type="club.lovety.base.entity.BaseSearchPO" alias="BaseSearchPO"></typeAlias>
 		<typeAlias type="club.lovety.shopcart.po.ShopCartInfo" alias="ShopCartInfo"></typeAlias>
+
+		<typeAlias type="club.lovety.user.entity.AddressInfo" alias="AddressInfo"></typeAlias>
+		<typeAlias type="club.lovety.user.entity.UserInfo" alias="UserInfo"></typeAlias>
+		<typeAlias type="club.lovety.user.entity.UserParticle" alias="UserParticle"></typeAlias>
+		<typeAlias type="club.lovety.user.entity.UserVsAddressInfo" alias="UserVsAddressInfo"></typeAlias>
 		<!--<typeAlias type="club.lovety.base.entity.BasePagePO" alias="BasePagePO"></typeAlias>-->
 	</typeAliases>
 
@@ -26,6 +31,12 @@
 		<mapper resource="club/lovety/item/entity/mybatis/ItemTypeInfo.xml"></mapper>
 		<mapper resource="club/lovety/portal/entity/mybatis/IndexPageInfo.xml"></mapper>
 		<mapper resource="club/lovety/shopcart/po/mybatis/ShopCartInfo.xml"></mapper>
+
+		<mapper resource="club/lovety/user/entity/mybatis/AddressInfo.xml"></mapper>
+
+		<mapper resource="club/lovety/user/entity/mybatis/UserInfo.xml"></mapper>
+		<mapper resource="club/lovety/user/entity/mybatis/UserParticle.xml"></mapper>
+
 	</mappers>
 
 </configuration>

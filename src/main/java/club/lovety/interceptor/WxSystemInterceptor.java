@@ -24,7 +24,7 @@ public class WxSystemInterceptor extends HandlerInterceptorAdapter {
 
     private  static  final Logger log  = LoggerFactory.getLogger(WxSystemInterceptor.class);
 
-    private String url = "http://www.sunmingchun.net/oauth/code.htm";
+    private String url = "http://www.sunmingchun.net/wx/oauth/code.htm";
 
     public String getUrl() {
         return url;

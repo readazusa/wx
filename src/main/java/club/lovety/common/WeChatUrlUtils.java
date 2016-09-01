@@ -11,7 +11,7 @@ public class WeChatUrlUtils {
 
     public static final String REPLACE_STR="ACCESS_TOKEN";
 
-    public  static final String INDEX_URL="http://www.sunmingchun.net/weixin/portal/index.htm";
+    public  static final String INDEX_URL="http://www.sunmingchun.net/wx/portal/index.htm";
 
     public static final String MENU_URL= "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";   //自定义菜单链接
     public static final String GXH_MENU_URL="https://api.weixin.qq.com/cgi-bin/menu/addconditional?access_token=ACCESS_TOKEN";  //个性化菜单链接

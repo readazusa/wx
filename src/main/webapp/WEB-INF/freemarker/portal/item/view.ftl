@@ -139,6 +139,16 @@
         <button type="button" class="mui-btn mui-btn-danger mui-btn-block" style="background-color: red" onclick="doBuyOrder('${base}/order/goto/buy_page.htm')">确定</button>
     </div>
 </div>
+<form id="orderForm" method="post" action="${base}/order/goto/buy_page.htm">
+    <input type="hidden" id="stock" name="stock" value="${stock}">
+    <input type="hidden" value="${uid}" name="itemId">
+    <input type="hidden" id="price" name="price">
+    <input type="hidden" id="title" name="title">
+    <input type="hidden" id="buyCount" name="buyCount">
+    <input type="hidden" id="postage" name="postage">
+</form>
+
+
 
 <nav class="mui-bar mui-bar-tab">
     <div class="my-view-bar-div" style="width: 40%;">
@@ -211,14 +221,20 @@
     }
 
     function doBuyOrder(url){
-        mui.openWindow({
+      $("#buyCount").val($(".mui-input-numbox").val());
+      $("#orderForm").submit();
+      /*  mui.openWindow({
             id:url,
-            url:url
-        });
+            url:url,
+            extras:{
+                stock:$("#stock").val(),
+                count:$(".mui-input-numbox").val(),
+                itemId:"${uid}"
+            }
+        });*/
     }
     function doBuy(url) {
         $.showWin();
-//
     }
 
     function doShare(itemId){
