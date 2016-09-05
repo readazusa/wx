@@ -76,4 +76,9 @@ public class ShopCartDaoImpl extends SqlSessionDaoSupport implements IShopCartDa
 
         return this.getSqlSession().selectOne("ShopCartInfo.queryShopCartCountByOpenId",openId);
     }
+
+    @Override
+    public List<ShopCartInfo> queryListByOpenId(String openId) {
+        return this.getSqlSession().selectOne("ShopCartInfo.queryListByOpenId",openId);
+    }
 }

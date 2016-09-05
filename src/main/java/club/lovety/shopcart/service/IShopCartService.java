@@ -3,6 +3,8 @@ package club.lovety.shopcart.service;
 import club.lovety.base.service.IService;
 import club.lovety.shopcart.po.ShopCartInfo;
 
+import java.util.List;
+
 /**
  * Created by 念梓  on 2016/8/25.
  * Email:sunmch@163.com
@@ -18,5 +20,8 @@ public interface IShopCartService extends IService<ShopCartInfo>{
 
 
     public int getShopCartCountByOpenId(String openId);
+
+
+    public List<ShopCartInfo> getShopCartByOpenId(String openId);
 
 }

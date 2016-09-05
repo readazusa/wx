@@ -45,6 +45,7 @@ public class OAuthController {
         YmOpenIdInfo ymOpenIdInfo = JSON.parseObject(ymJsonResult,YmOpenIdInfo.class);
         log.debug("通过页面授权获取的openid信息实体类: {}",ymOpenIdInfo);
         request.getSession().setAttribute("openId",ymOpenIdInfo.getOpenid());
+//        request.getSession().setAttribute("user",ymOpenIdInfo);
         return "portal/index";
     }
 }

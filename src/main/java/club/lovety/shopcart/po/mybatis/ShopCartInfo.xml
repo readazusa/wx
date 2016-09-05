@@ -16,5 +16,6 @@
           select sum(num) from t_wx_shopcart where openid = #{id}
     </select>
 
+    <!--<select id="queryShopCartListByOpenId"-->
 
 </mapper>

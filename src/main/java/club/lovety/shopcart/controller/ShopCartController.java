@@ -1,15 +1,19 @@
 package club.lovety.shopcart.controller;
 
 import club.lovety.common.Result;
+import club.lovety.shopcart.po.ShopCartInfo;
 import club.lovety.shopcart.service.IShopCartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by 念梓  on 2016/8/15.
@@ -28,8 +32,9 @@ public class ShopCartController {
     private IShopCartService shopCartService;
 
     @RequestMapping("index")
-    public String index(){
-        return null;
+    public String index(HttpSession session){
+
+        return "portal/shopcart/shop_cart";
     }
 
     @RequestMapping("list")
@@ -62,4 +67,29 @@ public class ShopCartController {
         }
         return result;
     }
+
+
+    @RequestMapping("load_shop_cart")
+    @ResponseBody
+    public Object loadShopCartByOpenId(HttpSession session){
+
+        Result result = new Result();
+        String openId = (String)session.getAttribute("openId");
+        try{
+
+            Assert.notNull(openId,"openId不能为空");
+            List<ShopCartInfo> shopCartInfoList= shopCartService.getShopCartByOpenId(openId);
+            result.setData(shopCartInfoList);
+            result.setCode(Result.SUCCESS);
+        }catch (Exception ex){
+            result.setCode(Result.ERROR);
+            log.error("根据openid： {}，查询购物车信息错误，错误信息：{} ",openId,ex.getMessage());
+        }
+        return result;
+    }
+
+
+
+
+
 }

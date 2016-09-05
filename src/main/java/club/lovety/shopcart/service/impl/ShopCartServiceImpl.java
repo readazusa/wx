@@ -86,4 +86,9 @@ public class ShopCartServiceImpl implements IShopCartService {
     public int getShopCartCountByOpenId(String openId) {
         return shopCartDao.queryShopCartCountByOpenId(openId);
     }
+
+    @Override
+    public List<ShopCartInfo> getShopCartByOpenId(String openId) {
+        return shopCartDao.queryListByOpenId(openId);
+    }
 }

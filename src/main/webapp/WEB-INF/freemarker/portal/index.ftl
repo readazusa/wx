@@ -85,7 +85,7 @@
     <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
         <img src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png"  class="my-head-pic">
     </a>
-    <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
+    <a class="mui-tab-item" href="${base}/shopcart/index.htm">
         <span class="my-shop-cart-bz my-shop-cart-bz-hidden"></span>
         <span class="mui-icon-extra mui-icon-extra-cart"></span>
         <span class="mui-tab-label">购物车</span>

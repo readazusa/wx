@@ -152,15 +152,15 @@
 
 <nav class="mui-bar mui-bar-tab">
     <div class="my-view-bar-div" style="width: 40%;">
-        <div class="my-icon">
-            <span class="mui-icon mui-icon-trash"></span>
-            <span class="mui-tab-label">客服</span>
+        <div class="my-icon" onclick="MyObj.gotoUrl('${base}/portal/index.htm')">
+            <span class="mui-icon mui-icon-home"></span>
+            <span class="mui-tab-label">首页</span>
         </div>
         <div class="my-icon">
-            <span class="mui-icon mui-icon-trash"></span>
-            <span class="mui-tab-label">店铺</span>
+            <span class="mui-icon mui-icon-star"></span>
+            <span class="mui-tab-label">收藏</span>
         </div>
-        <div class="my-icon" id="icon-cart">
+        <div class="my-icon" id="icon-cart" onclick="MyObj.gotoUrl('${base}/shopcart/index.htm')">
             <span class="my-shop-cart-view-bz my-shop-cart-bz-hidden"></span>
             <span class="mui-icon-extra mui-icon-extra-cart my-item-view-icon" ></span>
             <span class="mui-tab-label">购物车</span>
@@ -240,6 +240,13 @@
     function doShare(itemId){
 
     }
+
+    function gotoShopCart(){
+        location.href="${base}/shopcart/index.htm";
+
+
+    }
+
 
 </script>
 </body>

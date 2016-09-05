@@ -341,19 +341,21 @@ nav .my-view-bar-div .my-view-var-div-btn {
 }
 
 .mui-slider-handle .my-shopcart-choice {
-    border: 1px #6d6d72 solid;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    left: 5px;
-    top: 35px;
-    border-radius: 50%;
+   position: absolute;
+   top: 25px;
+    font-size: 30px;
+}
+.mui-slider-handle .my-shopcart-choice.icon-xuanze{
+    color: red;
+}
+.my-shopcart-choice-div .icon-yuan{
+    font-size: 30px;
 }
 
 .my-shopcart-media {
     width: 80px;
     height: 80px;
-    margin-left: 40px;
+    margin-left:40px;
 }
 
 .my-table-shopcart-ul {
@@ -373,10 +375,9 @@ nav .my-view-bar-div .my-shopcart-choice-div span {
 }
 
 nav .my-view-bar-div .my-shopcart-choice-div .my-nav-shopcart-choice {
-    border: 1px #6d6d72 solid;
     width: 20px;
     height: 20px;
-    border-radius: 50%;
+
     margin-right: 15px;
     display: block;
     line-height: 20px;
@@ -701,4 +702,25 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     border-radius: 50%;
     color: #fff;
     background-color:#3366FF;
+}
+
+.my-shopcart-content{
+    float: right;
+    height: 100%;
+    width: 65%;
+}
+.my-shopcart-content .my-shop-cart-db{
+    margin-top: 5px;
+}
+.my-shopcart-content .my-shop-cart-db .my-shop-cart-price{
+    position: absolute;
+    bottom: 0px;
+    color: red;
+}
+.my-shopcart-content .my-shop-cart-db .my-numbox{
+    position: absolute;
+    float: right;
+    right: 0px;
+    height: 30px;
+    bottom: 0px;
 }

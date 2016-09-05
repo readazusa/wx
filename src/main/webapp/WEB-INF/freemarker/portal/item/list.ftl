@@ -41,7 +41,7 @@
     </div>
 </div>
 <nav class="mui-bar mui-bar-tab">
-    <a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-subpage-about.html">
+    <a id="defaultTab" class="mui-tab-item mui-active" href="${base}/portal/index.htm">
         <span class="mui-icon mui-icon-home"></span>
         <span class="mui-tab-label">首页</span>
     </a>
@@ -49,7 +49,7 @@
         <span class="mui-icon mui-icon-email"></span>
         <span class="mui-tab-label">消息</span>
     </a>
-    <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm">
+    <a class="mui-tab-item" href="${base}/shopcart/index.htm">
         <img src="http://1551sp9557.imwork.net:8888/20160820/aa91e23fd3804a8e9d370deaac9dc164.png" class="my-head-pic">
     </a>
     <a class="mui-tab-item" href="${base}/order/goto/shop_cart.htm" id="icon-cart">
@@ -110,6 +110,17 @@
         } else {
             loadItemListByCache();
         }
+
+        mui(".mui-bar-tab").on("tap","a",function(){
+            var href = this.href;
+            mui.openWindow({
+                id: href,
+                url: href,
+                show: {
+                    autoShow: true,//页面loaded事件发生后自动显示，默认为true
+                }
+            });
+        })
 
         mui("#listItemHtml").on('tap', '.my-item-list-shop-cart', function () {
             var btn = mui.gestures.session.firstTouch.touches[0];

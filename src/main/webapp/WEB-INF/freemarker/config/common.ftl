@@ -38,7 +38,7 @@
 
 
 <#macro iconfontCSS>
-<link href="${base}/resources/mui/css/iconfont.css" rel="stylesheet" type="text/css">
+<link href="${base}/resources/mui/css/iconfont.css?v=1" rel="stylesheet" type="text/css">
 </#macro>
 
 <#macro myImageViewCSS>

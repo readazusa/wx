@@ -201,5 +201,9 @@ MyObj.loadItemInViewPage = function(resp){
 }
 
 
+MyObj.gotoUrl = function(url){
+    location.href=url;
+}
+
 
 
