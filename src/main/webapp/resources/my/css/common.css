@@ -348,6 +348,10 @@ nav .my-view-bar-div .my-view-var-div-btn {
 .mui-slider-handle .my-shopcart-choice.icon-xuanze{
     color: red;
 }
+.my-view-bar-div .my-nav-shopcart-choice.icon-xuanze{
+    color: red;
+}
+
 .my-shopcart-choice-div .icon-yuan{
     font-size: 30px;
 }
@@ -723,4 +727,9 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     right: 0px;
     height: 30px;
     bottom: 0px;
+}
+
+
+.my-denger-color{
+    background-color: #FF0000 !important;
 }

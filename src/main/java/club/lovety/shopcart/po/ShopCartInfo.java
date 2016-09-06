@@ -23,6 +23,8 @@ public class ShopCartInfo extends BasePO {
 
     private int num;
 
+    private float price;
+
     public String getItemId() {
         return itemId;
     }
@@ -70,5 +72,13 @@ public class ShopCartInfo extends BasePO {
 
     public void setNum(int num) {
         this.num = num;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

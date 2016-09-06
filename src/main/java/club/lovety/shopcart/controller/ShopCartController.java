@@ -6,6 +6,7 @@ import club.lovety.shopcart.service.IShopCartService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,8 +33,10 @@ public class ShopCartController {
     private IShopCartService shopCartService;
 
     @RequestMapping("index")
-    public String index(HttpSession session){
-
+    public String index(HttpSession session, ModelMap model){
+        String openId = (String)session.getAttribute("openId");
+        List<ShopCartInfo> shopCartInfoList= shopCartService.getShopCartByOpenId(openId);
+        model.put("shopcarts",shopCartInfoList);
         return "portal/shopcart/shop_cart";
     }
 

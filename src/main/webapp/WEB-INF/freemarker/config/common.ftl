@@ -94,3 +94,9 @@ poppicker组件依赖mui.picker.js/.css mui.poppicker.js/.css请务必在mui.js/
 <#macro vueJS>
     <script src="${base}/resources/vue/vue.min.js" type="application/javascript"></script>
 </#macro>
+
+<#macro mapJS>
+
+    <script src="${base}/resources/my/js/Map.js" type="application/javascript"></script>
+
+</#macro>

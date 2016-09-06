@@ -34,7 +34,6 @@
 })($)
 
 
-
 var  MyObj={};
 
 MyObj.locationUrl=window.location.origin+"/wx";
