@@ -33,16 +33,16 @@ public class ShopCartController {
     private IShopCartService shopCartService;
 
     @RequestMapping("index")
-    public String index(HttpSession session, ModelMap model){
-        String openId = (String)session.getAttribute("openId");
-        List<ShopCartInfo> shopCartInfoList= shopCartService.getShopCartByOpenId(openId);
-        model.put("shopcarts",shopCartInfoList);
+    public String index(HttpSession session, ModelMap model) {
+        String openId = (String) session.getAttribute("openId");
+        List<ShopCartInfo> shopCartInfoList = shopCartService.getShopCartByOpenId(openId);
+        model.put("shopcarts", shopCartInfoList);
         return "portal/shopcart/shop_cart";
     }
 
     @RequestMapping("list")
     @ResponseBody
-    public Object list(){
+    public Object list() {
         return null;
     }
 
@@ -50,22 +50,22 @@ public class ShopCartController {
     @ResponseBody
     public Object add(String id, HttpServletRequest request) {
         Result result = new Result();
-        String openId = (String)request.getSession().getAttribute("openId");
-        shopCartService.saveItemIdIntoMq(id,openId);
+        String openId = (String) request.getSession().getAttribute("openId");
+        shopCartService.saveItemIdIntoMq(id, openId);
         return result;
     }
 
     @RequestMapping("shop_cart_count")
     @ResponseBody
-    public Object loadShopCartCount(HttpServletRequest request){
+    public Object loadShopCartCount(HttpServletRequest request) {
         Result result = new Result();
-        try{
-            String openId = (String)request.getSession().getAttribute("openId");
+        try {
+            String openId = (String) request.getSession().getAttribute("openId");
             int shopCartCountByOpenId = shopCartService.getShopCartCountByOpenId(openId);
             result.setCode(Result.SUCCESS);
             result.setData(shopCartCountByOpenId);
-        }catch (Exception ex){
-            log.error("获取购物车数量失败:: ",ex);
+        } catch (Exception ex) {
+            log.error("获取购物车数量失败:: ", ex);
             result.setCode(Result.ERROR);
         }
         return result;
@@ -74,25 +74,36 @@ public class ShopCartController {
 
     @RequestMapping("load_shop_cart")
     @ResponseBody
-    public Object loadShopCartByOpenId(HttpSession session){
+    public Object loadShopCartByOpenId(HttpSession session) {
 
         Result result = new Result();
-        String openId = (String)session.getAttribute("openId");
-        try{
-
-            Assert.notNull(openId,"openId不能为空");
-            List<ShopCartInfo> shopCartInfoList= shopCartService.getShopCartByOpenId(openId);
+        String openId = (String) session.getAttribute("openId");
+        try {
+            Assert.notNull(openId, "openId不能为空");
+            List<ShopCartInfo> shopCartInfoList = shopCartService.getShopCartByOpenId(openId);
             result.setData(shopCartInfoList);
             result.setCode(Result.SUCCESS);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             result.setCode(Result.ERROR);
-            log.error("根据openid： {}，查询购物车信息错误，错误信息：{} ",openId,ex.getMessage());
+            log.error("根据openid： {}，查询购物车信息错误，错误信息：{} ", openId, ex.getMessage());
         }
         return result;
     }
 
-
-
+    @RequestMapping("del_shopcart")
+    @ResponseBody
+    public Object delShopCart(String itemId, HttpServletRequest request) {
+        Result result = new Result();
+        try {
+            String openId = (String) request.getSession().getAttribute("openId");
+            shopCartService.delShopCartIntoMq(itemId,openId);
+            result.setCode(Result.SUCCESS);
+        } catch (Exception ex) {
+            result.setCode(Result.ERROR);
+            log.error("向mq插入删除购物车信息失败: ",ex);
+        }
+        return result;
+    }
 
 
 }

@@ -19,10 +19,12 @@
                 <ul id="OA_task_1" class="mui-table-view my-table-shopcart-ul shop_${shopcart.itemId}">
                     <li class="mui-table-view-cell mui-media">
                         <div class="mui-slider-right mui-disabled">
-                            <a class="mui-btn mui-btn-red mui-del my-denger-color" itemId="${shopcart.itemId}" >删除</a>
+                            <a class="mui-btn mui-btn-red mui-del my-denger-color" itemId="${shopcart.itemId}">删除</a>
                         </div>
                         <div class="mui-media-body mui-slider-handle">
-                            <span class="my-shopcart-choice  iconfont icon-yuan" itemId="${shopcart.itemId}" itemPrice="${shopcart.price}" itemTitle="${shopcart.title}" itemUrl = ${shopcart.picUrl}></span>
+                            <span class="my-shopcart-choice  iconfont icon-yuan" itemId="${shopcart.itemId}"
+                                  itemPrice="${shopcart.price}" itemTitle="${shopcart.title}"
+                                  itemUrl= ${shopcart.picUrl}></span>
                             <img class="my-shopcart-media" src="${shopcart.picUrl}">
                             <div class="my-shopcart-content">
                                 <div>${shopcart.title}</div>
@@ -73,8 +75,11 @@
     var itemNumMap = new HashMap();
     var itemPriceMap = new HashMap();
     var itemTitleMap = new HashMap();
-    var itemUrlMap  = new HashMap();
+    var itemUrlMap = new HashMap();
     var itemIdAry = new Array();
+
+
+
     $(function () {
         mui('.mui-scroll-wrapper').scroll({
             indicators: true //是否显示滚动条
@@ -82,16 +87,18 @@
         $('#mui-scroll').on('tap', '.mui-del', function () {
             var itemId = $(this).attr("itemId");
             $(".shop_" + itemId).remove();
-             removeMapKey(itemId);
+            MyObj.ajaxSubmit("${base}/shopcart/del_shopcart.json",{"itemId":itemId},"get",delShopCart);
+            removeMapKey(itemId);
             setPriceAndCount();
         });
 
+
         $(".mui-scroll").on("tap", ".my-shopcart-choice", function () {
-            var itemId =  $(this).attr("itemId");
+            var itemId = $(this).attr("itemId");
             var itemPrice = $(this).attr("itemPrice");
             var itemTitle = $(this).attr("itemTitle");
             var itemUrl = $(this).attr("itemUrl");
-            var itemNum = $("#num_"+itemId).val();
+            var itemNum = $("#num_" + itemId).val();
             if ($(this).hasClass("icon-xuanze")) {
                 $(this).removeClass("icon-xuanze");
                 $(this).addClass("icon-yuan");
@@ -99,10 +106,10 @@
             } else {
                 $(this).removeClass("icon-yuan");
                 $(this).addClass("icon-xuanze");
-                itemNumMap.put(itemId,itemNum);
-                itemPriceMap.put(itemId,itemPrice);
-                itemTitleMap.put(itemId,itemTitle);
-                itemUrlMap.put(itemId,itemUrl);
+                itemNumMap.put(itemId, itemNum);
+                itemPriceMap.put(itemId, itemPrice);
+                itemTitleMap.put(itemId, itemTitle);
+                itemUrlMap.put(itemId, itemUrl);
                 itemIdAry.push(itemId);
             }
             setPriceAndCount();
@@ -125,30 +132,30 @@
                 $(this).addClass("icon-xuanze");
                 $("#mui-scroll .my-shopcart-choice").each(function (index) {
                     $(this).removeClass("icon-yuan").addClass("icon-xuanze");
-                    var itemId =  $(this).attr("itemId");
+                    var itemId = $(this).attr("itemId");
                     var itemPrice = $(this).attr("itemPrice");
                     var itemTitle = $(this).attr("itemTitle");
                     var itemUrl = $(this).attr("itemUrl");
-                    var itemNum = $("#num_"+itemId).val();
-                    itemNumMap.put(itemId,itemNum);
-                    itemPriceMap.put(itemId,itemPrice);
-                    itemTitleMap.put(itemId,itemTitle);
-                    itemUrlMap.put(itemId,itemUrl);
+                    var itemNum = $("#num_" + itemId).val();
+                    itemNumMap.put(itemId, itemNum);
+                    itemPriceMap.put(itemId, itemPrice);
+                    itemTitleMap.put(itemId, itemTitle);
+                    itemUrlMap.put(itemId, itemUrl);
                     itemIdAry.push(itemId);
                 });
             }
             setPriceAndCount();
         });
 
-        $(".mui-input-numbox").on("change",function(){
-              var itemId = $(this).attr("itemId");
-              var num = $(this).val();
-            itemNumMap.put(itemId,num);
+        $(".mui-input-numbox").on("change", function () {
+            var itemId = $(this).attr("itemId");
+            var num = $(this).val();
+            itemNumMap.put(itemId, num);
             setPriceAndCount();
         })
     });
 
-    function removeMapKey(itemId){
+    function removeMapKey(itemId) {
         itemNumMap.remove(itemId);
         itemPriceMap.remove(itemId);
         itemTitleMap.remove(itemId);
@@ -157,20 +164,21 @@
     }
 
 
-
-    function setPriceAndCount(){
+    function setPriceAndCount() {
         $("#buyCount").html(itemIdAry.length);
         var totalPrice = 0;
-        $.each(itemIdAry,function(index,obj){
+        $.each(itemIdAry, function (index, obj) {
             var count = itemNumMap.get(obj);
             var price = itemPriceMap.get(obj);
-            totalPrice +=count*price;
+            totalPrice += count * price;
         })
         $("#totalPrice").html(totalPrice);
     }
 
 
-
+    function  delShopCart(resp){
+        mui.alert("购物车以删除");
+    }
 </script>
 </body>
 </html>

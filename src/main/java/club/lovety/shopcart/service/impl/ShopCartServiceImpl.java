@@ -4,11 +4,16 @@ import club.lovety.shopcart.dao.IShopCartDao;
 import club.lovety.shopcart.po.ShopCartInfo;
 import club.lovety.shopcart.service.IShopCartService;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * Created by 念梓  on 2016/8/25.
@@ -28,6 +33,8 @@ public class ShopCartServiceImpl implements IShopCartService {
     @Resource
     private IShopCartDao shopCartDao;
 
+    @Value("${happy.shop.shopcart.del}")
+    private String shopCartDel;
     @Override
     public void saveItemIdIntoMq(String itemId,String openId) {
         ShopCartInfo shopCartInfo = new ShopCartInfo();
@@ -90,5 +97,14 @@ public class ShopCartServiceImpl implements IShopCartService {
     @Override
     public List<ShopCartInfo> getShopCartByOpenId(String openId) {
         return shopCartDao.queryListByOpenId(openId);
+    }
+
+    @Override
+    public void delShopCartIntoMq(String itemId, String openId) {
+       Assert.hasLength(openId,"openId 不能为空");
+          Map<String,String> shopCartMap = new HashMap<>();
+         shopCartMap.put("itemId",itemId);
+         shopCartMap.put("openId",openId);
+        jmsTemplate.convertAndSend(shopCartDel,JSONObject.toJSONString(shopCartMap));
     }
 }

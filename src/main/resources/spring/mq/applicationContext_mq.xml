@@ -20,7 +20,6 @@
 
 	<bean id="jmsFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
 		<property name="connectionFactory" ref="targetConnectionFactory" />
-
 	</bean>
 
 	<bean id="shopCartJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
@@ -30,22 +29,12 @@
 	</bean>
 
 	<bean id="shopCartQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		<constructor-arg index="0" value="happy.shop.add.shopcart"></constructor-arg>
+		<constructor-arg index="0" value="${happy.shop.shopcart.add}"></constructor-arg>
 	</bean>
 
-	<!--<bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">-->
-		<!--<property name="connectionFactory" ref="jmsFactory"/>-->
-		<!--<property name="destination" ref="queue"/>-->
-		<!--<property name="messageListener" ref="oneListener"/>-->
-	<!--</bean>-->
-	<!---->
-	<!--<bean class="org.springframework.jms.listener.SimpleMessageListenerContainer">-->
-		<!--<property name="connectionFactory" ref="jmsFactory"/>-->
-		<!--<property name="destination" ref="queue"/>-->
-		<!--<property name="messageListener" ref="oneListener"/>-->
-		<!--&lt;!&ndash;<property name="replyPubSubDomain" value="true"></property>&ndash;&gt;-->
-	<!--</bean>-->
 
-	<!--<bean id="oneListener" class="net.sunmingchun.www.test.listener.OneListener"></bean>-->
-	<!--<bean id="twoListener" class="net.sunmingchun.www.test.listener.TwoListener"></bean>-->
+
+
+
+
 </beans>

@@ -9,6 +9,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.spec.SecretKeySpec;
 import java.math.BigInteger;
 import java.security.SecureRandom;
+import java.util.Base64;
 
 /**
  * net.sunmingchun.www.util
@@ -97,12 +98,13 @@ public class AESUtils {
     }
 
     public static void main(String[] args) {
-        try {
-            String s = aesEncrypt("我爱你","123456");
-            System.out.println(s);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String str = "孙明春";
+        String jm = new String(Base64.getEncoder().encode(str.getBytes()));
+
+        System.out.println("jm: "+ jm);
+
+        String jjm = new String(Base64.getDecoder().decode("5a2Z5piO5pil"));
+        System.out.println("jjm: "+ jjm);
 
 
     }

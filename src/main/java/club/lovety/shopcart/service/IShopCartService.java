@@ -24,4 +24,8 @@ public interface IShopCartService extends IService<ShopCartInfo>{
 
     public List<ShopCartInfo> getShopCartByOpenId(String openId);
 
+
+    public void delShopCartIntoMq(String item,String openId);
+
+
 }
