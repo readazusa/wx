@@ -17,30 +17,26 @@
     <h1 class="mui-title">新建收货地址</h1>
 </header>
 <div class="mui-content mui-scroll-wrapper">
-    <form class="mui-input-group">
+    <form class="mui-input-group" action="${base}/yj/add.json" method="post" id="yjForm">
         <div class="mui-input-row">
-            <input type="text" placeholder="收件人姓名" name="">
+            <input type="text" placeholder="收件人姓名" name="receiverName" id="receiverName">
         </div>
         <div class="mui-input-row">
-            <input type="text" placeholder="手机号码">
+            <input type="text" placeholder="手机号码" name="receiverMobile" id="receiverMobile">
         </div>
         <div class="mui-input-row">
-            <input type="text" placeholder="邮政编码">
+            <input type="text" placeholder="邮政编码" name="receiverPostcode" id="receiverPostcode">
         </div>
         <div class="mui-input-row">
               <span class="my-input" id="sfq" onclick="doChoiceSSQ();">省、市、区</span>
         </div>
-        <div class="mui-input-row">
-             <span class="my-input mui-navigate-right" id="jd" onclick="doChoiceJD();">街道</span>
-        </div>
         <div class="mui-input-row" style="height: 100px;">
-            <textarea id="textarea" rows="10" placeholder="详情地址"></textarea>
+            <textarea id="address" rows="10" placeholder="详情地址" name="address"></textarea>
         </div>
         <input type="hidden" id="province" name="province">
         <input type="hidden" id="city" name="city">
-        <input type="hidden" id="areaId">
-        <input type="hidden" id="area" name="area">
-        <input type="hidden" id="street" name="street">
+        <input type="hidden" id="country" name="country">
+        <input type="hidden" name="openId" value="${Session["openId"]!""}">
     </form>
 </div>
 <nav class="mui-bar mui-bar-tab my-bar-save-center" onclick="doAdd()">
@@ -49,8 +45,10 @@
     <@common.muiJS></@common.muiJS>
     <@common.jqueryJS></@common.jqueryJS>
     <@common.fastclickJS></@common.fastclickJS>
+    <@common.myCommonJS></@common.myCommonJS>
     <@common.muiPickerJS></@common.muiPickerJS>
     <@common.addressDataJS></@common.addressDataJS>
+    <@common.jqueryFormJS></@common.jqueryFormJS>
 <script type="application/javascript">
     $(function () {
         mui('.mui-scroll-wrapper').scroll({
@@ -60,8 +58,48 @@
     });
 
     function doAdd(){
-        history.back();
+
+        var receicerName = $("#receiverName").val();
+        if(!receicerName){
+            mui.alert("暂无收件人姓名");
+            return;
+        }
+        var receiverMobile = $("#receiverMobile").val();
+        if(!receiverMobile){
+            mui.alert("暂无手机号码");
+            return;
+        }
+        var province = $("#province").val();
+        if(!province){
+            mui.alert("暂无省市区");
+            return;
+        }
+        var address =  $("#address").val();
+        if(!address){
+            mui.alert('暂无详细地址');
+            return;
+        }
+        $.showLoadDefault();
+        $("#yjForm").ajaxSubmit({
+            success:function(resp){
+                $.clearLoad();
+                if(resp.succ){
+                    mui.alert("保存成功",null,null,function(){
+                        location.href="${base}/yj/goto/yj_list_page.htm";
+                    });
+                }else{
+                    mui.alert("网络异常，请重新操作!");
+                }
+            },
+            error:function(){
+                mui.alert("网络异常，请重新操作!");
+            }
+        });
     }
+    function callBack(){
+
+    }
+
     function  doChoiceSSQ(){
         var ssqPicker = new mui.PopPicker({
             layer: 3
@@ -71,25 +109,17 @@
         ssqPicker.show(function(items) {
             var province = (items[0] || {}).text;
             var city = (items[1] || {}).text;
-            var area = (items[2] || {}).text;
-            var areaId = (items[2] || {}).value;
-            $("#areaId").val(areaId);
-//            console.info("身份: "+(items[0] || {}).text );
-//            console.info("城市: "+(items[1] || {}).text );
-//            console.info("地区: "+(items[2] || {}).text );
-//            ssqPicker.innerText = "你选择的城市是:" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
-            //返回 false 可以阻止选择框的关闭
-            //return false;
-            $("#sfq").html(province+" "+ city +" "+ area );
+            var country = (items[2] || {}).text;
+            $("#sfq").html(province+" "+ city +" "+ country );
+
+            $("#province").val(province);
+            $("#city").val(city);
+            $("#country").val(country);
         });
     }
 
     function doChoiceJD(){
-        var areaId =  $("#areaId").val();
-        if(!areaId){
-            mui.alert('暂无街道地址');
-            return;
-        }
+
         var street = streetData["s_"+areaId];
         var streetPicker = new mui.PopPicker();
         streetPicker.setData(street);

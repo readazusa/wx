@@ -448,7 +448,7 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     -moz-transition: all .5s ease-in;
     transition: all .5s ease-in;
 }
-
+/**************************************************/
 .my-popover-win .my-buy-div-img{
     height: 100px;
     width: 100px;
@@ -484,6 +484,8 @@ nav .my-view-bar-div .my-shopcart-choice-div {
     display: inline-block;
     line-height: 15px;
 }
+
+
 .my-popover-win .my-buy-number{
     border-bottom:1px silver solid;
     height: 50px;
@@ -733,3 +735,79 @@ nav .my-view-bar-div .my-shopcart-choice-div {
 .my-denger-color{
     background-color: #FF0000 !important;
 }
+/***************************弹出提示框的模板*****************************/
+.pg-load {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(53, 47, 47, 0.52);
+    z-index: 1000;
+    opacity: 0.5;
+}
+.pg-toast{
+    border-radius: 10%;
+    -webkit-animation-name: fadeIn; /*动画名称*/
+    -webkit-animation-duration: 1s; /*动画持续时间*/
+    -webkit-animation-iteration-count: 1; /*动画次数*/
+    position: fixed;
+    width: 100px;
+    height:100px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    z-index: 2000;
+    padding-top: 20px;
+    background-color: rgba(111, 96, 96, 0.66);
+    /*line-height: 100px;*/
+    /*display: inline;*/
+    display: block;
+}
+.pg-toast span{
+    display: block;
+}
+.pg-toast .loading{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: #67CF22;
+    left: 25px;
+    -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+    animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+    0% { -webkit-transform: perspective(100px) }
+    50% { -webkit-transform: perspective(100px) rotateY(180deg) }
+    100% { -webkit-transform: perspective(100px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+    0% {
+        transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+        -webkit-transform: perspective(100px) rotateX(0deg) rotateY(0deg)
+    } 50% {
+          transform: perspective(100px) rotateX(-180.1deg) rotateY(0deg);
+          -webkit-transform: perspective(100px) rotateX(-180.1deg) rotateY(0deg)
+      } 100% {
+            transform: perspective(100px) rotateX(-180deg) rotateY(-179.9deg);
+            -webkit-transform: perspective(100px) rotateX(-180deg) rotateY(-179.9deg);
+        }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0; /*初始状态 透明度为0*/
+    }
+    100% {
+        opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+
+
+/*********************************到这里为止为弹出加载框的css******************************************/

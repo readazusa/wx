@@ -22,6 +22,9 @@
 		<typeAlias type="club.lovety.user.entity.UserInfo" alias="UserInfo"></typeAlias>
 		<typeAlias type="club.lovety.user.entity.UserParticle" alias="UserParticle"></typeAlias>
 		<typeAlias type="club.lovety.user.entity.UserVsAddressInfo" alias="UserVsAddressInfo"></typeAlias>
+
+
+		<typeAlias type="club.lovety.yj.entity.YjInfo" alias="YjInfo"></typeAlias>
 		<!--<typeAlias type="club.lovety.base.entity.BasePagePO" alias="BasePagePO"></typeAlias>-->
 	</typeAliases>
 
@@ -36,6 +39,7 @@
 
 		<mapper resource="club/lovety/user/entity/mybatis/UserInfo.xml"></mapper>
 		<mapper resource="club/lovety/user/entity/mybatis/UserParticle.xml"></mapper>
+		<mapper resource="club/lovety/yj/entity/mybatis/YjInfo.xml"></mapper>
 
 	</mappers>
 

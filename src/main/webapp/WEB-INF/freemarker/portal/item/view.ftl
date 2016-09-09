@@ -120,15 +120,15 @@
         </div>
         <span class="my-close">x</span>
         <div class="my-buy-detal">
-            <p id="buyTitle">静静的看这个世界，最后终于疯了a阿达大的撒阿萨德阿萨德</p>
-            <p id="buyPrice">￥234.00</p>
+            <p id="buyTitle"></p>
+            <p id="buyPrice"></p>
         </div>
     </div>
     <div class="my-buy-number">
         <span style="float: left;margin-right: 5px; margin-top: 7px;">
            购买数量
            </span>
-        <span class="my-buy-number-kc" id="buyStock">库存:12</span>
+        <span class="my-buy-number-kc" id="buyStock"></span>
         <div class="mui-numbox my-numbox" data-numbox-min="1" data-numbox-max="${stock?default(5)}">
             <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
             <input class="mui-input-numbox" type="number" />
@@ -139,7 +139,8 @@
         <button type="button" class="mui-btn mui-btn-danger mui-btn-block" style="background-color: red" onclick="doBuyOrder('${base}/order/goto/buy_page.htm')">确定</button>
     </div>
 </div>
-<form id="orderForm" method="post" action="${base}/order/goto/buy_page.htm">
+
+<form id="orderForm" method="post" action="${base}/order/item/create.htm">
     <input type="hidden" id="stock" name="stock" value="${stock}">
     <input type="hidden" value="${uid}" name="itemId">
     <input type="hidden" id="price" name="price">

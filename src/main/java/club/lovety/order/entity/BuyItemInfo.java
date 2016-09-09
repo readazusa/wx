@@ -9,6 +9,8 @@ package club.lovety.order.entity;
  */
 public class BuyItemInfo {
 
+    private String tradeId;
+
     private String itemId;
 
     private  float price;
@@ -21,8 +23,11 @@ public class BuyItemInfo {
 
     private int postage;   //快递费用
 
-    private  String sendMethod = "同城配送";  //发货方式 默认：同城配送
+    private String openId;  //
 
+    private String  yjId;  //邮寄信息id
+
+    private  String sendMethod = "同城配送";  //发货方式 默认：同城配送
 
     public String getItemId() {
         return itemId;
@@ -78,5 +83,29 @@ public class BuyItemInfo {
 
     public void setSendMethod(String sendMethod) {
         this.sendMethod = sendMethod;
+    }
+
+    public String getTradeId() {
+        return tradeId;
+    }
+
+    public void setTradeId(String tradeId) {
+        this.tradeId = tradeId;
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
+    public String getYjId() {
+        return yjId;
+    }
+
+    public void setYjId(String yjId) {
+        this.yjId = yjId;
     }
 }

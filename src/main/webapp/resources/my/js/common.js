@@ -31,7 +31,40 @@
     });
 
 
+})($);
+
+/**
+ * 页面加载提示组件
+ */
+(function($){
+
+    //创建一个遮罩层的模板
+    $.createLoadTemplate=function(){
+        $("body").append("<div class='pg-load'></div>");
+    }
+
+    //默认显示的
+    $.showLoadDefault= function(){
+        $.createLoadTemplate();
+        $("body").append("<div class='pg-toast'><span>加载中</span><div class='loading'></div></div>")
+    }
+
+    //显示带文字的
+    $.showLoadContent=function(src){
+        if(!src){
+            $.showLoadDefault();
+        }else{
+            $.createLoadTemplate();
+            $("body").append("<div class='pg-toast'><span>"+src+"</span><div class='loading'></div></div>")
+        }
+    }
+
+    $.clearLoad=function(){
+        $(".pg-toast").remove();
+        $(".pg-load").remove();
+    }
 })($)
+
 
 
 var  MyObj={};

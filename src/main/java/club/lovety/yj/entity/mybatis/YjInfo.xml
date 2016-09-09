@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="YjInfo">
+
+    <select id="queryListByOpenId" parameterType="java.lang.String" resultType="YjInfo">
+        select * from t_yj_info where openId = #{id} and flag='0'
+    </select>
+
+    <select id="queryDefaultYjInfoByOpenId" parameterType="java.lang.String" resultType="YjInfo">
+        select * from t_yj_info where openId = #{id} and isdefault = '0' and flag = '0'
+    </select>
+
+    <select id="save" parameterType="YjInfo" resultType="java.lang.Integer">
+        insert into t_yj_info(id,openid,receivername,receivermobile,receiverpostcode,province,city,country,address,createtime,updatetime)
+        values(#{id},#{openId},#{receiverName},#{receiverMobile},#{receiverPostcode},#{province},#{city},#{country},#{address},#{createTime},#{updateTime})
+    </select>
+
+
+
+</mapper>

@@ -98,7 +98,10 @@ public class AESUtils {
     }
 
     public static void main(String[] args) {
+
         String str = "孙明春";
+       String s =  new String(org.apache.commons.codec.binary.Base64.encodeBase64(str.getBytes()));
+        System.out.println("s: "+ s);
         String jm = new String(Base64.getEncoder().encode(str.getBytes()));
 
         System.out.println("jm: "+ jm);

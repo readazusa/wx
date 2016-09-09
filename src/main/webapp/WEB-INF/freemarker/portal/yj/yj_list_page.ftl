@@ -14,152 +14,35 @@
 <header class="mui-bar mui-bar-nav">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
     <h1 class="mui-title">管理收货地址</h1>
-    <#--<button class="mui-btn   mui-btn-link mui-pull-right my-yj-head-right" onclick="doManageYj();">管理</button>-->
 </header>
 <div class="mui-content mui-scroll-wrapper" style="margin-bottom: 50px;">
     <div class="mui-scroll">
         <ul class="mui-table-view">
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="${base}/yj/goto/yj_view_edit_page.htm">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
+            <#if (yjInfos?size>0)>
+                <#list yjInfos as yjInfo>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right my-navigate-addr" href="#">
+                            <div class="my-order-address">
+                                <div class="my-order-address-header">
+                                    <span class="my-order-address-name">收货人:${yjInfo.receiverName}</span>
                         <span class="my-order-address-mobile">
-                            13412341234
+                        ${yjInfo.receiverMobile}
                         </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
+                                </div>
+                                <div class="my-order-address-body">
+                                ${yjInfo.province}${yjInfo.city}${yjInfo.country}${yjInfo.address}
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </#list>
+            </#if>
         </ul>
     </div>
 </div>
 <nav class="mui-bar mui-bar-tab my-bar-center">
     <div class="mui-btn mui-btn-primary" onclick="doNew('${base}/yj/goto/yj_new_page.htm');">
-            添加新地址
+        添加新地址
     </div>
 </nav>
     <@common.muiJS></@common.muiJS>
@@ -171,18 +54,18 @@
             indicators: true //是否显示滚动条
         });
         FastClick.attach(document.body);
-        mui(".mui-table-view").on('tap','a',function(){
+        mui(".mui-table-view").on('tap', 'a', function () {
             var url = this.href;
             mui.openWindow({
-                id:url,
-                url:url
+                id: url,
+                url: url
             });
         });
     });
     function doNew(url) {
         mui.openWindow({
-            id:url,
-            url:url
+            id: url,
+            url: url
         });
     }
 

@@ -2,6 +2,11 @@
 <script src="${base}/resources/jquery/jquery-3.0.0.js" type="application/javascript"></script>
 </#macro>
 
+<#macro jqueryFormJS>
+<script src="${base}/resources/jquery/jquery.form.js" type="application/javascript"></script>
+</#macro>
+
+
 <#macro allCSS>
 <link href="${base}/resources/style/css/all.css" rel="stylesheet" type="text/css">
 </#macro>

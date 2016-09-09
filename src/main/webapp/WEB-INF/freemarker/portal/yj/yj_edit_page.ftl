@@ -36,11 +36,11 @@
             <label class="color-silver">所在地区</label>
             <span class="my-input-view" id="sfq" onclick="doChoiceSSQ();">省、市、区</span>
         </div>
-        <div class="mui-input-row">
-            <label class="color-silver">街道</label>
-            <input type="text" placeholder="街道" >
-        <#--<span class="my-input mui-navigate-right" id="jd" onclick="doChoiceJD();">街道222</span>-->
-        </div>
+        <#--<div class="mui-input-row">-->
+            <#--<label class="color-silver">街道</label>-->
+            <#--<input type="text" placeholder="街道" >-->
+        <#--&lt;#&ndash;<span class="my-input mui-navigate-right" id="jd" onclick="doChoiceJD();">街道222</span>&ndash;&gt;-->
+        <#--</div>-->
         <div class="mui-input-row">
             <label class="color-silver">详情地址</label>
             <input type="text" placeholder="街道" >

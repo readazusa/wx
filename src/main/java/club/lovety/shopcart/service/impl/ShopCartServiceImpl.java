@@ -26,8 +26,7 @@ import java.util.stream.Stream;
 public class ShopCartServiceImpl implements IShopCartService {
 
 
-
-    @Resource(name = "shopCartJmsTemplate")
+    @Resource
     private JmsTemplate jmsTemplate;
 
     @Resource

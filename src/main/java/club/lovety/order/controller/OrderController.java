@@ -1,6 +1,7 @@
 package club.lovety.order.controller;
 
 import club.lovety.order.entity.BuyItemInfo;
+import club.lovety.order.service.IOrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
@@ -9,6 +10,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -24,26 +26,24 @@ public class OrderController {
 
     private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 
-    @RequestMapping(value = "goto/buy_page",method = RequestMethod.POST)
-    public String gotoBuyPage(BuyItemInfo buyItemInfo, ModelMap model){
+    @Resource
+    private IOrderService orderService;
+
+    //单个商品创建订单
+    @RequestMapping(value = "item/create",method = RequestMethod.POST)
+    public String ItemCreateOrder(BuyItemInfo buyItemInfo,HttpServletRequest request, ModelMap model){
+        orderService.setTradeIntoMq(buyItemInfo);
         model.put("buyItemInfo",buyItemInfo);
         return "portal/order/buy_page";
     }
 
-    @RequestMapping("create")
-    public String buyOrder(){
-        return null;
+
+    //购物车中上传创建订单
+    @RequestMapping(value = "shopcart/create",method = RequestMethod.POST)
+    public String shopCartCreateOrder(BuyItemInfo buyItemInfo,HttpServletRequest request, ModelMap model){
+        model.put("buyItemInfo",buyItemInfo);
+        return "portal/order/buy_page";
     }
 
 
-
-    @RequestMapping("goto/all_page")
-    public String allPage(){
-        return "portal/order/all_page";
-    }
-
-    @RequestMapping("goto/shop_cart")
-    public String shopCart(){
-        return "portal/order/shop_cart";
-    }
 }

@@ -14,146 +14,42 @@
 <header class="mui-bar mui-bar-nav">
     <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
     <h1 class="mui-title">选择收货地址</h1>
-    <button class="mui-btn   mui-btn-link mui-pull-right my-yj-head-right" onclick="doManageYj('${base}/yj/goto/yj_list_page.htm');">管理</button>
+    <button class="mui-btn   mui-btn-link mui-pull-right my-yj-head-right"
+            onclick="doManageYj('${base}/yj/goto/yj_list_page.htm');">管理
+    </button>
 </header>
 <div class="mui-content mui-scroll-wrapper">
     <div class="mui-scroll">
         <ul class="mui-table-view">
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
+            <#if (yjInfos?size>0)>
+                <#list yjInfos as yjInfo>
+                    <li class="mui-table-view-cell">
+                        <a class="mui-navigate-right my-navigate-addr" href="#">
+                            <div class="my-order-address">
+                                <div class="my-order-address-header">
+                                    <span class="my-order-address-name">收货人:${yjInfo.receiverName}</span>
                         <span class="my-order-address-mobile">
-                            13412341234
+                        ${yjInfo.receiverMobile}
                         </span>
+                                </div>
+                                <div class="my-order-address-body">
+                                ${yjInfo.province}${yjInfo.city}${yjInfo.country}${yjInfo.address}
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </#list>
+            <#else>
+                <li class="mui-table-view-cell">
+                    <a class="mui-navigate-right my-navigate-addr" href="#">
+                        <div class="my-order-address">
+                            <div class="my-order-address-body">
+                                <span style="text-align: center">没有地址，请添加</span>
+                            </div>
                         </div>
-                        <div class="my-order-address-body">
-                            百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            收件地址:百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
-            <li class="mui-table-view-cell">
-                <a class="mui-navigate-right my-navigate-addr" href="#">
-                    <div class="my-order-address">
-                        <div class="my-order-address-header">
-                            <span class="my-order-address-name">收货人:糖糖</span>
-                        <span class="my-order-address-mobile">
-                            13412341234
-                        </span>
-                        </div>
-                        <div class="my-order-address-body">
-                            百度开放云邀请到全民TV罗辑思维直播技术负责人以及团队中的资深技
-                        </div>
-                    </div>
-                </a>
-            </li>
+                    </a>
+                </li>
+            </#if>
         </ul>
     </div>
 </div>
@@ -170,8 +66,8 @@
 
     function doManageYj(url) {
         mui.openWindow({
-            id:url,
-            url:url
+            id: url,
+            url: url
         });
     }
 

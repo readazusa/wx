@@ -22,7 +22,7 @@
 		<property name="connectionFactory" ref="targetConnectionFactory" />
 	</bean>
 
-	<bean id="shopCartJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<property name="connectionFactory" ref="jmsFactory"></property>
 		<property name="defaultDestination" ref="shopCartQueue"></property>
 		<property name="deliveryPersistent" value="true"></property>
