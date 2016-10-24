@@ -8,6 +8,8 @@ import club.lovety.message.event.ViewEventMessage;
 import club.lovety.message.event.ZcEventMessage;
 import club.lovety.message.req.ReqImageMessage;
 import club.lovety.message.req.ReqTextMessage;
+import club.lovety.message.req.ReqVideoMessage;
+import club.lovety.message.req.ReqVoiceMessage;
 import club.lovety.message.res.ResTextMessage;
 import club.lovety.service.IMsgService;
 import club.lovety.user.entity.UserInfo;
@@ -29,6 +31,7 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +60,7 @@ public class MsgServiceImpl implements IMsgService {
     public String executeMsg(HttpServletRequest request) {
         String resultMsg = null;
         try {
+            log.info("测试下载附件:  {}",new Date());
             InputStream inputStream = request.getInputStream();
             SAXReader saxReader = new SAXReader();
             Document document = saxReader.read(inputStream);
@@ -87,7 +91,19 @@ public class MsgServiceImpl implements IMsgService {
                     map.put("media", file);
                     wechatApiService.doPostFormFile(WeChatUrlUtils.UPLOAD_YJ_SC_URL, map);
                     break;
-                case TypeMap.VOICE_TYPE:
+                case TypeMap.VOICE_TYPE:   //音频
+                    log.info("用户发送音频信息");
+                    ReqVoiceMessage reqVoiceMessage = XML2Object.getXml2Obj("xml", xml, ReqVoiceMessage.class);
+                    String VoideMediaId = reqVoiceMessage.getMediaId();
+                    String voiceApiUrl = WeChatUrlUtils.GET_LS_SC_URL.replace("MEDIA_ID", VoideMediaId);
+                    wechatApiService.doGet(voiceApiUrl);
+                    break;
+                case TypeMap.VIDEO_TYPE:  //视频
+                    log.info("用户发送视频信息");
+                    ReqVideoMessage reqVideoMessage = XML2Object.getXml2Obj("xml", xml, ReqVideoMessage.class);
+                    String VideoMediaId = reqVideoMessage.getMediaId();
+                    String videoApiUrl = WeChatUrlUtils.GET_LS_SC_URL.replace("MEDIA_ID", VideoMediaId);
+                    wechatApiService.doGet(videoApiUrl);
                     break;
                 case TypeMap.EVENT_TYPE:
                     log.debug("接收事件消息");
@@ -140,6 +156,7 @@ public class MsgServiceImpl implements IMsgService {
                             userParticle.setPrecisions(locationEventMessage.getPrecision());
                             saveLocation(userParticle);
                             break;
+
                     }
                     break;
             }

@@ -19,7 +19,7 @@ import java.util.List;
  * Email:sunmch@163.com
  * TEL:13913534135
  * author: 念梓
- * des:
+ * des: 邮寄信息处理类
  */
 @RequestMapping("yj")
 @Controller

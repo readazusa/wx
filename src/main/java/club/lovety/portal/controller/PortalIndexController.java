@@ -32,7 +32,7 @@ public class PortalIndexController {
 
     @RequestMapping("index")
     public String index(HttpServletRequest request,ModelMap model){
-
+          log.debug("===================");
 //        IndexPageInfo indexPageInfo = new IndexPageInfo();
 //        indexPageInfo.setType("0");
 //        indexPageInfo.setIsShow("0");

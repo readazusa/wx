@@ -17,7 +17,7 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media my-list-item">
                 <a href="javascript:;">
-                    <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">
+                    <img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd/cbd.jpg">
                     <div class="mui-media-body my-center-p">
                         <p>糖糖糖</p>
                         <p></p>
@@ -127,6 +127,27 @@
                     </div>
                 </a>
             </li>
+
+            <li class="mui-table-view-cell mui-media my-list-item">
+                <a href="javascript:;" class="mui-navigate-right">
+                <#--<img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">-->
+                    <div class="mui-media-body my-center-p">
+                        <p>测试推送模板
+                            <span style="float: right;color: silver;font-size: 10px;padding-right: 20px;">查看全部已购宝贝</span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+            <li class="mui-table-view-cell mui-media my-list-item">
+                <a href="${base}/test/jssdk.htm" class="mui-navigate-right">
+                <#--<img class="my-mui-media-object mui-pull-left" src="http://120.26.208.194:8888/yd//cbd.jpg">-->
+                    <div class="mui-media-body my-center-p">
+                        <p>测试jssdk
+                            <span style="float: right;color: silver;font-size: 10px;padding-right: 20px;">查看全部已购宝贝</span>
+                        </p>
+                    </div>
+                </a>
+            </li>
         </ul>
 
     </div>
@@ -158,6 +179,12 @@
             indicators: true //是否显示滚动条
         });
         mui("body").on('tap', 'a', function () {
+            <#--$.ajax({-->
+                <#--url:"${base}/test/send.json",-->
+                <#--success:function(resp){-->
+
+                <#--}-->
+            <#--})-->
             var href = this.href;
             mui.openWindow({
                 id: href,

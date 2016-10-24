@@ -35,7 +35,7 @@ public class WechatApiServiceImpl implements IWechatApiService {
 
     public static final String ACCESS_TOKEN_KEY = "wechat:access_token";
 
-    public static final String JSAPI_TICKET_KEY="wechat:jaspi_ticket";
+    public static final String JSAPI_TICKET_KEY = "wechat:jaspi_ticket";
 
     private static final Logger log = LoggerFactory.getLogger(WechatApiServiceImpl.class);
 
@@ -48,7 +48,7 @@ public class WechatApiServiceImpl implements IWechatApiService {
         if (StringUtils.isBlank(access_token)) {
             synchronized (this) {
                 access_token = baseCacheService.get(ACCESS_TOKEN_KEY);
-                if(StringUtils.isNotBlank(access_token)){     //防止多个现场获取access_token 冲突,多线程获取的时候首先在redis中获取
+                if (StringUtils.isNotBlank(access_token)) {     //防止多个现场获取access_token 冲突,多线程获取的时候首先在redis中获取
                     return access_token;
                 }
                 String accessTokenJsonStr = HttpUtils.getInstance().get(ACCESS_TOKEN_URL);
@@ -81,21 +81,22 @@ public class WechatApiServiceImpl implements IWechatApiService {
 
     @Override
     public String doExecute(String url, String paramData) {
-        log.debug("请求api的json数据: {}",paramData);
+        log.debug("请求api的json数据: {}", paramData);
         String access_token = getAccessToken();
-        url= url.replace("ACCESS_TOKEN",access_token);
-        String result = HttpUtils.getInstance().post(url,paramData);
-        log.debug("调用api地址：{}，返回结果:{}",url,result);
+        url = url.replace("ACCESS_TOKEN", access_token);
+        String result = HttpUtils.getInstance().post(url, paramData);
+        log.debug("调用api地址：{}，返回结果:{}", url, result);
         return result;
     }
 
     @Override
     public String doExecute(String url, File targetFile) {
-        log.debug("请求api的json数据: {}",targetFile);
-        String access_token = getAccessToken();
-        url= url.replace("ACCESS_TOKEN",access_token);
-        String result = HttpUtils.getInstance().post(url,targetFile);
-        log.debug("调用api地址：{}，返回结果:{}",url,result);
+        log.debug("请求api的json数据: {}", targetFile);
+//        String access_token = getAccessToken();
+//        url = url.replace("ACCESS_TOKEN", access_token);
+        url = getUrl(url);
+        String result = HttpUtils.getInstance().post(url, targetFile);
+        log.debug("调用api地址：{}，返回结果:{}", url, result);
         return result;
     }
 
@@ -104,49 +105,64 @@ public class WechatApiServiceImpl implements IWechatApiService {
         return null;
     }
 
-
     @Override
-    public String doGet(String url) {
-        String result = HttpUtils.getInstance().get(url);
-        log.debug("get请求返回结果: {}",result);
-        return  result;
+    public String doPost(String url, Object data) {
+        String access_token = getAccessToken();
+        url = url.replace("ACCESS_TOKEN", access_token);
+        String result = HttpUtils.getInstance().post(url, data);
+        log.debug("调用api地址：{}，返回结果:{}", url, result);
+        return result;
+    }
+    private String getUrl(String url){
+        String access_token = getAccessToken();
+        url = url.replace("ACCESS_TOKEN", access_token);
+        return url;
     }
 
     @Override
-    public String doGet(String url, String contentTpye) {
-        log.debug("请求api的contentType数据: {}",contentTpye);
+    public String doGet(String url) {
         String access_token = getAccessToken();
-        url= url.replace("ACCESS_TOKEN",access_token);
-        String result = HttpUtils.getInstance().get(url, contentTpye);
-        log.debug("调用api地址：{}，返回结果:{}",url,result);
+        url = url.replace("ACCESS_TOKEN", access_token);
+        String result = HttpUtils.getInstance().get(url);
+        log.debug("get请求返回结果: {}", result);
         return result;
     }
 
     @Override
-    public String doPostFormFile(String url,Map<String,File> formFile) {
-        log.debug("请求api的formFile数据: {}",formFile);
+    public String doGet(String url, String contentTpye) {
+        log.debug("请求api的contentType数据: {}", contentTpye);
         String access_token = getAccessToken();
-        url= url.replace("ACCESS_TOKEN",access_token);
+        url = url.replace("ACCESS_TOKEN", access_token);
+        String result = HttpUtils.getInstance().get(url, contentTpye);
+        log.debug("调用api地址：{}，返回结果:{}", url, result);
+        return result;
+    }
+
+    @Override
+    public String doPostFormFile(String url, Map<String, File> formFile) {
+        log.debug("请求api的formFile数据: {}", formFile);
+        String access_token = getAccessToken();
+        url = url.replace("ACCESS_TOKEN", access_token);
         String result = HttpUtils.getInstance().postFormFile(url, formFile);
-        log.debug("调用api地址：{}，返回结果:{}",url,result);
+        log.debug("调用api地址：{}，返回结果:{}", url, result);
         return result;
     }
 
     @Override
     public String createMenu() {
-        log.debug("测试新建菜单:{} ",new Date());
+        log.debug("测试新建菜单:{} ", new Date());
         String menuKey = "wechat:menu:key";
         String menuJson = baseCacheService.get(menuKey);
-        log.debug("redisz中获取的创建菜单数据: {}",menuJson);
+        log.debug("redisz中获取的创建菜单数据: {}", menuJson);
 
-        if(StringUtils.isBlank(menuJson)){
+        if (StringUtils.isBlank(menuJson)) {
             doExecute(WeChatUrlUtils.DEL_MENU_URL, " ");
             WechatMenu wechatMenu = new WechatMenu();
             List<MenuButton> menuButtons = new ArrayList<>();
             //第一菜单
             MenuButton menuButtonCd = new MenuButton();
             menuButtonCd.setName("菜单");
-            menuButtonCd.setKey("cd_"+ UuidUtils.getUpperUuid());
+            menuButtonCd.setKey("cd_" + UuidUtils.getUpperUuid());
             List<MenuButton> cdSubbutton = new ArrayList<>();
             MenuButton cdSubbuttonOne = new MenuButton();
             cdSubbuttonOne.setName("搜索");
@@ -173,20 +189,20 @@ public class WechatApiServiceImpl implements IWechatApiService {
             MenuButton menuButtonPic = new MenuButton();
             menuButtonPic.setName("选择图片");
             menuButtonPic.setType(MenuType.PIC_PHOTO_OR_ALBUM);
-            menuButtonPic.setKey("pic_"+ UuidUtils.getUpperUuid());
+            menuButtonPic.setKey("pic_" + UuidUtils.getUpperUuid());
             menuButtons.add(menuButtonPic);
             //第三菜单
             MenuButton menuButtonHelp = new MenuButton();
             menuButtonHelp.setName("帮助文档");
             menuButtonHelp.setType(MenuType.CLICK);
-            menuButtonHelp.setKey("click_"+ UuidUtils.getUpperUuid());
+            menuButtonHelp.setKey("click_" + UuidUtils.getUpperUuid());
             menuButtons.add(menuButtonHelp);
             /**
              * 添加到菜单
              */
             wechatMenu.setButton(menuButtons);
             menuJson = JSON.toJSONString(wechatMenu);
-            log.debug("新创建的菜单内容： {}",menuJson);
+            log.debug("新创建的菜单内容： {}", menuJson);
             baseCacheService.setDay(menuKey, menuJson, 15);
             return doExecute(WeChatUrlUtils.MENU_URL, menuJson);
         }
@@ -200,10 +216,10 @@ public class WechatApiServiceImpl implements IWechatApiService {
         if (StringUtils.isBlank(jsapi_ticket)) {
             synchronized (this) {
                 jsapi_ticket = baseCacheService.get(JSAPI_TICKET_KEY);
-                if(StringUtils.isNotBlank(jsapi_ticket)){     //防止多个现场获取jsapi_ticket 冲突,多线程获取的时候首先在redis中获取
+                if (StringUtils.isNotBlank(jsapi_ticket)) {     //防止多个现场获取jsapi_ticket 冲突,多线程获取的时候首先在redis中获取
                     return jsapi_ticket;
                 }
-                String jsApiTicketUrl = WeChatUrlUtils.JSAPI_TICKET_URL.replace(WeChatUrlUtils.REPLACE_STR,access_token);
+                String jsApiTicketUrl = WeChatUrlUtils.JSAPI_TICKET_URL.replace(WeChatUrlUtils.REPLACE_STR, access_token);
                 String jsApiTicketJsonStr = HttpUtils.getInstance().get(jsApiTicketUrl);
                 log.debug("jsApiTicket: {}", jsApiTicketJsonStr);
                 JsApiTicketJson jsApiTicketJson = JSON.parseObject(jsApiTicketJsonStr, JsApiTicketJson.class);

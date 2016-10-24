@@ -5,23 +5,23 @@
 
 (function($){
 
-    //弹出预览图片
-    $.showPic = function(obj){
-        var url= $(obj).attr("src");
-        //$("body").append("<div class='pg-load'></div>");
-        //$(".pg-load").fadeIn();
-        $("body").append("<div class='pg-pic'><img src='"+url+"' onclick=' $.closePic()' class='yl_pic'></div>");
+    //弹出预览图片,传递图片url
+    $.showPic = function(url){
+        if(url){
+            var img = new Image();
+            img.src = url;
+            var height = img.height;
+            var width = img.width;
+            if(width>height){
+                $("body").append("<div class='pg-pic'><img src='"+url+"' onclick=' $.closePic()' class='yl_pic'></div>");
+            }else{
+                $("body").append("<div class='pg-pic-height'><img src='"+url+"' onclick=' $.closePic()' class='yl_pic_height'></div>");
+            }
+        }
     }
-
     //点击图片关闭
     $.closePic = function(){
-        //$(".pg-pic").remove();
-        $(".pg-load").fadeOut();
         $(".pg-pic").fadeOut();
-
+        $(".pg-pic-height").fadeOut();
     }
-
-
-
-
 })(jQuery)

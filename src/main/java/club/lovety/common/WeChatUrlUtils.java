@@ -25,9 +25,11 @@ public class WeChatUrlUtils {
 
     public  static final String JSAPI_TICKET_URL="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi";
 
+    public static final String SEND_TEMPLATE_URL="https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
+
     public static final String PAY_FEE_URL="https://api.mch.weixin.qq.com/pay/unifiedorder";  //统一下单url
 
-    public static final String YM_OPENID_URL="https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf13b2cb7e7db3cb4&secret=5b2914ced796499fbed6aee85a41fb06&code=CODE&grant_type=authorization_code";
+    public static final String YM_OPENID_URL="https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf13b2cb7e7db3cb4&secret=877da9e20e85b8809da9628d91dc5a09&code=CODE&grant_type=authorization_code";
 
 
 

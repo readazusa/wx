@@ -10,11 +10,15 @@ import club.lovety.message.BaseMessage;
  * 语音消息实体类
  */
 public class ReqVoiceMessage extends BaseMessage {
+
     private  String MediaId;  //语音消息媒体id，可以调用多媒体文件下载接口拉取数据。
 
     private String Format; //语音格式，如amr，speex等
 
-    private String MsgID;  //
+    private String MsgId;  //
+
+    private  String Recognition;
+
 
     public String getMediaId() {
         return MediaId;
@@ -32,11 +36,19 @@ public class ReqVoiceMessage extends BaseMessage {
         Format = format;
     }
 
-    public String getMsgID() {
-        return MsgID;
+    public String getMsgId() {
+        return MsgId;
     }
 
-    public void setMsgID(String msgID) {
-        MsgID = msgID;
+    public void setMsgId(String msgId) {
+        MsgId = msgId;
+    }
+
+    public String getRecognition() {
+        return Recognition;
+    }
+
+    public void setRecognition(String recognition) {
+        Recognition = recognition;
     }
 }

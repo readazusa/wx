@@ -15,11 +15,11 @@ public interface IWechatApiService {
 
     public  static final String APP_ID = "wxf13b2cb7e7db3cb4";
 
-    public static final String SECREF="5b2914ced796499fbed6aee85a41fb06";
+    public static final String SECREF="877da9e20e85b8809da9628d91dc5a09";
 
     public static final String GRANT_TYPE= "client_credential";
 
-    public static final String ACCESS_TOKEN_URL="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxf13b2cb7e7db3cb4&secret=5b2914ced796499fbed6aee85a41fb06";
+    public static final String ACCESS_TOKEN_URL="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxf13b2cb7e7db3cb4&secret=877da9e20e85b8809da9628d91dc5a09";
 
 
     /**
@@ -49,8 +49,9 @@ public interface IWechatApiService {
 
     public String createMenu();
 
-
     public String getJsApiTicket();
+
+    public String doPost(String url,Object data);
 
 
 

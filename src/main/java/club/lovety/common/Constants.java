@@ -12,7 +12,7 @@ public final class Constants {
 
     public static final String APPID="wxf13b2cb7e7db3cb4";
 
-    public static final String AppSecret="5b2914ced796499fbed6aee85a41fb06 ";
+    public static final String AppSecret="877da9e20e85b8809da9628d91dc5a09";
 
     public static final String PORTAL_JSSDK_URL="http://www.sunmingchun.net/weixin/portal/index.htm";
 

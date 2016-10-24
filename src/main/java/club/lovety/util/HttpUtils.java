@@ -1,10 +1,13 @@
 package club.lovety.util;
 
 import club.lovety.common.Constants;
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -20,6 +23,7 @@ import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
 import org.apache.http.impl.nio.client.HttpAsyncClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.nio.entity.NFileEntity;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -170,6 +174,32 @@ public final class HttpUtils {
         return sb.toString();
     }
 
+    public String post(String url,Object data){
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        HttpPost httpPost = new HttpPost(url);
+        httpPost.setEntity(new StringEntity(JSON.toJSONString(data), ContentType.APPLICATION_JSON));
+        CloseableHttpResponse response = null;
+        try {
+            response = httpclient.execute(httpPost);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            HttpEntity entity = response.getEntity();
+            System.out.println("HttpEntity=====>" + entity);
+            if (null != entity) {
+                return EntityUtils.toString(entity);
+            }
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }finally {
+            closeAll(httpclient);
+        }
+    }
+
+
     public String postFormFile(String url, Map<String, File> params) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost(url);
@@ -220,6 +250,8 @@ public final class HttpUtils {
             while ((str = bufferedReader.readLine()) != null) {
                 sb.append(str);
             }
+            log.info("下载的文件内容: {}",sb.toString());
+
         } catch (IOException e) {
             log.error("获取地址：{}失败，错误信息如下：{}", url, e.getMessage());
             e.printStackTrace();
@@ -239,6 +271,8 @@ public final class HttpUtils {
         String fileId = null;
         try {
             CloseableHttpResponse closeableHttpResponse = httpclient.execute(httpGet);
+            //"Content-disposition: attachment; filename="tKsJOWW6I_hSZA2jIrKnwbju_EnJJbwNHjAjEP_cLHJ4apeh1s7W6Q9pMxNOTeaQ.amr"[\r][\n]"
+            closeableHttpResponse.getHeaders("");  //获取头文件
             InputStream inputStream = closeableHttpResponse.getEntity().getContent();
             if (inputStream != null) {
                 StringBuilder sb = new StringBuilder();
@@ -304,6 +338,13 @@ public final class HttpUtils {
         return sb.toString();
     }
 
+    private void closeAll(CloseableHttpClient httpClient){
+        try {
+            httpClient.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         HttpUtils httpUtils = HttpUtils.getInstance();
