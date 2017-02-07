@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 public class OrderServiceImpl implements IOrderService {
 
 
-    @Resource
+//    @Resource
     private JmsTemplate jmsTemplate;
 
     @Override

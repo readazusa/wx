@@ -9,16 +9,16 @@
 
 	<mvc:annotation-driven></mvc:annotation-driven>
     <context:component-scan base-package="club"/>
-    <mvc:interceptors>
-            <mvc:interceptor>
-                <mvc:mapping path="/**/*.htm" />
-                <mvc:exclude-mapping path="/oauth/**"></mvc:exclude-mapping>
-                <mvc:exclude-mapping path="/wx/**"></mvc:exclude-mapping>
+    <!--<mvc:interceptors>-->
+            <!--<mvc:interceptor>-->
+                <!--<mvc:mapping path="/**/*.htm" />-->
+                <!--<mvc:exclude-mapping path="/oauth/**"></mvc:exclude-mapping>-->
+                <!--<mvc:exclude-mapping path="/wx/**"></mvc:exclude-mapping>-->
                 <!--<mvc:exclude-mapping path="/portal/index.htm"></mvc:exclude-mapping>-->
-                <bean class="club.lovety.interceptor.WxSystemInterceptor">
-                </bean>
-            </mvc:interceptor>
-    </mvc:interceptors>
+                <!--<bean class="club.lovety.interceptor.WxSystemInterceptor">-->
+                <!--</bean>-->
+            <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/freemarker/"/>

@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.concurrent.Callable;
 
 /**
  * Created by 念梓  on 2016/10/22.
@@ -93,5 +92,14 @@ public class TestApiController {
         String sign = SecUtils.getSha1(sb.toString().substring(0,sb.length()-1));
         return sign;
     }
+
+
+    @ResponseBody
+    public Object getR(){
+        return new HashMap<String,String>().put("123","123123");
+    }
+
+
+
 
 }

@@ -7,8 +7,8 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:spring/mq/applicationContext_mq.xml
-            classpath:spring/mysql/applicationContext_database.xml,
+            <!--classpath:spring/mq/applicationContext_mq.xml-->
+            classpath:spring/mysql/applicationContext_database.xml
             classpath:spring/applicationContext_mvc.xml,
             classpath:spring/applicationContext_base.xml,
             classpath:spring/redis/applicationContext_redis.xml

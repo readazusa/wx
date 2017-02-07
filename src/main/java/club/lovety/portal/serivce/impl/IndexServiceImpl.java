@@ -23,7 +23,7 @@ public class IndexServiceImpl implements IIndexService {
     @Resource
     private IIndexDao indexDao;
 
-    @Resource
+//    @Resource
     private BaseCacheService cacheService;
 
 
