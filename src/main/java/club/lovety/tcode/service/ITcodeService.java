@@ -6,6 +6,16 @@ package club.lovety.tcode.service;
  */
 public interface ITcodeService {
 
-    public String createTCode();
+    /**
+     * 创建二维码
+     * @param url
+     * @return
+     */
+    public String createTCode(String url);
+
+
+    public Object downCode(String tickct);
+
+
 
 }
