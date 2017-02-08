@@ -20,10 +20,10 @@ import java.io.Serializable;
  * 缓存处理类
  */
 
-//@Service
+@Service
 public class BaseCacheService {
 
-//    @Resource
+    @Resource
     private RedisTemplate<Serializable, Serializable> redisTemplate;
 
     /**

@@ -4,14 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxIdle" value="300"/>
-        <property name="maxWaitMillis" value="1000"/>
+        <property name="maxIdle" value="30"/>
+        <property name="maxWaitMillis" value="100"/>
         <property name="testOnBorrow" value="true"/>
-        <property name="maxTotal" value="600"/>
+        <property name="maxTotal" value="60"/>
     </bean>
 
     <bean id="redisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="hostName" value="120.26.208.194"/>
+        <property name="hostName" value="118.89.104.247"/>
         <property name="port" value="6379"/>
         <property name="usePool" value="true"/>
         <property name="poolConfig" ref="poolConfig"/>
