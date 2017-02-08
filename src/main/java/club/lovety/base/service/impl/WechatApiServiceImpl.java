@@ -39,6 +39,9 @@ public class WechatApiServiceImpl implements IWechatApiService {
 
     private static final Logger log = LoggerFactory.getLogger(WechatApiServiceImpl.class);
 
+
+
+
     @Resource
     private BaseCacheService baseCacheService;
 

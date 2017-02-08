@@ -31,6 +31,12 @@ public class WeChatUrlUtils {
 
     public static final String YM_OPENID_URL="https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf13b2cb7e7db3cb4&secret=877da9e20e85b8809da9628d91dc5a09&code=CODE&grant_type=authorization_code";
 
+    //临时生成二维码的url
+    public static final String T_CODE_CREATE_LS_URL="https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=ACCESS_TOKEN";
+
+    //生成永久二维码的url
+    public static final String T_CODE_CREATE_YJ_URL="https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=ACCESS_TOKEN";
+
 
 
 
