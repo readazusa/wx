@@ -37,6 +37,8 @@ public class WeChatUrlUtils {
     //生成永久二维码的url
     public static final String T_CODE_CREATE_YJ_URL="https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=ACCESS_TOKEN";
 
+    public static final String T_CODE_DOWNLOAD_URL="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET";   //二维码下载
+
 
 
 

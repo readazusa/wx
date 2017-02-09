@@ -17,7 +17,6 @@ import java.io.IOException;
  */
 public class ImageTest {
 
-
     static class MyPosition implements Position{
         @Override
         public Point calculate(int enclosingWidth, int enclosingHeight, int width, int height, int insetLeft, int insetRight, int insetTop, int insetBottom) {
@@ -28,13 +27,15 @@ public class ImageTest {
     }
 
     public static void main(String[] args) {
-//        Positions.CENTER_LEFT
+
         try {
-            Thumbnails.of("G:/123.png")
-                    .size(640,530)
-                    .watermark(new MyPosition(), ImageIO.read(new File("G:/321.png")),0.9f)
-                    .outputQuality(0.8f)
-                    .toFile("g:/1131.jpg");
+            Thumbnails.of("F:/showqrcode.jpg").scale(1).toFile(new File("F:/123456789.jpg"));
+            Thumbnails.of("F:/123456789.jpg")
+//                    .size(640,530)
+                    .watermark(Positions.CENTER, ImageIO.read(new File("f:/333.jpg")),1)
+                    .outputQuality(1)
+                    .scale(1)
+                    .toFile("f:/00000.jpg");
         } catch (IOException e) {
             e.printStackTrace();
         }

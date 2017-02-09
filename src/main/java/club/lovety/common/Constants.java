@@ -10,6 +10,8 @@ public final class Constants {
 
     public static final String UPLOAD_FILE_PATH="/upload/";
 
+    public static final String DOWNLAOD_FILE_PATH="/wechat/download/";
+
     public static final String APPID="wxf13b2cb7e7db3cb4";
 
     public static final String AppSecret="877da9e20e85b8809da9628d91dc5a09";

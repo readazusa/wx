@@ -27,9 +27,8 @@ public class TcodeController {
 
     @RequestMapping("load/code")
     @ResponseBody
-    public Object loadCode(){
-
-        return null;
+    public Object loadCode(String ticket){
+        return tcodeService.downCode(ticket);
     }
 
 

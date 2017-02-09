@@ -265,6 +265,12 @@ public final class HttpUtils {
         return sb.toString();
     }
 
+    /**
+     * 下载服务器上面的文件
+     * @param url
+     * @param contentType
+     * @return
+     */
     public String get(String url, String contentType) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
@@ -276,13 +282,13 @@ public final class HttpUtils {
             InputStream inputStream = closeableHttpResponse.getEntity().getContent();
             if (inputStream != null) {
                 StringBuilder sb = new StringBuilder();
-                sb.append(Constants.UPLOAD_FILE_PATH).append(contentType).append(File.separator).append(DateFormatUtils.getFormatDate(new Date(), "yyyyMMdd"));
+                sb.append(Constants.DOWNLAOD_FILE_PATH).append(contentType).append(File.separator).append(DateFormatUtils.getFormatDate(new Date(), "yyyyMMdd"));
                 log.debug("请求url:{},类型： {}", sb.toString(), contentType);
                 File parentFile = new File(sb.toString());
                 if (!parentFile.exists()) {
                     parentFile.mkdirs();
                 }
-                String fileName = UuidUtils.getUpperUuid()+".png";
+                String fileName = UuidUtils.getUpperUuid()+".jpg";
                 File file = new File(parentFile, fileName);
                 FileUtils.copyInputStreamToFile(inputStream, file);
                 fileId = sb.append(File.separator).append(fileName).toString();

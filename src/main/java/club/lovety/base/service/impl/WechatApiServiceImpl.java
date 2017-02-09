@@ -140,7 +140,6 @@ public class WechatApiServiceImpl implements IWechatApiService {
         log.debug("调用api地址：{}，返回结果:{}", url, result);
         return result;
     }
-
     @Override
     public String doPostFormFile(String url, Map<String, File> formFile) {
         log.debug("请求api的formFile数据: {}", formFile);
